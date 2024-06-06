@@ -1,0 +1,112 @@
+@import './colors';
+@import './breakpoints';
+
+//@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+.fx {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.fx-ac {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+}
+.fx-jb {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.fx-jc {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.fx-ae {
+    align-items: flex-end;
+}
+.fx-as {
+    align-items: flex-start;
+}
+.fx-je {
+    justify-content: flex-end;
+}
+.fx-js {
+    justify-content: flex-start;
+}
+.f-dir-col {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.fx-wrap {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.loading-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-dark-blue;
+    z-index: 9999;
+}
+.loading-wrapper{
+	width:400px;
+}
+.loader-anim{
+	width: 100%;
+	height:159px;
+	background: url(/loader-static.png) no-repeat;
+	background-size:cover;
+}
+.loader-txt{
+	color: $color-pink;
+	font-size:26px;
+	font-weight:700;
+	font-family: 'Space Grotesk', sans-serif;
+	width:100%;
+	margin-top:20px;
+	span{
+		width:100%;
+	}
+}
+.loader-bar{
+	min-width:1px;
+	margin-top:5px;
+	height:2px;
+	background: $color-pink;
+}
+@media screen and (max-width: $breakpoint-850) {
+	.loading-wrapper{
+		width:300px;
+	}
+	.loader-anim{
+		height:119px;
+	}
+}
+@media screen and (max-width: $breakpoint-479) {
+	.loading-wrapper{
+		width:260px;
+	}
+	.loader-anim{
+		height:103px;
+	}
+	.loader-txt{
+		font-size:18px;
+		margin-top:15px;
+	}
+}
+@media screen and (max-width: $breakpoint-350) {
+	.loading-wrapper{
+		width:240px;
+	}
+	.loader-anim{
+		height:95px;
+	}
+}

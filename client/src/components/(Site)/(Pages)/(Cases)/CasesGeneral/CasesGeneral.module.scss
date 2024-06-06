@@ -1,0 +1,11 @@
+@import '@base/breakpoints';
+.cs-pg-wrap{
+    padding-top:53px;
+    padding-bottom: 100px;
+}
+@media screen and (max-width: $breakpoint-1100) {
+    .cs-pg-wrap {
+        padding-top: 45px;
+        padding-bottom: 60px;
+    }
+}

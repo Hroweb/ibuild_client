@@ -1,0 +1,59 @@
+@import '@base/breakpoints';
+
+.custom-cursor{
+	position: absolute;
+	z-index:1;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+	transition: transform 0.1s ease-out;
+}
+.cursor-style-1 {
+	width: 228px;
+	height: 280px;
+	background-image: url('~@public/images/booth-cp-sv-cursor.png');
+	background-size: cover;
+}
+.cursor-style-2 {
+	width: 227px;
+	height: 288px;
+	background-image: url('~@public/images/branding-sv-cursor.png');
+	background-size: cover;
+}
+.cursor-style-3 {
+	width: 216px;
+	height: 240px;
+	background-image: url('~@public/images/pj-mng-sv-cursor.png');
+	background-size: cover;
+}
+.cursor-style-4 {
+	width: 243px;
+	height: 290px;
+	background-image: url('~@public/images/booth-cs-sv-cursor.png');
+	background-size: cover;
+}
+.cursor-style-5 {
+	width: 247px;
+	height: 254px;
+	background-image: url('~@public/images/concierge-sv-cursor.png');
+	background-size: cover;
+}
+.cursor-style-6 {
+	width: 242px;
+	height: 263px;
+	background-image: url('~@public/images/ev-marketing-sv-cursor.png');
+	background-size: cover;
+}
+.cursor-style-7 {
+	width: 247px;
+	height: 240px;
+	background-image: url('~@public/images/beyond-sv-cursor.png');
+	background-size: cover;
+}
+.default-cursor{
+  	z-index: auto;
+}
+@media screen and (max-width: $breakpoint-1100) {
+    .custom-cursor {
+		display: none;
+	}
+}

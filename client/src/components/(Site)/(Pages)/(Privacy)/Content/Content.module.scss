@@ -1,0 +1,79 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+.pv-ct-wrap{
+    position: relative;
+    h2, h3{
+        color: $color-black;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 36px;
+        text-transform: uppercase;
+        margin:20px 0 0 0;
+    }
+    h2:first-child{
+        margin-top:0;
+    }
+    h3{
+        font-size: 26px;
+        line-height: 30px;
+        text-transform: none;
+    }
+    p{
+        color: $color-black;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        margin:20px 0;
+    }
+    ul{
+        list-style-type: disc;
+        padding-left: 20px;
+        li{
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 28px;
+        }
+    }
+    a{
+        color: $color-blue;
+        font-weight: 700;
+        border-bottom:1px solid $color-blue;
+    }
+}
+
+@media screen and (max-width: $breakpoint-1100) {
+    .pv-ct-wrap{
+        h2{
+            font-size: 25px;
+            line-height: 32px;
+        }
+        h3{
+            font-size: 22px;
+            line-height: 28px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    .pv-ct-wrap{
+        h2{
+            font-size: 18px;
+            line-height: 26px;
+        }
+        h3{
+            font-size: 16px;
+            line-height: 20px;
+        }
+        p{
+            margin:10px 0;
+            font-size:14px;
+            line-height:22px;
+        }
+        ul{
+            li{
+                font-size:14px;
+                line-height:22px;
+            }
+        }
+    }
+}

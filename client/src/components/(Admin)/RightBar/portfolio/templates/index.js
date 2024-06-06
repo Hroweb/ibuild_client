@@ -1,0 +1,7 @@
+export { default as Template1 } from './template1'
+export { default as Template2 } from './template2'
+export { default as Template3 } from './template3'
+export { default as Template4 } from './template4'
+export { default as Template5 } from './template5'
+export { default as Template6 } from './template6'
+export { default as Template7 } from './template7'

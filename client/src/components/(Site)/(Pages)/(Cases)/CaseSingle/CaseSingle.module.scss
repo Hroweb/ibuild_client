@@ -1,0 +1,320 @@
+@import "@base/colors";
+@import '@base/breakpoints';
+
+.case-banner{
+    padding:94px 0 72px 0;
+}
+.case-bn-lcol{
+    width:400px;
+    h1{
+        color: $color-white;
+        font-size: 52px;
+        font-weight: 700;
+        line-height: 62px;
+        text-transform: uppercase;
+        margin:0;
+    }
+}
+.case-bn-rcol{
+    width:485px;
+    p{
+        color: $color-white;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 26px;
+        text-transform: uppercase;
+        margin:0;
+    }
+}
+.case-cats{
+    margin-top:23px;
+    a{
+        border-radius: 20px;
+        border:1px solid $color-white;
+        padding:10px 20px;
+        color: $color-white;
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: uppercase;
+        cursor: text;
+        &:not(:last-child){
+            margin-right:7px;
+        }
+    }
+}
+.case-ft-image{
+    img{
+        width:100%;
+        height:auto;
+    }
+}
+.case-ovw{
+    padding:60px 0;
+}
+.case-ovw-lcol{
+    width:300px;
+    padding-top:50px;
+}
+.case-ovw-rcol{
+    width:660px;
+    h2{
+        color: $color-dark-blue;
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin:0;
+    }
+}
+.case-ovw-text{
+    margin-top:20px;
+    p{
+        color: $color-dark-blue;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        margin:0;
+        &:not(:last-child){
+            margin-bottom: 10px;
+        }
+    }
+}
+.case-sv-list{
+    a{
+        border-radius: 20px;
+        border: 1px solid $color-dark-blue;
+        padding:12px 19px;
+        color: $color-dark-blue;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        transition: all .4s;
+        &:not(:last-child){
+            margin-bottom:20px;
+        }
+        &:hover{
+            background: $color-dark-blue;
+            color:$color-white;
+        }
+    }
+}
+.case-block-w{
+    width:100%;
+    margin-bottom:60px;
+}
+.case-img{
+    &:not(.case-img-hf){
+        width:100%;
+    }
+    &.case-img-hf{
+        width:49%;
+    }
+   width:100%;
+    img{
+        max-width:100%;
+        height:auto;
+        margin:auto;
+    }
+}
+.case-info-lcol{
+    width:300px;
+    h2{
+        color: $color-dark-blue;
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin:0;
+    }
+}
+.case-info-rcol{
+    width:660px;
+}
+.case-block-info{
+    margin-top:38px;
+    p{
+        color: $color-dark-blue;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        margin:0 0 10px 0;
+        a{
+            color: $color-pink;
+            text-decoration: underline;
+        }
+    }
+}
+.case-img-anim{
+    margin:auto auto 40px auto;
+    img{
+        max-width:100%;
+    }
+}
+.case-col{
+    width:49%;
+}
+.case-col-info{
+    margin-top:40px;
+    h2{
+        color: $color-dark-blue;
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin:0;
+    }
+    p{
+        color: $color-dark-blue;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        margin:10px 0 0 0;
+    }
+}
+.case-gal{
+    position: relative;
+    margin-left: calc((100% - 1015px) / 2);
+    padding-top:20px;
+    padding-bottom:80px;
+}
+.gal-thumb{
+    img{
+        width: auto;
+        height:382px;
+        max-width: 100%;
+    }
+}
+.case-gal{
+    .gal-item {
+        width: auto !important;
+    }
+}
+.case-details {
+    position: relative;
+}
+@media screen and (max-width: $breakpoint-1100) {
+    .case-banner {
+        padding: 60px 0 65px 0;
+    }
+    .case-bn-lcol {
+        width: 38%;
+        h1 {
+            font-size: 37px;
+            line-height: 42px;
+        }
+    }
+    .case-info-lcol {
+        width: 38%;
+    }
+    .case-bn-rcol {
+        width: 58%;
+        p {
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+    .case-info-rcol {
+        width: 58%;
+    }
+    .case-ovw-lcol {
+        width: 29%;
+    }
+    .case-ovw-rcol {
+        width: 68%;
+    }
+    .case-gal {
+        margin-left: 5%;
+        padding-top: 0;
+        padding-bottom: 60px;
+    }
+}
+@media screen and (max-width: $breakpoint-1000) {
+    .case-ovw {
+        padding: 40px 0;
+    }
+    .case-col {
+        width: 48%;
+    }
+    .case-col-info {
+        margin-top: 25px;
+    }
+}
+@media screen and (max-width: $breakpoint-850) {
+    .case-ovw-lcol {
+        width: 100%;
+        order: 1;
+        padding-top: 31px;
+    }
+    .case-ovw-rcol {
+        width: 100%;
+    }
+    .case-sv-list {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        a {
+            &:not(:last-child){
+                margin-bottom:0;
+            }
+            flex-shrink: 0;
+            margin-bottom: 0;
+            margin-right: 10px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-750) {
+    .case-bn-lcol, .case-bn-rcol, .case-info-lcol, .case-info-rcol {
+        width: 100%;
+    }
+    .case-bn-rcol, .case-info-rcol {
+        margin-top: 15px;
+    }
+    .case-bn-lcol {
+        h1 {
+            font-size: 32px;
+            line-height: 36px;
+        }
+    }
+    .case-block-info {
+        margin-top: 30px;
+    }
+    .case-block-w {
+        margin-bottom: 40px;
+    }
+}
+@media screen and (max-width: $breakpoint-660) {
+    .case-col {
+        width: 100%;
+        &:last-child {
+            margin-top: 30px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    .case-bn-lcol {
+        h1 {
+            font-size: 28px;
+        }
+    }
+    .case-bn-rcol {
+        p {
+            font-size: 16px;
+            line-height: 22px;
+        }
+    }
+    .case-banner {
+        padding: 36px 0;
+        text-align: center;
+    }
+    .case-cats {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .case-cats {
+        a {
+            margin-bottom: 7px;
+        } 
+    }
+}

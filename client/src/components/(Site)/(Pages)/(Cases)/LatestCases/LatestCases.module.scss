@@ -1,0 +1,68 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+.lt-cs-lcol{
+    width:490px;
+    h2{
+        color: $color-dark-blue;
+        font-size: 58px;
+        font-weight: 700;
+        line-height: 64px;
+        text-transform: uppercase;
+        margin:0;
+    }
+}
+.lt-cs-rcol{
+    width:280px;
+}
+.lt-cs-list{
+    margin-top:30px;
+}
+.lt-cs-wrap {
+    margin: 0;
+}
+.highlighted-projects {
+    position: relative;
+}
+@media screen and (max-width: $breakpoint-1100) {
+    .lt-cs-lcol {
+        width: 400px;
+        h2 {
+            font-size: 40px;
+            line-height: 42px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-850) {
+    .lt-cs-lcol {
+        width: 350px;
+    }
+}
+@media screen and (max-width: $breakpoint-750) {
+    .highlighted-projects {
+        padding-bottom: 126px;
+        .lt-cs-rcol {
+            position: absolute;
+            bottom: 55px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    }
+    .lt-cs-lcol {
+        width: 100%;
+        text-align: center;
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    .lt-cs-lcol {
+        h2 {
+            font-size: 35px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-319) {
+    .lt-cs-rcol {
+        width: 90%;
+    }
+}

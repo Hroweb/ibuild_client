@@ -1,0 +1,74 @@
+@import '@base/colors';
+
+.admin-menu-wrap{
+    border-radius: 12px;
+    background: $color-white;
+    padding-top:12px;
+    padding-bottom:190px;
+    ul{
+        li{
+            &:not(:last-child){
+                border-bottom:1px solid $color-grey;
+            }
+            &.admin-sub-item{
+                ul{
+                    padding-left: 36px;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease-in-out;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+                    li{
+                        border-bottom:none;
+                        a{
+                            font-size:16px;
+                            line-height: 20px;
+                            padding:0 0 15px 0;
+                        }
+                    }
+                }
+            }
+            &.active > a, &:hover > a{
+                color:$color-pink;
+            }
+            &.active{
+                ul{
+                    padding-top:18px;
+                    max-height: 100%;
+                    opacity: 1;
+                    visibility: visible;
+                    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                    border-top: 1px solid $color-grey;
+                }
+                svg{
+                    transform: rotate(90deg);
+                    -webkit-transform: rotate(90deg);
+                    -moz-transform: rotate(90deg);
+                    path{
+                        stroke: $color-pink;
+                    }
+                }
+            }
+            a{
+                padding:18px 30px;
+                box-sizing: border-box;
+                color: $color-dark-blue;
+                font-size: 18px;
+                line-height: 22px;
+                text-transform: uppercase;
+                -webkit-transition: color .4s;
+                -moz-transition: color .4s;
+                transition: color .4s;
+                svg{
+                    -webkit-transition: stroke .3s;
+                    -moz-transition: stroke .3s;
+                    transition: stroke .3s;
+                }
+                &.active{
+                    color:$color-pink;
+                }
+            }
+        }
+    }
+}

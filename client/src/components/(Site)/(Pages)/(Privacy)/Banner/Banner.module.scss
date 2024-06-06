@@ -1,0 +1,93 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+.banner-bg-black{
+	background:$color-dark-blue;
+}
+.pv-banner{
+    position: relative;
+    img{
+        width:100%;
+        height:auto;
+    }
+    h1{
+        color: $color-white;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 700;
+        line-height: 58px;
+        text-transform: uppercase;
+    }
+}
+.pv-hd{
+    flex-shrink:0;
+}
+@media screen and (max-width: $breakpoint-1250) {
+    .pv-banner{
+        h1{
+            font-size: 40px;
+            line-height: 40px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-1100) {
+    .pv-banner{
+        h1{
+            font-size: 34px;
+            line-height: 42px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-850) {
+    .pv-banner{
+        img{
+            width: 84%;
+        }
+        h1{
+            font-size: 28px;
+            line-height: 34px;
+        }
+        div:first-child{
+            text-align:left;
+        }
+        div:last-child{
+            text-align:right;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-750) {
+    .pv-banner{
+        height:250px;
+        div:first-child,
+        div:last-child{
+            height:100%;
+            img{
+                display:none;
+            }
+        }
+    }
+}
+@media screen and (min-width: $breakpoint-479) and (max-width: $breakpoint-660) {
+	.pv-banner{
+        height:220px;
+		h1{
+			font-size: 22px;
+			line-height: 29px;
+		}
+	}
+}
+@media screen and (max-width: $breakpoint-479){
+    .pv-banner{
+        height:220px;
+    }
+}
+@media screen and (max-width: $breakpoint-350){
+    .pv-hd {
+        padding: 0 20px;
+        width: 100%;
+        box-sizing: border-box;
+        h1{
+            width:100%;
+        }
+    }
+}

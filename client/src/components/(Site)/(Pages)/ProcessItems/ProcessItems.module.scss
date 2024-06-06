@@ -1,0 +1,87 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+/* General styles */
+.prc-item{
+    width:290px;
+    margin-top:50px;
+    &:hover{
+        .prc-anim-frame img:last-child{
+            opacity:1;
+        }
+    }
+}
+.prc-anim-frame{
+    position: relative;
+    height: 150px;
+    cursor: pointer;
+    img{
+        max-width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width:auto;
+        height: 100%;
+        -webkit-transition: opacity .4s;
+        -moz-transition: opacity .4s;
+        transition: opacity .4s;
+        &:last-child{
+            opacity: 0;
+        }
+    }
+}
+.prc-info{
+    margin-top:20px;
+    h3{
+        color: $color-white;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin:0 0 13px 0;
+        font-size: 18px;
+    }
+    p{
+        color: $color-white;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+.prc-items{
+    margin-top:18px;
+}
+@media screen and (max-width: $breakpoint-1100) {
+    .prc-item {
+        width: 30%;
+        margin-top: 40px;
+    }
+    .prc-items {
+        margin-top: 0;
+    }
+    .prc-info{
+        h3{
+            font-size: 18px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-750) {
+    .prc-item {
+        width: 45%;
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    .prc-item {
+        width: 100%;
+        margin-top:54px;
+    }
+    .prc-anim-frame{
+        img{
+            right: 0;
+            margin: auto;
+        }
+    }
+    .prc-info{
+        h3, p{
+            text-align:center;
+        }
+    }
+}

@@ -1,0 +1,144 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+.login-pg{
+    position: relative;
+}
+.login-col{
+    position: relative;
+    height:100vh;
+    &:first-child{
+        padding:32px 46px 32px 0;
+        box-sizing: border-box;
+        width:38%;
+    }
+    &:last-child{
+        width:62%;
+        background:url(/login-graphic-v3.svg) $color-dark-blue no-repeat center;
+        background-size: cover;
+    }
+}
+.login-top-pattern,.login-btm-pattern{
+    position: absolute;
+    top:12px;
+    left:0;
+    right:0;
+    margin:auto;
+    text-align:center;
+}
+.login-btm-pattern{
+    bottom:12px;
+    top:auto;
+}
+.login-main-graphic{
+    width:100%;
+    height:60%;
+    img{
+        width:100%;
+        height:100%;
+    }
+}
+.login-col-wrap{
+    width:420px;
+}
+.login-col-fm{
+    margin-top:77px;
+    h1{
+        color: $color-dark-blue;
+        font-size: 34px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin:0;
+    }
+    h2{
+        color: $color-black;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+        text-transform: uppercase;
+        margin:8px 0 0 0;
+    }
+}
+.login-form{
+    margin-top:70px;
+}
+.admin-field{
+    input{
+        width: 100%;
+        font-size: 20px;
+        line-height: 24px;
+        padding: 16px 0;
+        border: none;
+        border-bottom: 1px solid $color-grey6;
+        font-weight: 400;
+        background: none;
+        color: $color-dark-blue;
+        font-family: "Space Grotesk", sans-serif;
+        text-transform: uppercase;
+    }
+}
+.admin-field-btn{
+    margin-top:90px;
+    button{
+        border-radius: 27px;
+        background: $color-pink;
+        padding: 20px 0;
+        width:210px;
+        outline: none;
+        border: none;
+        color: $color-grey;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+}
+.admin-field-err{
+    input{
+        font-weight: 700;
+        color:$color-pink;
+        border-bottom: 1px solid $color-pink;
+        &::-webkit-input-placeholder{
+            color:$color-pink;
+        }
+        &:-moz-placeholder{
+            color:$color-pink;
+        }
+        &::-moz-placeholder{
+            color:$color-pink;
+        }
+        &:-ms-input-placeholder{
+            color:$color-pink;
+        }
+    }
+}
+.admin-err-area{
+    margin-top:16px;
+    span{
+        color: $color-pink;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+        margin-left:5px;
+        text-transform: capitalize;
+    }
+}
+@media screen and (max-width: $breakpoint-1300) {
+    .login-col-wrap {
+        width: 90%;
+    }
+    .login-form {
+        margin-top: 35px;
+    }
+    .admin-field-btn {
+        margin-top: 50px;
+    }
+}
+@media screen and (max-height: 560px) {
+    .login-col:first-child{
+        overflow-y: auto;
+        align-items: flex-start;
+    }
+}

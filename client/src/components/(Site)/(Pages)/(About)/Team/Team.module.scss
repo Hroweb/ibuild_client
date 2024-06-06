@@ -1,0 +1,208 @@
+@import "@base/colors";
+@import '@base/breakpoints';
+
+.tm-lcol{
+	width:120px;
+    h2{
+        color: $color-dark-blue;
+        font-weight: 700;
+        text-transform: uppercase;
+		font-size: 18px;
+        position: relative;
+        padding-left: 27px;
+        &:before{
+            content:'';
+            position: absolute;
+            left:0;
+            top:0;
+            bottom: 0;
+            margin:auto;
+            width:17px;
+            height:18px;
+            background:url(/images/hd-arr.svg) no-repeat;
+            background-size:cover;
+        }
+    }
+}
+.tm-text{
+	p{
+		color: $color-dark-blue;
+		font-weight: 400;
+		text-transform: uppercase;
+		font-size: 22px;
+		line-height: 28px;
+	}
+}
+.tm-rcol{
+	width:630px;
+}
+.tm-wrap{
+	margin-top:54px;
+}
+.team-item{
+    width:320px;
+}
+.team-photo{
+    width:100%;
+    position: relative;
+    cursor: pointer;
+    &:hover .team-adt-info{
+        opacity:1;
+    }
+    img{
+        width:100%;
+        height:auto;
+    }
+    .team-adt-info{
+        position: absolute;
+        width:100%;
+        height:100%;
+        top:0;
+        left:0;
+        opacity:0;
+        -webkit-transition: opacity .4s;
+        -moz-transition: opacity .4s;
+        transition: opacity .4s;    
+    }
+    .team-adt-info:before{
+        content:'';
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background: rgba(0, 0, 0, 0.74);
+    }
+    .team-adt-wrap{
+        padding:0 30px;
+        position: relative;
+        h4{
+            color: $color-white;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin:0 0 18px 0;
+        }
+        p{
+            color: $color-white;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            margin:0;
+        }
+    }
+}
+.team-info{
+    margin-top:24px;
+    padding-right:30px;
+    h5{
+        color: $color-dark-blue;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin:0 0 10px 0;
+    }
+    h6{
+        color: $color-dark-blue;
+        font-size: 12px;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin:0;
+    }
+    p{
+        color: $color-darkGrey5;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14px;
+        margin:10px 0 0 0;
+    }
+}
+.team-members {
+    position: relative;
+}
+@media screen and (max-width: $breakpoint-1100) {
+	.tm-lcol {
+		width: auto;
+        h2{
+            font-size: 16px;
+            padding-left: 22px;
+            &:before{
+                width:13px;
+                height:14px;
+            }
+        }
+	}
+	.tm-rcol {
+		width: 62%;
+	}
+	.tm-text {
+		p {
+			font-size: 18px;
+			line-height: 22px;
+		}
+	} 
+    .tm-wrap {
+		margin-top: 40px;
+	}
+    .team-item {
+        width: 32%;
+    }
+    .team-members {
+        padding-top: 0;
+    }
+    .team-info {
+        margin-top: 18px;
+        padding-right: 25px;
+        h5 {
+            margin-bottom: 8px;
+        }
+    }
+    .team-photo {
+        .team-adt-wrap {
+            padding: 0 20px;
+            h4 {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+            p {
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-750) {
+	.tm-lcol {
+		width: 100%;
+	}
+	.tm-rcol {
+		width: 100%;
+		margin-top: 15px;
+	}
+	.tm-text {
+		p {
+			font-size: 16px;
+		}
+	} 
+}
+@media screen and (max-width: $breakpoint-660) {
+    .tm-wrap {
+        overflow-x: auto;
+    }
+    .team-item {
+        width: 320px;
+        margin-right: 20px;
+        flex-shrink: 0;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+	.tm-wrap {
+		margin-top: 30px;
+	}
+    .team-item {
+        width: 90%;
+    }
+}

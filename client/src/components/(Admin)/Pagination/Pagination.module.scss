@@ -1,0 +1,36 @@
+@import '@base/colors';
+
+.paginationWrapper {
+    margin: 45px auto;
+    button {
+        cursor: pointer;
+        background:none;
+        border:none;
+        padding:0;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+}
+.pg-prev{
+    color: $color-grey6;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    margin-right:10px;
+}
+.pg-next{
+    color: $color-pink;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    margin-left:10px;
+}
+.pg-item{
+    color: $color-darkGrey7;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    margin:0 8px;
+    &:disabled, &:hover{
+        font-weight: 600;
+    }
+}

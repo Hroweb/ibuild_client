@@ -1,0 +1,53 @@
+@import '@base/colors';
+
+.admin-lcol{
+    width:308px;
+}
+.admin-hd{
+    width:100%;
+    height:137px;
+    border-radius:12px;
+    background:url(/admin/header-bg.jpg) no-repeat;
+    background-size:cover;
+    padding-left:20px;
+    box-sizing: border-box;
+}
+.admin-menu{
+    margin-top:30px;
+}
+.admin-bar-row{
+    margin-top:20px;
+}
+.admin-bar{
+    background: $color-white;
+    border-radius:12px;
+    box-sizing: border-box;
+    padding:24px 20px;
+}
+.admin-avatar{
+    width: 58px;
+    height: 58px;
+    background: $color-dark-blue;
+    flex-shrink: 0;
+    border-radius:100%;
+    margin-right:16px;
+}
+.admin-bar-info{
+    span{
+        color: $color-black;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+        text-transform: uppercase;
+    }
+}
+.admin-cpr{
+    margin-top:20px;
+    p{
+        color: $color-grey6;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 400;
+        margin:0;
+    }
+}

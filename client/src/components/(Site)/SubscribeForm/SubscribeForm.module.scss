@@ -1,0 +1,111 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+.sb-row{
+    position:relative;
+}
+.sentFormAnim{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    svg{
+        -webkit-transform: unset !important;
+        -moz-transform: unset !important;
+        -ms-transform: unset !important;
+        -o-transform: unset !important;
+        transform: unset !important;
+    }
+    &.hidden{
+        z-index: -1;
+        opacity:0;
+    }
+    &.visible{
+        z-index: 1;
+        opacity:1;
+    }
+}
+.sb-col {
+    width: 86%;
+    input{
+        width: 100%;
+        background: transparent;
+        color: $color-white;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 1px solid $color-white;
+        height: 40px;
+        padding: 0 34px 0 15px;
+        border-radius: 40px 0 0 40px;
+        font-size: 9px;
+    }
+    &.hidden{
+        opacity:0;
+    }
+}
+.sb-form-msg {
+    margin: 6px 0 0;
+    width: 100%;
+    -webkit-transition: opacity .4s;
+    -moz-transition: opacity .4s;
+    transition: opacity .4s;    
+    &.hidden{
+        opacity: 0;
+    }
+    &.visible{
+        opacity:1;
+    }
+    span{
+        color: $color-pink;
+        font-weight: 700;
+        font-size: 9px;
+        line-height: 20px;
+        padding-left: 15px;
+    }
+}
+.sb-btn-col {
+    background: $color-white;
+    color: $color-dark-blue;
+    width: 22%;
+    margin-left: -24px;
+    cursor: pointer;
+    input{
+        background: $color-white;
+        border: none;
+        outline: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding:0;
+        font-size: 12px;
+        line-height: 20px;
+        cursor:pointer;
+    }
+    &.hidden{
+        opacity:0;
+    }
+    &.disabled{
+        cursor: not-allowed !important;
+        background: $color-lightGrey;
+        input{
+            cursor: not-allowed !important;
+            background: $color-lightGrey;
+        }
+    }
+}
+.sb-btn-col .btn-arr {
+    margin-left: 8px;
+    & svg{
+        width: 12px;
+        height: auto;
+    }
+}
+.sbs-form{
+    margin-top:28px;
+}
+@media screen and (max-width: $breakpoint-1100) {
+    .sbs-form {
+        margin-top:15px;
+    }
+}

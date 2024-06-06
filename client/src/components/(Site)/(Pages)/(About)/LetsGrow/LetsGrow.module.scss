@@ -1,0 +1,156 @@
+@import "@base/colors";
+@import '@base/breakpoints';
+
+.motto-text{
+    padding-top:50px;
+}
+.lg-anim{
+    overflow:hidden;
+    h6{
+        color: $color-dark-blue;
+        text-align: center;
+        font-size: 7.8vw;
+        font-weight: 700;
+        line-height: 9.9vw;
+        text-transform: uppercase;
+        margin:0;
+    }
+}
+.lg-anim-row-1{
+    h6{
+        transform: translateX(100%);
+    }
+}
+.lg-anim-row-2{
+    h6{
+        transform: translateX(-100%);
+        margin-top:-25px;
+    }
+}
+.lg-anim-active .lg-anim-row-1 h6 {
+    animation: slideLeft 2s forwards;
+}
+  
+.lg-anim-active .lg-anim-row-2 h6 {
+    animation: slideRight 3s forwards;
+}
+@keyframes slideLeft {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-18%);
+    }
+}
+  
+@keyframes slideRight {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(5%);
+    }
+}
+.lg-wrap{
+    margin-top:40px;
+}
+.grow-item{
+    width:270px;
+}
+.grow-icon{
+    text-align: center;
+    img{
+        height:88px;
+        width:auto;
+    }
+}
+.grow-info{
+    margin-top:20px;
+    h3{
+        color: $color-dark-blue;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin:0;
+    }
+    p{
+        color: $color-dark-blue;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        margin:21px 0 0 0;
+    }
+}
+.btn-row{
+    width: 290px;
+    margin:72px auto 0 auto;
+    a{
+        width:100%;
+    }
+}
+.motto-text {
+    position: relative;
+}
+@media screen and (max-width: $breakpoint-1100) {
+    .motto-text {
+        padding-top: 40px;
+        h6{
+            line-height: 9.5vw;
+        }
+    }
+    .lg-anim-row-2{
+        h6 {
+            margin-top: 0;
+        }
+    }
+    .lg-wrap {
+        margin-top: 35px;
+    }
+    .grow-item {
+        width: 30%;
+    }
+    .lg-wrap .btn-row {
+        margin: 45px auto 0 auto;
+    }
+}
+@media screen and (max-width: $breakpoint-1000) {
+    .grow-info {
+       p {
+            font-size: 15px;
+            line-height: 19px;
+            margin-top: 12px;
+        } 
+    }
+    .grow-icon img {
+        height: 70px;
+    }
+}
+@media screen and (max-width: $breakpoint-660) {
+    .grow-info {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        p {
+            width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+        } 
+    }
+    .grow-item {
+        width: 100%;
+    }
+    .lg-wrap {
+        margin-top: 20px;
+        .btn-row {
+            margin: 15px auto 0 auto;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    .grow-info {
+        p {
+            width: 100%;
+        } 
+    }
+}

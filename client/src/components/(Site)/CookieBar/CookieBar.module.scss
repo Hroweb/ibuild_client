@@ -1,0 +1,108 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+.cookie-bar{
+    border-radius: 16px;
+    border: 1px solid $color-white;
+    background: $color-dark-blue;
+    padding:24px;
+    box-sizing: border-box;
+    width:410px;
+    position: fixed;
+    right:10px;
+    bottom:10px;
+    z-index: 10;
+    transition: transform 0.3s linear;
+    -webkit-transition: transform 0.3s linear;
+    -moz-transition: transform 0.3s linear;
+    
+    &.visible{
+        transform: translateX(0);
+    }
+    &.hidden{
+        transform: translateX(440px);
+    }
+    p{
+        color: $color-white;
+        font-size: 12px;
+        font-weight: 400;
+        margin:8px 0 26px 0;
+    }
+}
+.cookie-bar-wrap{
+    position: relative;
+}
+.cookie-btns{
+    width:100%;
+    a, button{
+        width:172px;
+        height:32px;
+        border-radius: 100px;
+        border: 1px solid $color-white;
+        background: $color-white;
+        color: $color-black;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 20px;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
+        outline:none;
+    }
+    a{
+        background:transparent;
+        color:$color-white;
+        &:hover{
+            background:$color-white;
+            color: $color-black;
+        }
+    }
+    button{
+        cursor: pointer;
+        &:hover{
+            border: 1px solid $color-pink;
+            background: $color-pink;
+            color: $color-white;
+        }
+    }
+}
+.ck-close{
+    position: absolute;
+    right:0;
+    z-index:2;
+    cursor: pointer;
+    svg{
+        line {
+            -webkit-transition: stroke .3s;
+            -moz-transition: stroke .3s;
+            transition: stroke .3s;
+        }
+    }
+    &:hover{
+        svg{
+            line{
+                stroke: $color-pink;
+            }
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    .cookie-bar{
+        width:320px;
+    }
+    .cookie-btns{
+        a, button{
+            width: 126px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-350) {
+    .cookie-bar{
+        width: calc(100% - 20px);
+    }
+    .cookie-btns {
+        a, button{
+            width: 120px;
+        }
+    }
+}

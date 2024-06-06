@@ -1,0 +1,76 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+/* General styles */
+.ev-logos-row{
+    background: $color-dark-blue;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding:42px 36px;
+}
+.ev-name h6{
+    color: $color-white;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin:0;
+    font-size: 20px;
+}
+.ev-logo-col{
+    flex-shrink: 0;
+    position:relative;
+    margin-right:50px;
+    cursor: pointer;
+    &:hover .ev-name{
+        opacity:0;
+    }
+    &:hover .ev-logo{
+        opacity:1;
+    }
+}
+.ev-logo-bar{
+    animation: eventsLogosMove 35s linear infinite;
+    flex-shrink: 0;
+    &:hover {
+        -webkit-animation-play-state: paused;
+        animation-play-state: paused;
+    }
+}
+.ev-logos-row:hover .ev-logo-bar{
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+@keyframes eventsLogosMove {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+.ev-logo{
+    position: absolute;
+    top: 0;
+    bottom:0;
+    margin:auto;
+    opacity:0;
+    transition: opacity 0.3s ease-in-out;
+    svg, img{
+        max-width: 100%;
+        height: auto;
+    }
+}
+.ev-name{
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out;
+    padding: 9px 30px;
+}
+@media screen and (max-width: $breakpoint-1100) {
+    .ev-logos-row {
+        padding: 25px 5%;
+    }
+    .ev-logo-col {
+        margin-right: 25px;
+    }
+}

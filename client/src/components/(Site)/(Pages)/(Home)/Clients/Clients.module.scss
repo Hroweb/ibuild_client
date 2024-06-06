@@ -1,0 +1,57 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+/* General styles */
+.clients{
+    padding-bottom:38px;
+}
+.client-logo{
+    width:16%;
+    margin-right:5%;
+    margin-bottom:50px;
+    text-align: center;
+    img{
+        width: 80%;
+        height: auto;
+    }
+}
+.client-logo:nth-child(5n){
+    margin-right:0;
+}
+.cl-logos-list{
+    margin-top: 30px;
+}
+@media screen and (max-width: $breakpoint-1100) {
+    .client-logo {
+        margin-bottom: 35px;
+        width: 18%;
+        margin-right: 2.5%;
+    }
+    .clients{
+        padding-bottom:20px;
+    }
+}
+@media screen and (max-width: $breakpoint-660) {
+    .client-logo, .client-logo:nth-child(5n) {
+        width: 23%;
+        margin-right: 2.66%;
+    }
+    .client-logo:nth-child(4n), .client-logo:last-child {
+        margin-right: 0;
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    .client-logo, .client-logo:nth-child(5n), .client-logo:nth-child(4n) {
+        width: 30%;
+        margin-right: 5%;
+        margin-bottom: 25px;
+    }
+    .client-logo:nth-child(3n), .client-logo:last-child {
+        margin-right: 0;
+    }
+    .client-logo{
+        img{
+            width: 88%;
+        }
+    }
+}

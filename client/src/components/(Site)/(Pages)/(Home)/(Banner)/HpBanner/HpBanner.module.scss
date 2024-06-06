@@ -1,0 +1,105 @@
+@import "@base/colors";
+@import "@base/breakpoints";
+
+/* General styles */
+.hero-banner{
+    padding:30px 0 48px 0;
+}
+.bn-lcol{
+    width:450px;
+}
+.bn-hd{
+    h1{
+        color: $color-white;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin:0;
+        font-size: 52px;
+        line-height: 62px; 
+    }
+}
+.bn-text{
+    color: $color-white;
+    font-size: 22px;
+    line-height: 27px; 
+    p{
+        margin:0;
+        strong{
+            font-weight:700;
+        }
+    }
+}
+.bn-rcol{
+    width:525px;
+}
+.bn-row:last-child{
+    margin-top:34px;
+}
+.bn-anim{
+    width: 360px;
+}
+
+@media screen and (max-width: $breakpoint-1100) {
+    .bn-lcol{
+        width:49%;
+    }
+    .bn-rcol{
+        width:48%;
+    }
+    .bn-anim{
+        width: 85%;
+    }
+    .bn-hd{
+        h1{
+            font-size: 40px;
+            line-height: 47px;
+        }
+    }
+    .bn-text {
+        font-size: 16px;
+        line-height: 21px;
+    }
+}
+@media screen and (max-width: $breakpoint-850) {
+    .bn-hd{
+        h1{
+            font-size: 32px;
+            line-height: 38px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-660) {
+    .bn-lcol, .bn-rcol {
+        width:100%;
+        text-align: center;
+    }
+    .bn-rcol {
+        margin-top: 15px;
+    }
+    .bn-row:last-child .bn-rcol {
+        order: 0;
+        margin-top: 0;
+    }
+    .bn-row:last-child .bn-lcol {
+        order: 1;
+        margin-top: 35px;
+    }
+    .bn-row:last-child{
+        margin-top:25px;
+    }
+    .bn-anim{
+        width: 100%;
+    }
+    #bn-anim-cnt {
+        margin: auto; 
+        width: 70%; 
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    #bn-anim-cnt {
+        width: 85%;
+    }
+    .hero-banner {
+        padding: 20px 0 40px 0;
+    }
+}

@@ -1,0 +1,25 @@
+@import '@base/colors';
+@import "@base/breakpoints";
+
+/* General styles */
+.intro-rMore{
+    color: $color-dark-blue;
+    font-weight: 700;
+    text-decoration:none;
+    display:block;
+    font-size: 22px;
+    line-height: 24px;
+    margin-top:15px;
+}
+@media screen and (max-width: $breakpoint-1000) {
+	.intro-rMore {
+        font-size: 18px;
+        line-height: 22px;
+        margin-top: 15px;
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    .intro-rMore {
+        font-size: 16px;
+    }
+}

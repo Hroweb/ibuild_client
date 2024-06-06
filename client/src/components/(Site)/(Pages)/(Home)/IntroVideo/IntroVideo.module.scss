@@ -1,0 +1,57 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+.hp-video{
+    background:$color-white;
+}
+.custom-video{
+    position: relative;
+    overflow:hidden;
+}
+.ct-intro-cursor{
+    position: absolute;
+    z-index: 2;
+    width: 143px;
+    height: 143px;
+    pointer-events: none;
+    background: $color-white;
+    border-radius: 100%;
+    opacity: 0;
+    transition: transform 0.1s linear, opacity 0.1s linear;
+    visibility: hidden;
+    &.active{
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    span{
+        color: $color-darkGrey2;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: $breakpoint-750) {
+    .ct-intro-cursor{
+        width:100px;
+        height:100px;
+        span{
+            font-size: 12px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    .ct-intro-cursor{
+        width:80px;
+        height:80px;
+        span{
+            font-size: 11px;
+        }
+    }
+    .custom-video{
+        video{
+            width: 150%;
+            margin-left: -25%;
+        }
+    }
+}

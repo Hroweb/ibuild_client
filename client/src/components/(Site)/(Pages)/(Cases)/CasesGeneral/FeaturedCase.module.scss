@@ -1,0 +1,148 @@
+@import "@base/colors";
+@import '@base/breakpoints';
+
+.cs-ft-wrap{
+    margin-top:65px;
+}
+.cs-lcol{
+    width:150px;
+    h2{
+        color: $color-dark-blue;
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin:0;
+        position: relative;
+        padding-left: 27px;
+        &:before{
+            content:'';
+            position: absolute;
+            left:0;
+            top:0;
+            bottom: 0;
+            margin:auto;
+            width:17px;
+            height:18px;
+            background:url(/images/hd-arr.svg) no-repeat;
+            background-size:cover;
+        }
+    }
+}
+.cs-lcol-f{
+    width:100%;
+}
+.cs-rcol{
+    width:562px;
+    p{
+        color: $color-black;
+        font-size: 18px;
+        line-height: 24px;
+        text-transform: uppercase;
+        margin:0;
+    }
+}
+.cs-ft-post{
+    margin-top:33px;
+}
+.cs-ft-post-img{
+    img{
+        width:100%;
+        height:auto;
+    }
+}
+.cs-ft-post-info{
+    margin-top:26px;
+    h3{
+        color: $color-dark-blue;
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin:0;
+    }
+}
+.cs-ft-post-cats{
+    margin-top:21px;
+    a{
+        border-radius: 15px;
+        background: $color-grey2;
+        color: $color-dark-blue;
+        font-size: 12px;
+        font-weight: 500;
+        text-decoration: none;
+        padding:8px;
+        cursor: text;
+        margin-right:9px;
+    }
+}
+.cs-ft-lcol{
+    width:80%;
+}
+.cs-ft-rcol{
+    width:190px;
+}
+@media screen and (max-width: $breakpoint-1100) {
+	.cs-lcol {
+		width: auto;
+	}
+	.cs-rcol {
+		width: 62%;
+        p {
+			font-size: 18px;
+			line-height: 22px;
+		}
+	}
+	.cs-ft-wrap {
+		margin-top: 40px;
+	}
+    .cs-ft-post {
+        margin-top: 25px;
+    }
+}
+@media screen and (max-width: $breakpoint-750) {
+	.cs-lcol {
+		width: 100%;
+	}
+	.cs-rcol {
+		width: 100%;
+		margin-top: 15px;
+		p {
+			font-size: 16px;
+            line-height:20px;
+		}
+	} 
+    .cs-ft-wrap {
+        margin-bottom: 25px;
+    }
+}
+@media screen and (max-width: $breakpoint-660) {
+    .cs-ft-post-info {
+        margin-top: 20px;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .cs-ft-lcol {
+        width: 100%;
+    }
+    .cs-ft-post-cats {
+        margin-top: 15px;
+    }
+    .cs-ft-rcol{
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width: $breakpoint-479) {
+    .cs-lcol{
+        h2{
+            font-size: 16px;
+            padding-left: 22px;
+            &:before{
+                width:13px;
+                height:14px;
+            }
+        }
+    }
+	.cs-ft-wrap {
+		margin-top: 30px;
+	}
+}

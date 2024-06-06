@@ -1,0 +1,54 @@
+@import '@base/colors';
+@import '@base/breakpoints';
+
+.lm-btn{
+    border-radius:50px;
+    border: 1px solid $color-black;
+    padding:22px 10px;
+    min-width: 264px;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+    cursor:pointer;
+    &:not(.lm-btn-hidden){
+        span{
+            margin-left: -24px;
+        }
+        .loader{
+            opacity:1;
+        }
+    }
+    span{
+        color: $color-dark-blue;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        transition: all .4s;
+        position: relative;
+    }
+    &:hover{
+        background:$color-black;
+        span{
+            color:$color-white;
+        }
+    }
+}
+.loader{
+    position: absolute;
+    top: -24px;
+    right: -65px;
+    width: 70px;
+    height: 70px;
+    opacity:0;
+}
+.lm-btn-row{
+    margin-top:20px;
+}
+@media screen and (max-width: $breakpoint-1000) {
+    .lm-btn {
+        padding: 14px 10px;
+        min-width: 230px;
+    }
+}
