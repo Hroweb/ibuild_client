@@ -12,16 +12,11 @@ import CustomNextButton from '@/components/(Site)/(Pages)/(Home)/CustomNextButto
 import CustomPrevButton from '@/components/(Site)/(Pages)/(Home)/CustomPrevButton/CustomPrevButton';
 import Image from "next/image";
 import Link from "next/link";
-//import {thumbSrcAndAltValues, getPostById} from '@/context/Cases'
 
 const Project = ({counter, pId, addInfo, project}) => {
-    /*const thumbsSrc = thumbSrcAndAltValues(pId);
-    const swiperClassName = `pj-slide-${counter}-${pId}`;
-    const pj = getPostById(pId);*/
-    //const thumbsSrc = thumbSrcAndAltValues(pId);
+    const imgPath = process.env.NEXT_PUBLIC_BACKEND_URL;
     const swiperClassName = `pj-slide-${counter}-${pId}`;
     const pj = project;
-    console.log(pj);return false;
     const handleClick = (event) => {
         event.preventDefault();
     };
@@ -45,12 +40,12 @@ const Project = ({counter, pId, addInfo, project}) => {
                         loop={true}
                     >
                         {
-                        
-                        thumbsSrc.map((thumb, index) => (
+
+                            pj?.thumbs?.map((thumb, index) => (
                                 <SwiperSlide className="pj-item" key={index}>
                                     <div className="pj-thumb">
                                         <Link href={`/portfolio/case-study/${pj?.slug}`} className="fx">
-                                            <Image src={thumb.src} alt={thumb.alt} width={thumb.width} height={thumb.height} />
+                                            <Image src={`${imgPath}${thumb.src}`} alt={thumb.alt} width={320} height={306} />
                                         </Link>
                                     </div>
                                 </SwiperSlide>
@@ -106,12 +101,12 @@ const Project = ({counter, pId, addInfo, project}) => {
                     loop={true}
                 >
                     {
-                       
-                       thumbsSrc.map((thumb, index) => (
+
+                        pj?.thumbs?.map((thumb, index) => (
                             <SwiperSlide className="pj-item" key={index}>
                                 <div className="pj-thumb">
                                     <Link href={`/portfolio/case-study/${pj?.slug}`} className="fx">
-                                        <Image src={thumb.src} alt={thumb.alt} width={thumb.width} height={thumb.height} />
+                                        <Image src={`${imgPath}${thumb.src}`} alt={thumb.alt} width={320} height={306} />
                                     </Link>
                                 </div>
                             </SwiperSlide>
