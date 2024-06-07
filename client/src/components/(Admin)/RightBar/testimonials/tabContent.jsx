@@ -37,7 +37,7 @@ const TabContent = ({ data }) => {
     return (
         <>
             <div className={`${styles['admin-page-wrap']}`}>
-                <div className={`${styles['admin-tbl-area']}`}>
+                <div className={`${styles['admin-tbl-area']} ${styles['admin-tbl-mg']}`}>
                     {/* Table Header */}
                     <div className={`${styles['admin-tbl-top']} fx fx-jb`}>
                         <div className={`${styles['admin-tbl-col']} ${styles['admin-tbl-col-tst']}`}>
