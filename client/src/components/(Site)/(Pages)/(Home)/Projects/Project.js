@@ -14,7 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Project = ({counter, pId, addInfo, project}) => {
-    const imgPath = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const imgPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/portfolio/`;
     const swiperClassName = `pj-slide-${counter}-${pId}`;
     const pj = project;
     const handleClick = (event) => {
