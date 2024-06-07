@@ -44,12 +44,12 @@ const fetchClient = async (endpoint, { method = 'GET', headers = {}, body = null
             // Network errors, such as failed to fetch
             const networkError = `Network error: ${error.message}`;
             console.error(networkError);
-            throw networkError;
+            throw error;
         } else {
             // Other errors
             const fetchError = `Error fetching data: ${error.message}`;
             console.error(fetchError);
-            throw fetchError
+            throw error
         }
     }
 };
