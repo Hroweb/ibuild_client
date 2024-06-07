@@ -14,8 +14,12 @@ import Image from "next/image";
 
 const GallerySlider = ({photos}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
-    const imgPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/gallery/`
-    const thumbPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/gallery/thumbs/`
+    const imgPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/gallery/`;
+    const thumbPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/gallery/thumbs/`;
+
+    const handleThumbsSwiper = (swiper) => {
+        setThumbsSwiper(swiper);
+    };
 
     return (
         <div>
@@ -32,14 +36,14 @@ const GallerySlider = ({photos}) => {
                         prevEl: '.gl-slider-main .sl-prev'
                     }}
                     loop={true}
-                    thumbs={{ Swiper: thumbsSwiper }}
+                    thumbs={{ swiper: thumbsSwiper }}
                     modules={[FreeMode, Pagination, Navigation, Thumbs]}
                     className="gl-slider"
                 >
                     {photos.map((photo, index) => (
                         <SwiperSlide key={index} className={`${styles['gal-item']}`}>
                             <div className={`${styles['gal-image']}`}>
-                                <Image src={imgPath+photo.image} alt={``} width={1000} height={560} />
+                                <Image src={imgPath+photo.image} alt={`ipoint build gallery`} width={1000} height={560} />
                             </div>
                         </SwiperSlide>
                     ))}
@@ -52,7 +56,7 @@ const GallerySlider = ({photos}) => {
             </div>
             <div className={`${styles['gl-thumb-sl']}`}>
                 <Swiper
-                    onSwiper={setThumbsSwiper}
+                    onSwiper={handleThumbsSwiper}
                     spaceBetween={10}
                     breakpoints={{
                         1: {
@@ -70,7 +74,7 @@ const GallerySlider = ({photos}) => {
                 >
                     {photos.map((photo, index) => (
                         <SwiperSlide key={index} className={`${styles['gal-thumb']}`}>
-                            <Image src={thumbPath+photo.thumb} alt='' width={200} height={200} />
+                            <Image src={thumbPath+photo.thumb} alt='ipoint build gallery' width={200} height={200} />
                         </SwiperSlide>
                     ))}
                 </Swiper>
