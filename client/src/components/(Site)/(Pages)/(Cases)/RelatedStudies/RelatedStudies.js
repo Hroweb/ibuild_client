@@ -1,18 +1,18 @@
 import styles from './RelatedStudies.module.scss'
-import { getLastCases } from '@/context/Cases'
+//import { getLastCases } from '@/context/Cases'
 import Link from "next/link"
 import Project from "@/components/(Site)/(Pages)/(Home)/Projects/Project";
 import {useEffect, useState} from "react";
 
-const RelatedStudies = ({title, excludeID = false, additionalClass}) => {
+const RelatedStudies = ({title, excludeID = false, additionalClass, related}) => {
     //const relatedCases = getLastCases(3, excludeID);
     const [cases, setCases] = useState([]);
 
-    useEffect(() => {
+    /*useEffect(() => {
         // Fetch your data here and set it
         const relatedCases = getLastCases(3, excludeID);
         setCases(relatedCases);
-    }, [excludeID]);
+    }, [excludeID]);*/
     return (
         <section className={`pg-section pg-section-pd bg-light ${additionalClass ? additionalClass : ''}`}>
             <div className="container">
@@ -20,13 +20,14 @@ const RelatedStudies = ({title, excludeID = false, additionalClass}) => {
                     <h3 className={`${additionalClass ? additionalClass : ''}`}>{title}</h3>
                     <div className={`${styles['relCase-wrapper']} fx fx-jb fx-wrap`}>
                         {
-                            Array.isArray(cases) && cases.length > 0 ? (
-                                cases.map((post, index) => (
+                            Array.isArray(related) && related.length > 0 ? (
+                                related.map((post, index) => (
                                     <Project 
                                         counter={index + 1}
                                         key={index}
                                         pId={post.id}
                                         addInfo="Yes"
+                                        project={post}
                                     />
                                 ))
                             ) : (

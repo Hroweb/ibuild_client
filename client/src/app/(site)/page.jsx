@@ -27,7 +27,7 @@ export default async function Home() {
     try {
         const { pageData, projects, eventLogos, anim, services, posts, clients, testimonials } = await getPageModuleData('home');
         const pageMeta = pageData?.data?.pageMeta;
-//console.log(projects);
+//console.log(projects);return false;
         return (
             <Suspense fallback={<Loading />}>
                 <main>

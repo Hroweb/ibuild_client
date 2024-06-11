@@ -1,8 +1,5 @@
 import BlogSingle from "@/components/(Site)/(Pages)/(BlogMain)/BlogSingle/BlogSingle";
-import {getBlogPostBySlug} from "@/context/Blog";
 import {getSinglePost} from "@/utils/api/requests";
-import blog from "@/components/(Site)/(Pages)/(Home)/Blog/Blog";
-
 
 export async function generateMetadata({params, searchParams}, parent){
     const slug = params.slug;

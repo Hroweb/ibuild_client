@@ -1,10 +1,13 @@
 import {ContactBar} from "@/components/(Site)";
 import CaseSingle from "@/components/(Site)/(Pages)/(Cases)/CaseSingle/CaseSingle"
-import {getPostBySlug} from '@/context/Cases'
+import {getCases, getSingleEvent} from "@/utils/api/requests";
+import {getPageModuleData} from "@/utils/api/main";
 
 export async function generateMetadata({params, searchParams}, parent){
     const slug = params.slug;
-    const casePost = getPostBySlug(slug);
+    const req = await getSingleEvent(slug);
+    const casePost = req?.data || [];
+    //const casePost = getPostBySlug(slug);
 
     return {
         title: casePost.title,
@@ -26,11 +29,20 @@ export async function generateMetadata({params, searchParams}, parent){
     };
 }
 
-const CaseSinglePage = () => {
+const CaseSinglePage = async ({params}) => {
+    /*const slug = params.slug;
+    const req = await getSingleEvent(slug);
+    const relatedCases = await getCases(false, {
+        related:true,
+        num: 3
+    })*/
+    const slug = params.slug;
+    const {case_study, related} = await getPageModuleData('single_case', true, {slug})
+    //console.log(related); return false;
     return(
         <>
             <main>
-                <CaseSingle />
+                <CaseSingle caseStudy={case_study?.data || []} related={related?.data || []} />
                 <ContactBar render='cases' />
             </main> 
         </>

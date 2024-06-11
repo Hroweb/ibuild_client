@@ -140,55 +140,6 @@ export const appendFormData = (formData, data, path = []) => {
     });
 }
 
-
-export const appendFormDatas = (formData, data, path = []) => {
-    // Iterate over each key in the data object
-    Object.entries(data).forEach(([key, value]) => {
-        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(key);
-        const newPath = [...path, key];
-
-        if (isUUID) {
-            // Since UUID represents a section, we prepare to include the sectionId within each template's scope
-            // However, the template name is not known at this level, so actual appending will happen within the object iteration below
-        }
-
-        if (value instanceof File) {
-            // Handle file keys specifically
-            let formKey = newPath.join('][');
-            formKey = formKey.replace(/(case-block-[a-z0-9]+)-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/g, '$1');
-            formData.append(`templates[${formKey}]`, value, value.name);
-        } else if (typeof value === 'object' && value !== null && !(value instanceof Date)) {
-            // This object could be the templates object where each key is a template name
-            // We pass the UUID down to include it within each template
-            appendFormData(formData, value, newPath, isUUID ? key : undefined);
-        } else {
-            // For primitive values, append them directly
-            let formKey = newPath.join('][');
-            console.log(formKey)
-            formKey = formKey.replace(/(case-block-[a-z0-9]+)-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/g, '$1');
-            console.log(formKey)
-            formData.append(`templates[${formKey}]`, value);
-        }
-
-        // Check if the UUID was passed down and this key is a template name
-        if (path.length > 0 && /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(path[path.length - 1])) {
-            // Append sectionId within this template context
-            let sectionIdPath = [...path, key, 'case-block-id'];
-            let sectionIdKey = sectionIdPath.join('][');
-            formData.append(`templates[${sectionIdKey}]`, path[path.length - 1]);
-        }
-    });
-}
-
-export const findValueByPrefixa = (object, prefix) => {
-    for (const key in object) {
-        if (object.hasOwnProperty(key) && key.startsWith(prefix)) {
-            return object[key]; // Return the value of the first match
-        }
-    }
-    return null; // Return null if no matching key is found
-}
-
 export const findValueByPrefix = (object, prefix) => {
     const values = [];
     for (const key in object) {
@@ -197,4 +148,13 @@ export const findValueByPrefix = (object, prefix) => {
         }
     }
     return values.length > 0 ? values : null; // Return the array of values or null if no match is found
+}
+
+export const sortByTitle = (data, toInt = false) => {
+    return data.sort((a, b) => {
+        if(toInt){
+            return parseInt(a.title) - parseInt(b.title);
+        }
+        return a.title.localeCompare(b.title);
+    });
 }

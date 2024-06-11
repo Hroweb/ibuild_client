@@ -7,12 +7,17 @@ import {
     getClients,
     getTestimonials,
     getCases,
-    getCollaborate, getTeamMembers, getGallery,
+    getCollaborate, getTeamMembers, getGallery, getSingleEvent,
 } from "@/utils/api/requests";
+import {getCasesCategories} from "@/utils/api/(admin)/get";
 
-async function getPageModuleData(page) {
+async function getPageModuleData(page, excludePageData = false, params= {}) {
     try {
-        const pageData = await getPageData(page);
+        let pageData;
+        if (false === excludePageData) {
+            pageData = await getPageData(page);
+        }
+        //console.log(pageData); return false;
         const metaData = pageData?.data?.['pageMeta'];
         let additionalData = {};
 
@@ -25,7 +30,10 @@ async function getPageModuleData(page) {
                     posts: await getBlogPosts(),
                     clients: await getClients(),
                     testimonials: await getTestimonials(),
-                    projects: await getCases()
+                    projects: await getCases(false, {
+                        featured:true,
+                        num: 6
+                    })
                     // Add other home specific data fetches here if needed
                 };
                 break;
@@ -44,6 +52,10 @@ async function getPageModuleData(page) {
                     services: await getServices(),
                     collaborate: await getCollaborate(),
                     testimonials: await getTestimonials(),
+                    projects: await getCases(false, {
+                        last:true,
+                        num: 3
+                    })
                     // Add other services specific data fetches here if needed
                 };
                 break;
@@ -51,6 +63,18 @@ async function getPageModuleData(page) {
                 additionalData = {
                     anim: await getAnimation('portfolio', metaData?.['banner']?.['pf_banner_anim']?.['meta_value']),
                     testimonials: await getTestimonials(),
+                    events: await getCases(false),
+                    event_cats: await getCasesCategories('event_cat'),
+                };
+                break;
+            case 'single_case':
+                additionalData = {
+                    case_study: await getSingleEvent(params.slug),
+                    related: await getCases(false, {
+                        related:true,
+                        num: 3,
+                        exclude: params.slug || false
+                    })
                 };
                 break;
             case 'contact-us':

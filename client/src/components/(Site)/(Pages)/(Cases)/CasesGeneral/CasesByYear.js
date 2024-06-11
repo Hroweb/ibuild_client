@@ -7,7 +7,7 @@ import LoadMore from "@/components/(Site)/(Pages)/LoadMore/LoadMore";
 const CasesByYear = ({ cases, perPage }) => {
     const [loadMoreCounts, setLoadMoreCounts] = useState({});
     const [loading, setLoading] = useState(false);
-
+//console.log(cases);return false;
     const handleLoadMore = (year) => {
         setLoading(true);
         setTimeout(() => {
@@ -39,7 +39,7 @@ const CasesByYear = ({ cases, perPage }) => {
                         <div className={`${styles['cs-posts']} fx fx-jb`}>
                             <div className="fx fx-wrap">
                                 {yearVisibleData.map((post, ind) => (
-                                    <Project counter={post.id} key={post.id} pId={post.id} />
+                                    <Project counter={post.id} key={post.id} pId={post.id} project={post} />
                                 ))}
                             </div>
                         </div>

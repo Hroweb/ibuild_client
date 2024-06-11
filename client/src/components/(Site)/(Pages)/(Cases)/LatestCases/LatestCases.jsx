@@ -1,22 +1,20 @@
 'use client';
 import styles from "./LatestCases.module.scss";
-import {getLastCases, getServicesFeaturedCases} from '@/context/Cases';
+//import {getLastCases, getServicesFeaturedCases} from '@/context/Cases';
 import Project from "@/components/(Site)/(Pages)/(Home)/Projects/Project";
 import Button from '@/components/(Site)/Button/Button';
 import {useEffect, useState} from "react";
 
-const LatestCases = ({data}) => {
+const LatestCases = ({data, cases}) => {
     const [relatedCases, setRelatedCases] = useState([]);
     const title = data?.['ft_cases_title']?.['meta_value'] ?? '';
     const btnTxt = data?.['ft_cases_btn_text']?.['meta_value'] ?? 'See all projects';
 
     useEffect(() => {
         // Fetch your data here and set it
-        const lastCases = getServicesFeaturedCases();
-        setRelatedCases(lastCases);
-    }, []);
-    //const lastCases = getServicesFeaturedCases();
-    //const lastCases = getLastCases(3);
+        setRelatedCases(cases.data);
+    }, [cases]);
+
     return (
         <section className={`pg-section pg-section-pd ${styles['highlighted-projects']} bg-light`}>
             <div className="container">
@@ -41,6 +39,7 @@ const LatestCases = ({data}) => {
                                     key={index}
                                     pId={post.id}
                                     addInfo="Yes"
+                                    project={post}
                                 />
                             ))
                         ) : (

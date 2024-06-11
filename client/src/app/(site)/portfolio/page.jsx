@@ -25,9 +25,9 @@ export const metadata = {
 
 const Page = async () => {
     try {
-        const { pageData, anim, testimonials } = await getPageModuleData('portfolio');
+        const { pageData, anim, testimonials, events, event_cats } = await getPageModuleData('portfolio');
         const pageMeta = pageData?.data?.pageMeta;
-        //console.log(pageMeta)
+
         return(
             <Suspense fallback={<Loading />}>
                 <main>
@@ -46,7 +46,7 @@ const Page = async () => {
                         animated={true}
                         anim={anim}
                     />
-                    <CasesGeneral />
+                    <CasesGeneral events={events} categories={event_cats} />
                     <ContactBar />
                     <Testimonials list={testimonials} />
                 </main>

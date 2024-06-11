@@ -1,12 +1,11 @@
 import './Projects.scss'
 import Project from './Project'
-import {getFeaturedCases, getLastCases} from '@/context/Cases'
+//import {getFeaturedCases, getLastCases} from '@/context/Cases'
 import Button from '@/components/(Site)/Button/Button'
 
 const Projects = ({data, projects}) => {
+    console.log(projects);
     const lastCases = projects.success && true ? projects.data : null;
-    //console.log(projects.data)
-    //const lastCases = getFeaturedCases(6);
     return(
         <section className="pg-section pg-section-pd hp-projects bg-light">
             <div className="pj-wrap">

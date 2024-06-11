@@ -25,7 +25,7 @@ export const metadata = {
 
 const ServicesPage = async () => {
     try {
-        const { pageData, services, collaborate, testimonials } = await getPageModuleData('services');
+        const { pageData, services, collaborate, testimonials, projects } = await getPageModuleData('services');
         const pageMeta = pageData?.data?.pageMeta;
 
         return (
@@ -56,6 +56,7 @@ const ServicesPage = async () => {
                 />
                 <LatestCases
                     data={pageMeta?.cases}
+                    cases={projects}
                 />
                 <ContactBar />
                 <Testimonials list={testimonials} />

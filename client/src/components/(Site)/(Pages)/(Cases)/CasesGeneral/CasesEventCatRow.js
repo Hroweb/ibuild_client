@@ -15,13 +15,15 @@ const CasesEventCatRow = ( {categories, allEvents, selectedCaseCategory, setSele
             {
                 Array.isArray(categories) && categories.length > 0 ? (
                     categories.map((caseCat) => (
-                        <CaseCat
-                            key={caseCat.id}
-                            category={caseCat}
-                            eventCount={countEventsForCategory}
-                            selectedCaseCategory={selectedCaseCategory}
-                            setSelectedCaseCategory={setSelectedCaseCategory}
-                        />
+                        (countEventsForCategory(caseCat.id) > 0) && (
+                            <CaseCat
+                                key={caseCat.id}
+                                category={caseCat}
+                                eventCount={countEventsForCategory}
+                                selectedCaseCategory={selectedCaseCategory}
+                                setSelectedCaseCategory={setSelectedCaseCategory}
+                            />
+                        )
                     ))
                 ) : (
                     <p>No categories were found</p>

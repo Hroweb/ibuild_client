@@ -17,6 +17,7 @@ const Project = ({counter, pId, addInfo, project}) => {
     const imgPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/portfolio/`;
     const swiperClassName = `pj-slide-${counter}-${pId}`;
     const pj = project;
+
     const handleClick = (event) => {
         event.preventDefault();
     };
@@ -70,13 +71,13 @@ const Project = ({counter, pId, addInfo, project}) => {
                     <h3>{pj.title}</h3>
                     <div className="cs-ft-post-cats fx fx-as fx-wrap">
                         <Link href="#" onClick={handleClick}>
-                            {pj.stand_size[0].name}
+                            {pj.stand_size[0].title}
                         </Link>
                         <Link href="#" onClick={handleClick}>
-                            {pj.event_cat[1].name}
+                            {pj.event_cat[1].title}
                         </Link>
                         <Link href="#" onClick={handleClick}>
-                            {pj.event_year[0].name}
+                            {pj.event_year[0].title}
                         </Link>
                     </div>
                 </div>

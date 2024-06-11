@@ -1,7 +1,7 @@
 import styles from "./CaseSingle.module.scss"
 import Link from "next/link"
 
-const CaseOverview = ({ ovw_text }) => {
+const CaseOverview = ({ ovw_text, sv_list }) => {
     const ovw_paragraphs = ovw_text.split('\n').map((paragraph, index) => (
         <p key={index}>
             {paragraph}
@@ -12,20 +12,17 @@ const CaseOverview = ({ ovw_text }) => {
             <div className="container">
                 <div className="fx fx-jb fx-wrap">
                     <div className={`${styles['case-ovw-lcol']}`}>
-                        <div className={`${styles['case-sv-list']} fx fx-wrap`}>
-                            <Link href="/services">
-                                Booth Conceptualisation
-                            </Link>
-                            <Link href="/services">
-                                Branding & Graphic Design
-                            </Link>
-                            <Link href="/services">
-                                Project Management
-                            </Link>
-                            <Link href="/services">
-                                Booth Construction
-                            </Link>
-                        </div>
+                        {sv_list &&
+                            <div className={`${styles['case-sv-list']} fx fx-wrap`}>
+                                {
+                                    sv_list.map((item, index)=>
+                                        <Link key={index} href="/services">
+                                            {item.title}
+                                        </Link>
+                                    )
+                                }
+                            </div>
+                        }
                     </div>
                     <div className={`${styles['case-ovw-rcol']}`}>
                         <h2>Overview</h2>

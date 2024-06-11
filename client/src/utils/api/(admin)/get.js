@@ -26,9 +26,13 @@ async function getSingleCaseInfo(id){
 
 async function getCasesCategories(name = null){
     const url = name ? `/api/events/categories/${name}` : `/api/events/categories`;
-    return await fetchClient(url, {
+    const res = await fetchClient(url, {
         method: 'GET',
     });
+
+    //console.log(res); return false
+
+    return res;
 }
 
 export {getAllBlogCats, getAllBlogPosts, getSingleBlogPost, getCasesCategories, getSingleCaseInfo}

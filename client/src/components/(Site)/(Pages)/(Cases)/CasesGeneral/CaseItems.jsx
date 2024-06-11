@@ -23,7 +23,7 @@ const CaseItems = ({ title, cases, perPage }) => {
                     {
                         Array.isArray(cases) && cases.length > 0 ? (
                             cases.slice(0, visiblePosts).map((event, index) => (
-                                <Project key={index} counter={event.id} pId={event.id} />
+                                <Project key={index} counter={event.id} pId={event.id} project={event} />
                             ))
                         ) : (
                             <p>No posts were found</p>

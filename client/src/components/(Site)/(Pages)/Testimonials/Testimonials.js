@@ -12,6 +12,7 @@ import CustomPrevButton from '@/components/(Site)/(Pages)/(Home)/CustomPrevButto
 import {useState, useEffect} from "react";
 
 const Testimonials = ({singleTestimonial, post, list}) => {
+    //console.log(post); return false;
     /*const [randomTestimonials, setRandomTestimonials] = useState([]);
     useEffect(() => {
         setRandomTestimonials(getRandomTestimonials(3));

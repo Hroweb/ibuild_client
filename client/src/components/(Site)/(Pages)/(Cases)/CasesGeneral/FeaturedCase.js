@@ -4,6 +4,7 @@ import Link from "next/link"
 import Button from '@/components/(Site)/Button/Button'
 
 const FeaturedCase = ({ title, desc, post }) => {
+    const imgPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/portfolio/`;
     return (
         <div className={`${styles['cs-ft-wrap']}`}>
             <div className={`fx fx-jb fx-wrap`}>
@@ -17,7 +18,7 @@ const FeaturedCase = ({ title, desc, post }) => {
             <div className={`${styles['cs-ft-post']}`}>
                 <div className={`${styles['cs-ft-post-img']}`}>
                     <Link href={`/portfolio/case-study/${post?.slug}`} className="fx">
-                        <Image src={post.image} alt={post.title} width={post.imageWidth} height={post.imageHeight}/>
+                        <Image src={imgPath+post.image} alt={post.title} width={1600} height={576}/>
                     </Link>
                 </div>
                 <div className={`${styles['cs-ft-post-info']} fx fx-ae fx-jb`}>
@@ -25,13 +26,13 @@ const FeaturedCase = ({ title, desc, post }) => {
                         <h3>{post.title}</h3>
                         <div className={`${styles['cs-ft-post-cats']} fx fx-ac`}>
                             <Link href="#">
-                                {post.stand_size[0].name}
+                                {post.stand_size[0].title}
                             </Link>
                             <Link href="#">
-                                {post.event_cat[1].name}
+                                {post.event_cat[1].title}
                             </Link>
                             <Link href="#">
-                                {post.event_year[0].name}
+                                {post.event_year[0].title}
                             </Link>
                         </div>
                     </div>

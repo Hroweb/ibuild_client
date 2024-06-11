@@ -9,7 +9,7 @@ const ProcessItems = ({data, list}) => {
         ?? data?.['clb_text']?.['meta_value']
         ?? null;
     const processItems = (list && list.success && true) ? list?.data : null;
-console.log(processItems)
+
     return (
         <section className="pg-section pg-section-pd bg-dark">
             <div className="container">

@@ -1,4 +1,5 @@
 import fetchClient from "@/utils/client";
+import {getFeaturedCases, getRelatedCases, getServicesFeaturedCases} from "@/hooks/helpers";
 
 async function getPageData(page) {
     return await fetchClient(`/api/pages/${page}`, {
@@ -61,10 +62,34 @@ async function getSinglePost(slug){
     });
 }
 
-async function getCases(per_page = 6) {
-    return await fetchClient(`/api/events/case_studies/${per_page}`, {
+async function getSingleEvent(slug){
+    return await fetchClient(`/api/event/case_study/${slug}`, {
         method: 'GET',
     });
+}
+
+async function getCases(per_page, params = {}) {
+    // Determine the endpoint based on whether per_page is provided
+    const endpoint = per_page ? `/api/events/case_studies/${per_page}` : '/api/events/case_studies';
+
+    // Fetch the cases data using fetchClient
+    const cases = await fetchClient(endpoint, {
+        method: 'GET',
+    });
+
+    // Process the fetched cases based on the params provided
+    if (params.featured) {
+        return getFeaturedCases(params.num ?? 6, cases?.data || []);
+    }
+    if (params.last) {
+        return getServicesFeaturedCases(params.num ?? 3, cases?.data || []);
+    }
+    if (params.related) {
+        return getRelatedCases(params.num ?? 3, cases?.data || [], params.exclude);
+    }
+
+    // Return the fetched cases if no additional processing is needed
+    return cases;
 }
 
 async function getTeamMembers() {
@@ -91,6 +116,7 @@ export {
     getBlogPosts,
     getSinglePost,
     getCases,
+    getSingleEvent,
     getTeamMembers,
     getGallery
 }

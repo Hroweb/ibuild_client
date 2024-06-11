@@ -1,6 +1,6 @@
 // General client for all requests
 
-const fetchClient = async (endpoint, { method = 'GET', headers = {}, body = null, cache = 'no-store' } = {}) => {
+const fetchClient = async (endpoint, { method = 'GET', headers = {}, body = null, cache = 'no-store', revalidate } = {}) => {
     const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL;
     const defaultHeaders = {
         'Accept': 'application/json',
@@ -17,16 +17,24 @@ const fetchClient = async (endpoint, { method = 'GET', headers = {}, body = null
     }
 
     try {
-        const response = await fetch(`${baseURL}${endpoint}`, {
+        const fetchOptions = {
             method,
             headers: defaultHeaders,
             body: body || null,
-            cache,
-        });
+        };
+
+        // Conditionally add cache or revalidate
+        if (revalidate) {
+            fetchOptions.next = { revalidate };
+        } else {
+            fetchOptions.cache = cache;
+        }
+
+        const response = await fetch(`${baseURL}${endpoint}`, fetchOptions);
 
         if (!response.ok) {
             // Extract error message from response if available
-            let errorMessage = ``;
+            let errorMessage = '';
             try {
                 const errorData = await response.json();
                 errorMessage += ` ${errorData.message || JSON.stringify(errorData)}`;
@@ -49,7 +57,7 @@ const fetchClient = async (endpoint, { method = 'GET', headers = {}, body = null
             // Other errors
             const fetchError = `Error fetching data: ${error.message}`;
             console.error(fetchError);
-            throw error
+            throw error;
         }
     }
 };

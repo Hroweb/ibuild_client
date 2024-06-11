@@ -1,4 +1,5 @@
 import styles from '@/components/(Admin)/RightBar/RightBar.module.scss'
+import {sortByTitle} from "@/hooks/admin/helpers";
 
 const CaseCategoryList = ({ sectionTitle, dataCats, onCategoryClick }) => {
     const attachedEvents = dataCats.attached_events.reduce((acc, categoryId) => {
@@ -13,6 +14,9 @@ const CaseCategoryList = ({ sectionTitle, dataCats, onCategoryClick }) => {
         acc[categoryId] = true;
         return acc;
     }, {});
+    const yearCats = sortByTitle(dataCats.years, true);
+    const sizeCats = sortByTitle(dataCats.sizes, true);
+    const eventCats = dataCats.events;
     return (
         <div className={`${styles['admin-cat-block']} ${styles['admin-cat-block-case']}`}>
             <h3>{sectionTitle}</h3>
@@ -21,7 +25,7 @@ const CaseCategoryList = ({ sectionTitle, dataCats, onCategoryClick }) => {
                     <div className={`${styles['admin-cats-row']}`}>
                         <h3>Events</h3>
                         <div className={`${styles['admin-cat-list']} fx fx-wrap`}>
-                            {Array.isArray(dataCats.events) && dataCats.events.filter(item => item.title !== "All Stands").map((item, index) => {
+                            {Array.isArray(eventCats) && eventCats.filter(item => item.title !== "All Stands").map((item, index) => {
                                 return (
                                     <a
                                         data-evid={item.id}
@@ -37,8 +41,8 @@ const CaseCategoryList = ({ sectionTitle, dataCats, onCategoryClick }) => {
                     </div>
                     <div className={`${styles['admin-cats-row']}`}>
                         <h3>Stand Sizes</h3>
-                        <div className={`${styles['admin-cat-list']} fx fx-wrap`}>
-                            {Array.isArray(dataCats.sizes) && dataCats.sizes.map((item, index) => {
+                        <div className={`${styles['admin-cat-list']}`}>
+                            {Array.isArray(sizeCats) && sizeCats.map((item, index) => {
                                 return (
                                     <a
                                         data-szid={item.id}
@@ -54,8 +58,8 @@ const CaseCategoryList = ({ sectionTitle, dataCats, onCategoryClick }) => {
                     </div>
                     <div className={`${styles['admin-cats-row']}`}>
                         <h3>Event Years</h3>
-                        <div className={`${styles['admin-cat-list']} fx fx-wrap`}>
-                            {Array.isArray(dataCats.years) && dataCats.years.map((item, index) => {
+                        <div className={`${styles['admin-cat-list']}`}>
+                            {Array.isArray(yearCats) && yearCats.map((item, index) => {
                                 return (
                                     <a
                                         data-yrid={item.id}

@@ -11,11 +11,11 @@ const CaseCat = ({category, eventCount, selectedCaseCategory, setSelectedCaseCat
                     e.preventDefault();
                     setSelectedCaseCategory({
                         id: category.id,
-                        name: category.name
+                        name: category.title
                     });
                 }}
             >
-                { category.name } ({eventCount(category.id)})
+                { category.title } ({eventCount(category.id)})
             </Link>
         </div>
     );
