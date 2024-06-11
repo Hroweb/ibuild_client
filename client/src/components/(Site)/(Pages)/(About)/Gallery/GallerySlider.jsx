@@ -36,7 +36,7 @@ const GallerySlider = ({photos}) => {
                         prevEl: '.gl-slider-main .sl-prev'
                     }}
                     loop={true}
-                    thumbs={{ swiper: thumbsSwiper }}
+                    thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
                     modules={[FreeMode, Pagination, Navigation, Thumbs]}
                     className="gl-slider"
                 >
