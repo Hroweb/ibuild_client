@@ -1,7 +1,7 @@
-import styles from '@/components/(Site)/Footer/Footer.scss';
-import { Logo, LogoText, Facebook, Linkedin, Instagram } from '@/components/svgs/index';
-import SubscribeForm from '@/components/(Site)/SubscribeForm/SubscribeForm';
-import Video from './FooterVideo';
+import styles from '@/components/(Site)/Footer/Footer.scss'
+import { Logo, LogoText, Facebook, Linkedin, Instagram } from '@/components/svgs/index'
+import SubscribeForm from '@/components/(Site)/SubscribeForm/SubscribeForm'
+import Video from './FooterVideo'
 import Link from "next/link";
 
 const Footer = () => {
@@ -9,14 +9,15 @@ const Footer = () => {
         <footer>
             <div className="ft-bg-video">
                 <div className="ft-bg-video-wrap">
-                    <div className="video-placeholder"></div>
-                    <Video src="/animations/footer-anim.mp4" />
+                    <Video src="/animations/footer-anim.mp4"/>
                 </div>
             </div>
             <div className="ft-wrapper">
                 <div className="container">
                     <div className="ft-wrap">
-                        <h6>LET’S TALK</h6>
+                        <h6>
+                            <Link href="/contact-us">LET’S TALK</Link>
+                        </h6>
                         <div className="ft-row fx fx-wrap fx-jb">
                             <div className="ft-col">
                                 <div className="logo">
@@ -29,13 +30,13 @@ const Footer = () => {
                                     <p>42, Triq L-Amaroz, <br/> Mgarr, Malta (Europe)</p>
                                     <div className="ft-social fx fx-ac">
                                         <Link href="https://www.linkedin.com/company/ipoint-int/" target="_blank">
-                                            <Linkedin />
+                                            <Linkedin/>
                                         </Link>
                                         <Link href="https://web.facebook.com/Ipoint.Int" target="_blank">
-                                            <Facebook />
+                                            <Facebook/>
                                         </Link>
                                         <Link href="https://www.instagram.com/ipoint_int/" target="_blank">
-                                            <Instagram />
+                                            <Instagram/>
                                         </Link>
                                     </div>
                                 </div>
@@ -80,7 +81,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
-    );
-};
+    )
+}
 
 export default Footer;
