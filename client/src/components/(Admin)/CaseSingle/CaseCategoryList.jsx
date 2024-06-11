@@ -41,7 +41,7 @@ const CaseCategoryList = ({ sectionTitle, dataCats, onCategoryClick }) => {
                     </div>
                     <div className={`${styles['admin-cats-row']}`}>
                         <h3>Stand Sizes</h3>
-                        <div className={`${styles['admin-cat-list']}`}>
+                        <div className={`${styles['admin-cat-list']} fx fx-wrap`}>
                             {Array.isArray(sizeCats) && sizeCats.map((item, index) => {
                                 return (
                                     <a
@@ -58,7 +58,7 @@ const CaseCategoryList = ({ sectionTitle, dataCats, onCategoryClick }) => {
                     </div>
                     <div className={`${styles['admin-cats-row']}`}>
                         <h3>Event Years</h3>
-                        <div className={`${styles['admin-cat-list']}`}>
+                        <div className={`${styles['admin-cat-list']} fx fx-wrap`}>
                             {Array.isArray(yearCats) && yearCats.map((item, index) => {
                                 return (
                                     <a
