@@ -32,6 +32,7 @@ const TabContent = ({data}) => {
         'overview': pageData?.overview ?? '',
         'bannerColor': pageData?.bannerColor ?? '',
         'featured': pageData?.featured ?? '0',
+        'chosen': pageData?.chosen ?? '0',
         'services': pageData?.services ? pageData?.services.map(service => service.id) : [],
         'events': pageData?.event_cat ? pageData?.event_cat.map(category => category.id) : [],
         'years': pageData?.event_year ? pageData?.event_year.map(category => category.id) : [],
@@ -228,6 +229,7 @@ const TabContent = ({data}) => {
             <div className={`${styles['admin-page-wrap']}`}>
                 <FeaturedPostBlock
                     handleInputChange={handleUniqueChange}
+                    chosen={formData.chosen}
                     featured={formData.featured}
                 />
                 <CaseBannerBlock

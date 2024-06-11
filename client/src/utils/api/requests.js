@@ -70,7 +70,12 @@ async function getSingleEvent(slug){
 
 async function getCases(per_page, params = {}) {
     // Determine the endpoint based on whether per_page is provided
-    const endpoint = per_page ? `/api/events/case_studies/${per_page}` : '/api/events/case_studies';
+    let endpoint = per_page ? `/api/events/case_studies/${per_page}` : '/api/events/case_studies';
+
+    // Append orderBy to the endpoint if it exists in params
+    if (params.orderBy) {
+        endpoint += `?orderBy=${params.orderBy}`;
+    }
 
     // Fetch the cases data using fetchClient
     const cases = await fetchClient(endpoint, {

@@ -35,7 +35,7 @@ const AboutPage = async () => {
     try {
         const { pageData, process, gallery, team, clients, testimonials } = await getPageModuleData('about-us');
         const pageMeta = pageData?.data?.pageMeta;
-//console.log(pageMeta)
+//console.log(gallery)
         return (
             <Suspense fallback={<Loading />}>
                 <main>

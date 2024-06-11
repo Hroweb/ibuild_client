@@ -63,7 +63,7 @@ async function getPageModuleData(page, excludePageData = false, params= {}) {
                 additionalData = {
                     anim: await getAnimation('portfolio', metaData?.['banner']?.['pf_banner_anim']?.['meta_value']),
                     testimonials: await getTestimonials(),
-                    events: await getCases(false),
+                    events: await getCases(false, {'orderBy': 'ASC'}),
                     event_cats: await getCasesCategories('event_cat'),
                 };
                 break;

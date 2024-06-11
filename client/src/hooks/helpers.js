@@ -1,8 +1,9 @@
 export function getFeaturedCases(count, cases, excludeId = false) {
     const resp = {success: true}
     const sortedArticles = [...cases].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-    const featuredArticles = sortedArticles.filter((article) => article.featured === '1');
 
+    const featuredArticles = sortedArticles.filter((article) => article.featured === '1');
+    //console.log(sortedArticles); return false;
     if (excludeId) {
         // Find the index of the article with the specified ID
         const excludedIndex = featuredArticles.findIndex((article) => article.id === excludeId);
@@ -87,4 +88,12 @@ export function casesGroupedByYear(cases) {
 
     // Create the final ordered data as an array with descriptions
     return  sortedYears.map(year => groupedData[year.toString()]);
+}
+
+export function getPrimaryCase(cases) {
+    const sortedArticles = [...cases].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    const primaryArticle = sortedArticles.filter((article) => article.chosen === '1');
+
+    return primaryArticle.slice(0, 1);
+
 }

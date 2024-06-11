@@ -4,7 +4,7 @@ import FiltersBar from "@/components/(Admin)/FiltersBar/FiltersBar";
 import CasesRow from "@/components/(Admin)/CasesRow/CasesRow";
 import Pagination from "@/components/(Admin)/Pagination/Pagination";
 import LoadingAnim from "@/components/(Admin)/LoadingAnim/LoadingAnim";
-import {showConfirmAlert, showSuccessAlert} from "@/hooks/admin/helpers";
+import {showConfirmAlert, showSuccessAlert, sortByTitle} from "@/hooks/admin/helpers";
 import {deleteEvent} from "@/utils/api/(admin)/post";
 
 
@@ -13,7 +13,7 @@ const TabContent = ({ data }) => {
     const cases = data?.cases?.data ?? [];
 
     // States
-    const itemsPerPage = 2;
+    const itemsPerPage = 10;
     const [allCases, setAllCases] = useState(cases); // All cases, unfiltered
     const [displayedCases, setDisplayedCases] = useState([]); // Cases to display (filtered and paginated)
     const [currentPage, setCurrentPage] = useState(1);
@@ -24,8 +24,8 @@ const TabContent = ({ data }) => {
 
     // Define filtersFormData for FiltersBar component
     const filtersFormData = {
-        'years': categories?.event_year,
-        'sizes': categories?.stand_size,
+        'years': sortByTitle(categories?.event_year, true),
+        'sizes': sortByTitle(categories?.stand_size, true),
         'events': categories?.event_cat
     };
 
