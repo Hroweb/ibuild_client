@@ -8,12 +8,15 @@ export async function POST(request){
     const type = formData.get('type');
     const name = formData.get('name');
     const email = formData.get('email');
+    const phone = formData.get('phone');
     const company = formData.get('company');
     const brief = formData.get('brief');
     const message = formData.get('message');
     const cv = formData.get('cv');
+    const file = formData.get('file');
     const cv_letter = formData.get('cv_letter');
     const attachment = [];
+    const attachment2 = [];
     const interested = [];
     let index = 0;
     let friendlyType = '';
@@ -21,7 +24,7 @@ export async function POST(request){
     if( type ){
         switch (type){
             case 'workWithUs':
-                friendlyType = 'Work with us';
+                friendlyType = 'Get a Quote';
                 break;
             case 'collaboration':
                 friendlyType = 'Collaboration';
@@ -64,12 +67,24 @@ export async function POST(request){
         });
     }
 
+    if( file ){
+        const fileExtension = file.name.split('.').pop(); // Extract file extension
+        const fileBuffer = await file.arrayBuffer();
+        const fileArray = new Uint8Array(fileBuffer);
+
+        attachment2.push({
+            filename: `document.${fileExtension}`,
+            content: fileArray,
+        });
+    }
+
     const emailHTML = generateContactEmailHTML({
         interested,
         interestedWithCommas,
         name,
         company,
         email,
+        phone,
         brief,
         message,
         cv_letter,
@@ -86,6 +101,10 @@ export async function POST(request){
 
     if( attachment.length !== 0 ){
         mailOptions.attachments = attachment
+    }
+
+    if(attachment2.length !== 0){
+        mailOptions.attachments = attachment2
     }
 
     const sendMailPromise = () =>
@@ -106,6 +125,7 @@ export async function POST(request){
         name,
         company,
         email,
+        phone,
         brief,
         message,
         cv_letter,
@@ -122,6 +142,10 @@ export async function POST(request){
 
     if( attachment.length !== 0 ){
         userMailOptions.attachments = attachment
+    }
+
+    if(attachment2.length !== 0){
+        userMailOptions.attachments = attachment2
     }
 
     const sendUserMailPromise = () =>

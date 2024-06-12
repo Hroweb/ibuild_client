@@ -96,7 +96,7 @@
         border-bottom:1px solid $color-grey6;
         background: none;
         color: $color-dark-blue;
-        font-family: 'Space Grotesk', sans-serif;
+        font-family: inherit;
         &::-webkit-input-placeholder{
             text-transform: uppercase;
             color: $color-grey6;
@@ -127,7 +127,7 @@
         height: 90px;
         padding:15px 15px 15px 0;
         box-sizing: border-box;
-        font-family: 'Space Grotesk', sans-serif;
+        font-family: inherit;
         &::-webkit-input-placeholder{
             text-transform: uppercase;
             color: $color-grey6;
@@ -168,7 +168,7 @@
         opacity: 0;
         z-index: 2;
         cursor: pointer;
-        font-family: 'Space Grotesk', sans-serif;
+        font-family: inherit;
     }
     span.qt-file-name{
         color: $color-black;
@@ -200,7 +200,7 @@
         border-radius: 25px;
         width:210px;
         height: 50px;
-        font-family: 'Space Grotesk', sans-serif;
+        font-family: inherit;
         cursor: pointer;
         flex-shrink:0;
         &.disabled{

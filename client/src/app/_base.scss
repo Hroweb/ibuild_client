@@ -1,6 +1,11 @@
 @import './colors';
 @import './breakpoints';
 
+:root {
+    --font-space-grotesk: 'Space Grotesk', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+}
+
 // import google font
 /*@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');*/
@@ -15,7 +20,7 @@ html,body {
     padding:0;
 }
 body {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-space-grotesk);
     background: $color-dark-blue;
 }
 ul {
@@ -138,7 +143,7 @@ select:-webkit-autofill:focus {
     -webkit-text-fill-color: var(--white);
     -webkit-box-shadow: 0 0 0px 1000px $color-white inset;
     transition: background-color 5000s ease-in-out 0s;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: var(--font-space-grotesk);
 }
 main{
     padding-top: 116px;
@@ -552,7 +557,7 @@ body h3.no-tst {
         width: calc(100% - 300px);
     }
     .cat-row {
-        flex-wrap: nowrap;
+        flex-wrap: nowrap !important;
         overflow-x: scroll;
         .cat-item {
             flex-shrink: 0;

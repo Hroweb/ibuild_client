@@ -12,6 +12,7 @@ export function generateContactEmailHTML(formData){
                 <div>Here are the details:</div><br/>
                 <div style="margin-bottom: 5px; margin-top:0;"><strong>Name:</strong> ${formData.name}</div>
                 <div style="margin-bottom: 5px; margin-top:0;"><strong>Email:</strong> ${formData.email}</div>
+                ${formData.phone ? `<div style="margin-bottom: 5px; margin-top:0;"><strong>Phone:</strong> ${formData.phone}</div>` : '' }
                 ${formData.company ? `<div style="margin-bottom: 5px; margin-top:0;"><strong>Company name:</strong> ${formData.company}</div>` : ''}
                 ${formData.brief ? `<div style="margin-bottom: 5px; margin-top:0;"><strong>Brief:</strong> ${formData.brief}</div>` : '' }
                 ${formData.message ? `<div style="margin-bottom: 5px; margin-top:0;"><strong>Message:</strong> ${formData.message}</div>` : '' }

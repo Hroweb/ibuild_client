@@ -5,16 +5,25 @@
     border-radius:50px;
     border: 1px solid $color-black;
     padding:22px 10px;
-    min-width: 264px;
-    -webkit-transition: all .4s;
-    -moz-transition: all .4s;
-    transition: all .4s;
+    -webkit-transition: border .3s, min-width .3s;
+    -moz-transition: border .3s, min-width .3s;
+    transition: border .3s, min-width .3s;
+    position: relative;
+    &.lm-btn-hidden{
+        min-width: 264px;
+    }
     cursor:pointer;
     &:not(.lm-btn-hidden){
+        padding: 0;
+        min-width: 60px;
+        min-height: 60px;
         span{
             margin-left: -24px;
         }
         .loader{
+            opacity:1;
+        }
+        .loader-anim{
             opacity:1;
         }
     }
@@ -23,15 +32,15 @@
         font-size: 16px;
         font-weight: 700;
         text-transform: uppercase;
-        -webkit-transition: all .4s;
-        -moz-transition: all .4s;
-        transition: all .4s;
+        -webkit-transition: color .3s;
+        -moz-transition: color .3s;
+        transition: color .3s;
         position: relative;
     }
     &:hover{
-        background:$color-black;
+        border-color:$color-pink;
         span{
-            color:$color-white;
+            color:$color-pink;
         }
     }
 }
@@ -46,9 +55,39 @@
 .lm-btn-row{
     margin-top:20px;
 }
+.loader-anim{
+    width:40px;
+    height:40px;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.loader-anim-f{
+    width:50px;
+    height:50px;
+    margin:20px auto 50px auto;
+}
 @media screen and (max-width: $breakpoint-1000) {
     .lm-btn {
         padding: 14px 10px;
         min-width: 230px;
+        cursor: none;
+        &:not(.lm-btn-hidden){
+            padding: 0;
+            min-width: 50px;
+            min-height: 50px;
+        }
+        &:hover{
+            border-color: $color-black;
+            span{
+                color: $color-black;
+            }
+        }
+    }
+    .loader-anim{
+        width:35px;
+        height:35px;
     }
 }

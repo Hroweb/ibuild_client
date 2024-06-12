@@ -1,16 +1,18 @@
 'use client';
 import { useState, useEffect } from "react";
 import styles from './ContactForm.module.scss'
-import {BtnArrUp, Facebook, Linkedin, Instagram, EmailIcon, MapIcon, AttachCVIcon} from '@/components/svgs';
+import {BtnArrUp, AttachIcon, Facebook, Linkedin, Instagram, EmailIcon, MapIcon, AttachCVIcon} from '@/components/svgs';
 import Link from "next/link";
 
-const ContactForm = ({data}) => {
+const ContactForm = () => {
     const [formData, setFormData] = useState({
         type: 'workWithUs',
         interested: [],
         name: '',
         email: '',
         brief: '',
+        phone: '',
+        file: null,
         company: '',
         message: '',
         cv_letter: '',
@@ -52,11 +54,19 @@ const ContactForm = ({data}) => {
         email: '',
         brief: '',
         message: '',
+        phone: '',
         cv_letter: '',
     });
     const [loading, setLoading] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+    const handlePhoneKeyDown = (e) => {
+        // Allow only numeric characters and control keys
+        if (!/^[0-9]*$/.test(e.key) && !['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab'].includes(e.key)) {
+            e.preventDefault();
+        }
+    };
 
     const handleTypeChange = (type, e) => {
         e.preventDefault();
@@ -79,9 +89,10 @@ const ContactForm = ({data}) => {
     }, [formData.type]);*/
 
     const handleChange = (e) => {
+        //console.log(formData.type); 
         const { name, value, type, files } = e.target;
         // Check if files array is not empty
-        if (type === 'file' && files.length > 0) {
+        if (type === 'file' && files.length > 0 && formData.type === 'joinTheTeam') {
             const file = files[0];
 
             // Check file type
@@ -101,6 +112,27 @@ const ContactForm = ({data}) => {
             const maxSize = 2 * 1024 * 1024; // 2MB in bytes
             if (file.size > maxSize) {
                 setErrors({ ...errors, [name]: 'File size exceeds the limit (2MB). Please choose a smaller file.' });
+                return;
+            }
+        }else if(type === 'file' && files.length > 0 && formData.type === 'workWithUs'){
+            const file = files[0];
+
+            // Check file type
+            const allowedTypes = [
+                'text/plain',
+                'application/msword',
+                'application/pdf',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            ];
+            if (!allowedTypes.includes(file.type)) {
+                setErrors({ ...errors, [name]: 'PLEASE LOAD CORRECT FILE' });
+                return;
+            }
+
+            // Check file size (5MB limit)
+            const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+            if (file.size > maxSize) {
+                setErrors({ ...errors, [name]: 'File size exceeds the limit (5MB). Please choose a smaller file.' });
                 return;
             }
         }
@@ -128,6 +160,7 @@ const ContactForm = ({data}) => {
             brief: '',
             cv_letter: '',
             message: '',
+            phone: '',
             cv: '',
         };
 
@@ -145,6 +178,10 @@ const ContactForm = ({data}) => {
         }
 
         if (formData.type === 'workWithUs') {
+            if (formData.phone.trim() === '') {
+                newErrors.phone = 'Phone is required';
+                isValid = false;
+            }
             if (formData.brief.trim() === '') {
                 newErrors.brief = 'Brief is required';
                 isValid = false;
@@ -153,6 +190,22 @@ const ContactForm = ({data}) => {
             delete newErrors.message;
             delete newErrors.cv_letter;
             delete newErrors.cv;
+            // File validation only if a file is selected
+            if (formData.file) {
+                const maxSize = 5 * 1024 * 1024; // 5 MB in bytes
+                const allowedExtensions = ['.txt', '.doc', '.docx', '.pdf'];
+
+                if (formData.file.size > maxSize) {
+                    newErrors.file = 'FILE SIZE EXCEEDS THE LIMIT.';
+                    isValid = false;
+                }
+
+                const fileExtension = formData.file.name.split('.').pop().toLowerCase();
+                if (!allowedExtensions.includes(`.${fileExtension}`)) {
+                    newErrors.file = 'PLEASE LOAD CORRECT FILE';
+                    isValid = false;
+                }
+            }
         } else if (formData.type === 'collaboration') {
             if (formData.message.trim() === '') {
                 newErrors.message = 'Message is required';
@@ -208,6 +261,12 @@ const ContactForm = ({data}) => {
                     if(formData.company){
                         formDataToSubmit.append('company', formData.company);
                     }
+                    if(formData.phone){
+                        formDataToSubmit.append('phone', formData.phone);
+                    }
+                    if (formData.file) {
+                        formDataToSubmit.append('file', formData.file);
+                    }
                     break;
                 case 'collaboration':
                     formDataToSubmit.append('name', formData.name);
@@ -240,7 +299,9 @@ const ContactForm = ({data}) => {
                         company: '',
                         message: '',
                         cv_letter: '',
+                        phone: '',
                         cv: null,
+                        file: null
                     })
                     setCategorySelectedStatesWorkWithUs(Array(9).fill(false));
                     setCategorySelectedStatesCollaboration(Array(4).fill(false));
@@ -287,7 +348,7 @@ const ContactForm = ({data}) => {
                                     className={`${formData.type === 'workWithUs' ? styles.active : ''}`}
                                     onClick={(e) => handleTypeChange('workWithUs', e)}
                                 >
-                                    Work With Us
+                                    Get a Quote
                                 </button>
                                 <button
                                     className={`${formData.type === 'collaboration' ? styles.active : ''}`}
@@ -325,7 +386,7 @@ const ContactForm = ({data}) => {
                                         type="text"
                                         id="ct-name"
                                         name="name"
-                                        placeholder="Full Name *"
+                                        placeholder="Name Surname *"
                                         value={formData.name}
                                         onChange={handleChange}
                                         autoComplete="off"
@@ -368,35 +429,74 @@ const ContactForm = ({data}) => {
                                 </span>
                                 </div>
                                 {formData.type === 'workWithUs' && (
-                                    <div className={`${styles['ct-field']} ${errors.brief && styles['invalid']}`}>
-                                    <textarea
-                                        id="ct-brief"
-                                        name="brief"
-                                        placeholder="A Brief of Your Project Idea and Design *"
-                                        value={formData.brief}
-                                        onChange={handleChange}
-                                        autoComplete="off"
-                                    />
-                                        <span
-                                            className={`${styles['err-msg']} ${styles['err-msg-txt']} fx fx-ae`}>
-                                        Please enter correct information
-                                    </span>
+                                    <div className={`${styles['ct-field-wrap']}`}>
+                                        <div className={`${styles['ct-field']} ${errors.phone && styles['invalid']}`}>
+                                            <input
+                                                type="tel"
+                                                id="qt-phone"
+                                                name="phone"
+                                                placeholder="Phone *"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                                onKeyDown={handlePhoneKeyDown}
+                                                autoComplete="off"
+                                            />
+                                            <span
+                                                className={`${styles['err-msg']} fx fx-ac`}>
+                                                Please enter correct information
+                                            </span>
+                                        </div>
+                                        <div className={`${styles['ct-field']} ${errors.brief && styles['invalid']}`}>
+                                            <textarea
+                                                id="ct-brief"
+                                                name="brief"
+                                                placeholder="A Brief of Your Project Idea and Design *"
+                                                value={formData.brief}
+                                                onChange={handleChange}
+                                                autoComplete="off"
+                                            />
+                                                <span
+                                                    className={`${styles['err-msg']} ${styles['err-msg-txt']} fx fx-ae`}>
+                                                Please enter correct information
+                                            </span>
+                                        </div>
+                                        <div className={`${styles['ct-fileQ-field']} fx fx-ac fx-wrap`}>
+                                            <input
+                                                type="file"
+                                                id="qt-file"
+                                                name="file"
+                                                accept=".pdf,.txt,.doc,.docx"
+                                                onChange={handleChange}
+                                                autoComplete="off"
+                                            />
+                                            <div className={`${styles['ct-file-icon']} fx fx-ac fx-jc`}>
+                                                <AttachIcon />
+                                            </div>
+                                            <span className={`${styles['ct-file-name']}`}>
+                                                {formData.file
+                                                    ? `File Selected: ${formData.file.name}`
+                                                    : 'If you have a brief document in .txt, .doc(x), or .pdf format, please attach.'}
+                                            </span>
+                                            <div className={`${styles['ct-file-err']} ${errors.file ? styles['show'] : ''}`}>
+                                                <span>{errors.file}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 )}
                                 {formData.type === 'collaboration' && (
                                     <div className={`${styles['ct-field']} ${errors.message && styles['invalid']}`}>
-                                    <textarea
-                                        id="ct-message"
-                                        name="message"
-                                        placeholder="Message *"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        autoComplete="off"
-                                    />
-                                        <span
-                                            className={`${styles['err-msg']} ${styles['err-msg-txt']} fx fx-ae`}>
-                                        Please enter correct information
-                                    </span>
+                                        <textarea
+                                            id="ct-message"
+                                            name="message"
+                                            placeholder="Message *"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            autoComplete="off"
+                                        />
+                                            <span
+                                                className={`${styles['err-msg']} ${styles['err-msg-txt']} fx fx-ae`}>
+                                            Please enter correct information
+                                        </span>
                                     </div>
                                 )}
                                 {formData.type === 'joinTheTeam' && (
@@ -456,23 +556,23 @@ const ContactForm = ({data}) => {
                     <div className={`${styles['ct-rcol']}`}>
                         <h3>Get in touch</h3>
                         <div className={`${styles['ct-social']} fx fx-ac`}>
-                            <Link href={data?.['linkedin_link']?.['meta_value']} target="_blank">
+                            <Link href="https://www.linkedin.com/company/ipoint-int/" target="_blank">
                                 <Linkedin/>
                             </Link>
-                            <Link href={data?.['fb_link']?.['meta_value']} target="_blank">
+                            <Link href="https://web.facebook.com/Ipoint.Int" target="_blank">
                                 <Facebook/>
                             </Link>
-                            <Link href={data?.['insta_link']?.['meta_value']} target="_blank">
+                            <Link href="https://www.instagram.com/ipoint_int/" target="_blank">
                                 <Instagram/>
                             </Link>
                         </div>
                         <div className={`${styles['ct-addr-wrap']}`}>
                             <div className={`${styles['ct-info-row']}`}>
-                                <Link href={`mailto: ${data?.['email']?.['meta_value']}`} className="fx fx-ac">
+                                <Link href="mailto:info@ipoint.com.mt" className="fx fx-ac">
                                     <div className={`${styles['ct-info-icon']} fx`}>
                                         <EmailIcon />
                                     </div>
-                                    <span>{data?.['email']?.['meta_value']}</span>
+                                    <span>info@ipoint.com.mt</span>
                                 </Link>
                             </div>
                             <div className={`${styles['ct-info-row']}`}>
@@ -480,7 +580,7 @@ const ContactForm = ({data}) => {
                                     <div className={`${styles['ct-info-icon']} fx`}>
                                         <MapIcon />
                                     </div>
-                                    <span>{data?.['address']?.['meta_value']}</span>
+                                    <span>42, Triq L-Amaroz, <br/> Mgarr, Malta</span>
                                 </Link>
                             </div>
                         </div>

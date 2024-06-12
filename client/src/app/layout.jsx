@@ -9,7 +9,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 const inter = Inter({
-	weight: '700',
+	weight: ['500', '700'],
 	subsets: ['latin'],
 	display: 'swap',
 });

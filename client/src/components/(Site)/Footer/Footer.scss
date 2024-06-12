@@ -128,8 +128,10 @@ footer:before{
     }
     .ft-wrap {
         h6 {
-            font-size: 55px;
-            line-height: 42px;
+            a{
+                font-size: 55px;
+                line-height: 42px;
+            }
         }
     }
     .ft-row {
@@ -164,8 +166,10 @@ footer:before{
 @media screen and (max-width: $breakpoint-660) {
     .ft-wrap {
         h6 {
-            font-size: 46px;
-            line-height: 40px;
+            a{
+                font-size: 46px;
+                line-height: 40px;
+            }
         }
     }
 }
