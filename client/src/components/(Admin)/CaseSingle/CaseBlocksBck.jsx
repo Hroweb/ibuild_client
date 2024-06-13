@@ -8,10 +8,7 @@ const CaseBlocks = ({ templateData, /*structuredData,*/ updateTemplates }) => {
     const [formData, setFormData] = useState({
         templateFields: {},
     });
-    //console.log('all data');
-    console.log(templateData);
-    /*console.log('no image');
-    console.log(structuredData);*/
+
     useEffect(() => {
         // Filter template fields to remove strings for images, gifs, and JSON data
         const filteredTemplateFields = {};
@@ -34,7 +31,6 @@ const CaseBlocks = ({ templateData, /*structuredData,*/ updateTemplates }) => {
 
         // Only update internal state if the incoming filtered data is different from the current state
         if (JSON.stringify(filteredTemplateFields) !== JSON.stringify(formData.templateFields)) {
-            console.log('mtav')
             setFormData({ templateFields: filteredTemplateFields });
         }
     }, [formData.templateFields, templateData.templateFields]);

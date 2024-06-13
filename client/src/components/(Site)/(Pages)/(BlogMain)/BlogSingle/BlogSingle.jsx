@@ -6,7 +6,7 @@ import {convertBlogDate, estimateReadingTime, getBlogPostBySlug, getRecentNews} 
 import BlogContent from './BlogContent';
 import SingleRecentNews from "@/components/(Site)/(Pages)/(BlogMain)/BlogSingle/SingleRecentNews";
 
-const  BlogSingle = ({post}) => {
+const  BlogSingle = ({post, recentNews}) => {
     const blogPost = post?.data || null;
     if (!blogPost) {
         return <div>Post not found</div>;
@@ -22,7 +22,7 @@ const  BlogSingle = ({post}) => {
             <BlogContent
                 post = {blogPost}
             />
-            <SingleRecentNews title="Recent News" posts={getRecentNews(3, blogPost.id)} />
+            <SingleRecentNews title="Recent News" posts={recentNews} />
         </>
     );
 }

@@ -109,7 +109,6 @@ export const appendFormData = (formData, data, path = []) => {
         }
 
         if (value instanceof File) {
-            console.log('aloo');
             // Handle file keys specifically
             let formKey = newPath.join('][');
             formKey = formKey.replace(/(case-block-[a-z0-9-]+|case-bl-[a-z0-9-]+|case-col-[a-z0-9-]+|case-2col-img-[a-z0-9-]+)-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/g, '$1');
@@ -121,9 +120,7 @@ export const appendFormData = (formData, data, path = []) => {
         } else {
             // For primitive values, append them directly
             let formKey = newPath.join('][');
-            console.log('Original formKey:', formKey);
             formKey = formKey.replace(/(case-block-[a-z0-9-]+|case-bl-[a-z0-9-]+|case-col-[a-z0-9-]+|case-2col-img-[a-z0-9-]+)-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/g, '$1');
-            console.log('Updated formKey:', formKey);
             //formData.append(`templates[${formKey}]`, value);
             if (!formKey.includes('img') && !formKey.includes('gif')) {
                 formData.append(`templates[${formKey}]`, value);

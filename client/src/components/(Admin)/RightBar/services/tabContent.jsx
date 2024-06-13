@@ -55,7 +55,6 @@ const TabContent = ({data, activeTab}) => {
         //console.log('Submitting form data:', formData.values());
         try {
             const result = await updatePageData(pageID, formData);
-            console.log(result);
             if(result.ok){
                 showSuccessAlert(result.message);
             }

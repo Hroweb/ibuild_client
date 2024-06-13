@@ -1,3 +1,5 @@
+import {BlogArticles} from "@/context/Blog";
+
 export function getFeaturedCases(count, cases, excludeId = false) {
     const resp = {success: true}
     const sortedArticles = [...cases].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
@@ -14,9 +16,7 @@ export function getFeaturedCases(count, cases, excludeId = false) {
         }
     }
     resp.data = featuredArticles.slice(0, count);
-    //console.log(featuredArticles); return false;
-    //const shuffledPosts = [...featuredArticles].sort(() => 0.5 - Math.random()); // Shuffle the array randomly
-    // Get the last 3 news articles
+
     return resp;
 
 }
@@ -95,5 +95,29 @@ export function getPrimaryCase(cases) {
     const primaryArticle = sortedArticles.filter((article) => article.chosen === '1');
 
     return primaryArticle.slice(0, 1);
+}
 
+export function getRecentNews(count = 3, posts, excludeId = false) {
+    const sortedArticles = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (excludeId) {
+        // Find the index of the article with the specified ID
+        const excludedIndex = sortedArticles.findIndex((article) => article.slug === excludeId);
+
+        // If the article with the specified ID is found, remove it from the sortedArticles array
+        if (excludedIndex !== -1) {
+            sortedArticles.splice(excludedIndex, 1);
+        }
+    }
+
+    // Get the last 3 news articles
+    return sortedArticles.slice(0, count);
+}
+
+export function splitTextIntoParagraphs (text) {
+    return text.split('\n').map((paragraph, index) => (
+        <p key={index}>
+            {paragraph}
+        </p>
+    ));
 }

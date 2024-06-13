@@ -23,16 +23,11 @@ export const UseFormCases = (formData, setFormData, selectedMedia, setSelectedMe
         reader.onload = (event) => {
             const previewUrl = event.target.result;
             // Update the UI or do any additional processing with the preview URL
-            console.log('Preview URL:', previewUrl);
         };
         reader.readAsDataURL(file);
-        
-        console.log(selectedMedia);
-        console.log(formData);
     };
 
     const handleMediaInputChange = (inputID, file, templateKey, sectionId) => {
-        console.log(file);
         setSelectedMedia(prevSelectedMedia => ({
             ...prevSelectedMedia,
             [inputID]: file,

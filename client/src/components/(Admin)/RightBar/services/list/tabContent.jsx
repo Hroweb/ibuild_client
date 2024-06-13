@@ -7,7 +7,6 @@ import {showConfirmAlert, showSuccessAlert} from "@/hooks/admin/helpers";
 import {storeServices, deleteService} from "@/utils/api/(admin)/post";
 
 const TabContent = ({data}) => {
-    console.log(data)
     const list = data?.svList?.data ?? [];
     const [servicesList, setServicesList] = useState(list || []);
     const [errors, setErrors] = useState([]);

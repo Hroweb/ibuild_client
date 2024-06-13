@@ -16,7 +16,6 @@ const templates = {
 };
 
 const AddNewSection = ({ updateTemplates }) => {
-    console.log('s');
     const [formData, setFormData] = useState({
         templateFields: {},
     });

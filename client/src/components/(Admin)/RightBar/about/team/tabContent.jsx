@@ -63,7 +63,6 @@ const TabContent = ({data}) => {
         // TODO: Make API call with submissionData
         try {
             const result = await updateTeamMembers(submissionData);
-            console.log(result);
             if(result.ok){
                 showSuccessAlert(result.message);
             }

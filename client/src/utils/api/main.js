@@ -7,7 +7,7 @@ import {
     getClients,
     getTestimonials,
     getCases,
-    getCollaborate, getTeamMembers, getGallery, getSingleEvent,
+    getCollaborate, getTeamMembers, getGallery, getSingleEvent, getSinglePost,
 } from "@/utils/api/requests";
 import {getCasesCategories} from "@/utils/api/(admin)/get";
 
@@ -72,6 +72,16 @@ async function getPageModuleData(page, excludePageData = false, params= {}) {
                     case_study: await getSingleEvent(params.slug),
                     related: await getCases(false, {
                         related:true,
+                        num: 3,
+                        exclude: params.slug || false
+                    })
+                };
+                break;
+            case 'single_blog':
+                additionalData = {
+                    post: await getSinglePost(params.slug),
+                    recent: await getBlogPosts(false, {
+                        recent_news:true,
                         num: 3,
                         exclude: params.slug || false
                     })

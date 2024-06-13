@@ -117,7 +117,6 @@ const TabContent = ({data}) => {
     };
 
     const proceedWithDeletion = (id) => {
-        console.log("Deleting ID:", id);
         setFormData(prevState => ({
             ...prevState,
             blogCat: prevState.blogCat.filter(cat => cat.id !== id)

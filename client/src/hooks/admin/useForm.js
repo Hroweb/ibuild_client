@@ -89,7 +89,6 @@ export const UseForm = (initialData, initialMedia = false) => {
     };
 
     const handleInputChangeAna = (fieldId, value, media = false, index = null) => {
-        console.log('i am');
         if (!media) {
             // Handle non-media input changes
             setFormData(prevFormData => {
@@ -115,15 +114,12 @@ export const UseForm = (initialData, initialMedia = false) => {
                 }
             });
         } else {
-            console.log('i was here');
             // Handle media file uploads
             const updatedMedia = {
                 ...selectedMedia,
                 [fieldId]: value.preview // Assuming 'preview' contains the preview URL
             };
             setSelectedMedia(updatedMedia);
-
-            console.log(updatedMedia);
     
             // Update process.main_photo in formData
             setFormData(prevFormData => ({
@@ -204,10 +200,6 @@ export const UseForm = (initialData, initialMedia = false) => {
     };
 
     const handleUniqueChange = (fieldId, value, media = false) => {
-        /*console.log(fieldId);
-        console.log(value);
-        console.log(media);*/
-        //console.log(media);return false;
         if (!media) {
             setFormData(prevFormData => ({
                 ...prevFormData,

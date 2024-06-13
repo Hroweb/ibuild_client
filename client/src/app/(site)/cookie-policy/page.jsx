@@ -27,7 +27,6 @@ const CookiePage = async () => {
     try {
         const { pageData } = await getPageModuleData('cookie-policy');
         const pageMeta = pageData?.data?.pageMeta;
-        console.log(pageMeta)
 
         return (
             <Suspense fallback={<Loading />}>

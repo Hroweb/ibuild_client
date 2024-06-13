@@ -6,7 +6,6 @@ import {updateProcesses} from "@/utils/api/(admin)/post";
 
 
 const TabContent = ({ data }) => {
-    console.log(data);
     const processes = data?.process?.data || [];
 
     const [formData, setFormData] = useState({
@@ -20,9 +19,6 @@ const TabContent = ({ data }) => {
     });
 
     const handleInputChange = useCallback((index, field, value) => {
-        console.log(index);
-        console.log(field);
-        console.log(value);
         setFormData((prevFormData) => {
             const updatedProcesses = [...prevFormData.processes];
             updatedProcesses[index] = {
@@ -70,7 +66,6 @@ const TabContent = ({ data }) => {
         }
         try {
             const result = await updateProcesses(submissionData);
-            console.log(result);
             if(result.ok){
                 showSuccessAlert(result.message);
             }

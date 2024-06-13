@@ -43,7 +43,7 @@ const Template3 = ({ id, handleInputChange, formData, handleMediaInputChange, se
                     inputPlaceholder="Add your title here..."
                     onChange={(event) => handleInputChange(titleFieldId, event.target.value, id, 'Template3')}
                 />
-                <DescBlock 
+                <DescBlock
                     sectionTitle="Section Description"
                     sectionTitleVal={descValue}
                     inputID={descFieldId}

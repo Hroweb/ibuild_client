@@ -1,7 +1,5 @@
 "use client"
 import styles from "./CaseSingle.module.scss"
-/*import { useParams } from 'next/navigation'
-import { getPostBySlug } from "@/context/Cases"*/
 import CaseIntro from './CaseIntro'
 import FeaturedImage from "./FeauturedImage"
 import CaseOverview from "./CaseOverview"
@@ -57,7 +55,7 @@ const CaseSingle = ({caseStudy, related}) => {
             <RelatedStudies
                 title="Related Case Studies" 
                 excludeID={caseStudy.id} 
-                additionalClass={caseStudy.testimonials ? '' : 'no-tst'}
+                additionalClass={caseStudy.testimonials && caseStudy.testimonials.length > 0 ? '' : 'no-tst'}
                 related={related}
             />
         </>

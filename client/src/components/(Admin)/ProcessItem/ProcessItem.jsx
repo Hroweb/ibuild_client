@@ -10,8 +10,6 @@ const ProcessItem = ({ titleLabel, titleVal, titleInputID, titleInpPlaceholder, 
         hover_photo: typeof window !== 'undefined' && imageFile2 instanceof File ? URL.createObjectURL(imageFile2) : `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/processes/${imageFile2}`,
     });
     const handleChange = (fieldId, value) => {
-        console.log(fieldId);
-        console.log(value);
         handleInputChange(index, fieldId, value);
         // If the field is for a file, update the preview as well
         if ((fieldId === 'main_photo' || fieldId === 'hover_photo') && value && (value instanceof File || value instanceof Blob)) {

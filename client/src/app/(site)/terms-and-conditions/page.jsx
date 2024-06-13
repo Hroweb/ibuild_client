@@ -27,7 +27,6 @@ const TermsPage = async () => {
     try {
         const { pageData } = await getPageModuleData('terms-and-conditions');
         const pageMeta = pageData?.data?.pageMeta;
-        console.log(pageMeta)
 
         return (
             <Suspense fallback={<Loading />}>

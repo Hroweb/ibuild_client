@@ -6,6 +6,7 @@ import styles from '@/components/(Site)/(Pages)/(Home)/Blog/Blog.module.scss'
 import {convertBlogDate, estimateReadingTime} from "@/context/Blog";
 
 const NewsItem = ({post}) => {
+
     const {
         cursorX,
         cursorY,
@@ -14,8 +15,10 @@ const NewsItem = ({post}) => {
         handleMouseLeave,
     } = useCursorTracker();
 
+    const postImage = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/blog/${post.image}`;
+
     const backgroundStyle = {
-        backgroundImage: `url(${post.image ? post.image : '/images/blog-sample.jpg'})`,
+        backgroundImage: `url(${post.image ? postImage : '/images/blog-sample.jpg'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat'
@@ -50,7 +53,7 @@ const NewsItem = ({post}) => {
                     </div>
                     <p>{ post.short_desc }</p>
                     <div className={`${styles['blog-tags']} ${styles['blog-tags-tp']} fx fx-wrap`}>
-                        {post.category.map((cat) => {
+                        {post.categories.map((cat) => {
                             if (cat.slug !== 'all-posts') {
                                 return <a key={cat.id}>{cat.title}</a>;
                             }

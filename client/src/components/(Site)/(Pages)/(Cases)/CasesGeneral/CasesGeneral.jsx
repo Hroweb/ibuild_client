@@ -50,11 +50,13 @@ const CasesGeneral = ({ events, categories }) => {
                         />
                         {selectedCaseCategory.name === 'All Stands' ? (
                             <>
-                                <FeaturedCase
-                                    title="Featured"
-                                    desc="Experience some of our best exhibition stands. Discover captivating designs carefully crafted for a memorable display."
-                                    post={primaryEvent[0]}
-                                />
+                                {primaryEvent && primaryEvent.length > 0 && (
+                                    <FeaturedCase
+                                        title="Featured"
+                                        desc="Experience some of our best exhibition stands. Discover captivating designs carefully crafted for a memorable display."
+                                        post={primaryEvent[0]}
+                                    />
+                                )}
                                 <CasesByYear cases={filteredCases} perPage={perPage} />
                             </>
                         ) : (

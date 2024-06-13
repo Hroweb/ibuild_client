@@ -6,7 +6,7 @@ const Team = ({ data, list }) => {
     const title = data?.['cp_team_title']?.['meta_value'] ?? null;
     const content = data?.['cp_team_text']?.['meta_value'] ?? null;
     const TeamMembers = (list && list.success && true) ? list.data : null;
-//console.log(TeamMembers)
+
     return (
         <section className={`pg-section pg-section-pd bg-light ${styles['team-members']}`}>
             <div className="container">

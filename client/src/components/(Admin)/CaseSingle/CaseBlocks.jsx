@@ -17,10 +17,7 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
     const [formData, setFormData] = useState({
         templateFields: {},
     });
-    /*console.log('all data');
-    console.log(templateData);
-    console.log('no image');
-    console.log(structuredData);*/
+
     let tempImg = '';
     useEffect(() => {
         // Only update internal state if the incoming data is different from the current state

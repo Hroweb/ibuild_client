@@ -5,7 +5,7 @@ const Gallery = ({ data, list }) => {
     const title = data?.['cp_gal_title']?.['meta_value'] ?? ''
     const content = data?.['cp_gal_text']?.['meta_value'] ?? ''
     const photos = (list && list.success && true) ? list.data : null
-//console.log(photos); return false;
+
     return (
         <section className={`pg-section pg-section-pd bg-light ${styles['gl-sc']}`}>
             <div className="container">

@@ -1,5 +1,6 @@
 import BlogSingle from "@/components/(Site)/(Pages)/(BlogMain)/BlogSingle/BlogSingle";
 import {getSinglePost} from "@/utils/api/requests";
+import {getPageModuleData} from "@/utils/api/main";
 
 export async function generateMetadata({params, searchParams}, parent){
     const slug = params.slug;
@@ -27,11 +28,12 @@ export async function generateMetadata({params, searchParams}, parent){
 
 const BlogSinglePage = async ({params}) => {
     const slug = params.slug;
-    const blogPost = await getSinglePost(slug);
+    const {post, recent} = await getPageModuleData('single_blog', true, {slug})
+
     return (
         <>
             <main>
-                <BlogSingle post={blogPost} />
+                <BlogSingle post={post} recentNews={recent} />
             </main>
         </>
     )

@@ -4,7 +4,6 @@ import Project from './Project'
 import Button from '@/components/(Site)/Button/Button'
 
 const Projects = ({data, projects}) => {
-    console.log(projects);
     const lastCases = projects.success && true ? projects.data : null;
     return(
         <section className="pg-section pg-section-pd hp-projects bg-light">

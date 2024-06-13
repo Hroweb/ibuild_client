@@ -1,5 +1,5 @@
 import fetchClient from "@/utils/client";
-import {getFeaturedCases, getRelatedCases, getServicesFeaturedCases} from "@/hooks/helpers";
+import {getFeaturedCases, getRecentNews, getRelatedCases, getServicesFeaturedCases} from "@/hooks/helpers";
 
 async function getPageData(page) {
     return await fetchClient(`/api/pages/${page}`, {
@@ -50,10 +50,18 @@ async function getServices(){
     });
 }
 
-async function getBlogPosts(num = 3){
-    return await fetchClient(`/api/blog/posts/${num}`, {
+async function getBlogPosts(per_page, params = {}){
+    let endpoint = per_page ? `/api/blog/posts/${per_page}` : '/api/blog/posts';
+
+    const posts = await fetchClient(endpoint, {
         method: 'GET',
     });
+
+    if (params.recent_news) {
+        return getRecentNews(params.num ?? 3, posts?.data || [], params.exclude);
+    }
+
+    return posts;
 }
 
 async function getSinglePost(slug){
