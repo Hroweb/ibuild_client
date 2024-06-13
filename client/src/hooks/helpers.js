@@ -1,5 +1,3 @@
-import {BlogArticles} from "@/context/Blog";
-
 export function getFeaturedCases(count, cases, excludeId = false) {
     const resp = {success: true}
     const sortedArticles = [...cases].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
@@ -112,6 +110,19 @@ export function getRecentNews(count = 3, posts, excludeId = false) {
 
     // Get the last 3 news articles
     return sortedArticles.slice(0, count);
+}
+
+export function getTopNewsArticles(count = 3, posts) {
+    // Filter the articles to include only those with top_news: true
+    const topNewsArticles = posts.filter((article) => article.top_news);
+
+    // Return the first 'count' articles from the filtered list
+    return topNewsArticles.slice(0, count);
+}
+
+export function getOtherArticles(posts) {
+    // Filter the articles to include only those with top_news: true
+    return posts.filter((article) => article.top_news === false || article.top_news === 0);
 }
 
 export function splitTextIntoParagraphs (text) {

@@ -5,8 +5,10 @@ import 'swiper/scss/navigation';
 //import TopNewsPosts from '@/context/TopNews';
 import styles from '@/components/(Site)/(Pages)/(Home)/Blog/Blog.module.scss';
 import NewsItem from './NewsItem';
+import {getTopNewsArticles} from "@/hooks/helpers";
 
 const TopNews = ({ title, posts }) => {
+    const topNews = posts && posts.length > 0 ? getTopNewsArticles(3, posts) : [];
     return (
         <section className={`pg-section pg-section-pd ${styles['tp-news']} bg-light`}>
             <div className="container">
@@ -41,8 +43,8 @@ const TopNews = ({ title, posts }) => {
                     loop={true}
                 >
                     {
-                        Array.isArray(posts) && posts.length > 0 ? (
-                            posts.map((post, index) => (
+                        Array.isArray(topNews) && topNews.length > 0 ? (
+                            topNews.map((post, index) => (
                                 <SwiperSlide key={index}>
                                     <NewsItem
                                         post={post}

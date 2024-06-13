@@ -7,9 +7,11 @@ import 'swiper/scss/pagination';
 import RecentNewsSlide from './RecentNewsSlide';
 import RecentNewsPosts from '@/context/RecentNewsPosts';
 import styles from './RecentNews.module.scss';
+import {getRecentNews} from "@/hooks/helpers";
 
 
 const RecentNews = ({ title, posts }) => {
+    const recent = posts && posts.length > 0 ? getRecentNews(3, posts, false) : [];
     return (
         <section className={`pg-section ${styles['rc-news']} bg-light`}>
             <div className="container">
@@ -44,8 +46,8 @@ const RecentNews = ({ title, posts }) => {
                         loop={true}
                     >
                         {
-                            Array.isArray(posts) && posts.length > 0 ? (
-                                posts.map((news, index) => (
+                            Array.isArray(recent) && recent.length > 0 ? (
+                                recent.map((news, index) => (
                                     <SwiperSlide key={index}>
                                         <RecentNewsSlide post={news} />
                                     </SwiperSlide>

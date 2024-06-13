@@ -4,7 +4,7 @@ import {convertBlogDate, estimateReadingTime} from "@/context/Blog";
 import Link from "next/link";
 
 const RecentNewsSlide = ({ post }) => {
-    const postImage = post.image ? post.image : '/images/blog-sample.jpg'
+    const postImage = post.image ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/blog/${post.image}` : '/images/blog-sample.jpg'
     return (
         <div className={`${styles['rcn-slide']}`}>
             <Link href={`/blog/${post?.slug}`}> 

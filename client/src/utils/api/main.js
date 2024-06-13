@@ -9,7 +9,7 @@ import {
     getCases,
     getCollaborate, getTeamMembers, getGallery, getSingleEvent, getSinglePost,
 } from "@/utils/api/requests";
-import {getCasesCategories} from "@/utils/api/(admin)/get";
+import {getAllBlogCats, getCasesCategories} from "@/utils/api/(admin)/get";
 
 async function getPageModuleData(page, excludePageData = false, params= {}) {
     try {
@@ -66,6 +66,12 @@ async function getPageModuleData(page, excludePageData = false, params= {}) {
                     events: await getCases(false, {'orderBy': 'ASC'}),
                     event_cats: await getCasesCategories('event_cat'),
                 };
+                break;
+            case 'blog':
+                additionalData = {
+                    posts: await getBlogPosts(false),
+                    categories: await getAllBlogCats()
+                }
                 break;
             case 'single_case':
                 additionalData = {

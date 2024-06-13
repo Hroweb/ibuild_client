@@ -8,7 +8,7 @@ const BlogCatRow = ({categories, setSelectedCategory, selectedCategory, allPosts
     const countPostsForCategory = (categoryId) => {
         if (Array.isArray(allPosts)) {
             // Filter articles that belong to the category with the specified categoryId
-            const categoryPosts = allPosts.filter((post) => post.category.some((cat) => cat.id === categoryId));
+            const categoryPosts = allPosts.filter((post) => post.categories.some((cat) => cat.id === categoryId));
             return categoryPosts.length;
         }
         return 0; // Return 0 if allPosts is not an array or no articles match the category.
