@@ -1,11 +1,11 @@
-'use client'
+'use client';
 import { useEffect, useState } from "react"
 import styles from './CasesGeneral.module.scss'
 import CasesEventCatRow from './CasesEventCatRow'
 import FeaturedCase from './FeaturedCase'
 import CasesByYear from './CasesByYear'
-import CaseItems from "@/components/(Site)/(Pages)/(Cases)/CasesGeneral/CaseItems";
-import {casesGroupedByYear, getPrimaryCase} from "@/hooks/helpers";
+import CaseItems from "@/components/(Site)/(Pages)/(Cases)/CasesGeneral/CaseItems"
+import {casesGroupedByYear, getPrimaryCase} from "@/hooks/helpers"
 import LoadingAnimFull from "@/components/(Site)/(Animations)/LoadingAnim/LoadingAnimFull"
 
 const CasesGeneral = ({ events, categories }) => {

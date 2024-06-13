@@ -1,30 +1,48 @@
-import React, { useEffect, useRef } from 'react';
-import lottie from "lottie-web";
-import loaderAnim from "@animations/build-loader-anim.json";
-import styles from "@/components/(Site)/(Pages)/LoadMore/LoadMore.module.scss";
+import React, { useEffect, useRef, useState } from 'react';
+import styles from '@/components/(Site)/(Pages)/LoadMore/LoadMore.module.scss';
 
 function LoadingAnim() {
     const containerRef = useRef(null);
+    const animationRef = useRef(null);
 
     useEffect(() => {
-        const animation = lottie.loadAnimation({
-            container: containerRef.current,
-            animationData: loaderAnim,
-            renderer: 'svg',
-            loop: true,
-            autoplay: false,
-        });
+        console.log('useEffect triggered');
+        let animation = null;
 
-        animation.play();
+        const loadAnimation = async () => {
+            try {
+                const [lottie, loaderAnim] = await Promise.all([
+                    import('lottie-web'),
+                    import('@animations/build-loader-anim.json')
+                ]);
+
+                animation = lottie.default.loadAnimation({
+                    container: containerRef.current,
+                    animationData: loaderAnim.default,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                });
+
+                animationRef.current = animation;
+            } catch (error) {
+                console.error('Failed to load animation:', error);
+            }
+        };
+
+        if (typeof window !== 'undefined') {
+            loadAnimation();
+        }
 
         return () => {
-            animation.destroy();
+            if (animationRef.current) {
+                animationRef.current.destroy();
+                animationRef.current = null;
+            }
         };
-    }, []);
+    }, []); // Empty dependency array ensures useEffect runs only once on mount
 
-    return (
-        <div className={`${styles['loader-anim']}`} ref={containerRef}></div>
-    );
+    return <div className={styles['loader-anim']} ref={containerRef}></div>;
 }
 
 export default LoadingAnim;
