@@ -1,7 +1,7 @@
 import styles from "@/components/(Admin)/RightBar/RightBar.module.scss"
 import ImageUploadBlock from "@/components/(Admin)/CaseSingle/ImageUploadBlock"
 import TitleBlock from "@/components/(Admin)/TitleBlock/TitleBlock"
-import DescBlock from "@/components/(Admin)/DescBlock/DescBlock"
+import QuillComponent from "@/components/(Admin)/QuillComponent/QuillComponent";
 
 const Template4 = ({ id, handleInputChange, formData, handleMediaInputChange, selectedMedia, isEdit = false }) => {
     const templateFields = isEdit ? formData : (formData.templateFields[id] && formData.templateFields[id].Template4 ? formData.templateFields[id].Template4 : {});
@@ -38,12 +38,11 @@ const Template4 = ({ id, handleInputChange, formData, handleMediaInputChange, se
                             inputPlaceholder="Add your title here..."
                             onChange={(event) => handleInputChange(titleFieldId1, event.target.value, id, 'Template4')}
                         />
-                        <DescBlock 
-                            sectionTitle="Section Description"
-                            sectionTitleVal={descValue1}
-                            inputID={descFieldId1}
-                            inputName={descFieldId1}
-                            onChange={(event) => handleInputChange(descFieldId1, event.target.value, id, 'Template4')}
+                        <QuillComponent
+                            value={descValue1}
+                            id={descFieldId1}
+                            name={descFieldId1}
+                            onChange={(event) => handleInputChange(descFieldId1, event, id, 'Template4')}
                         />
                     </div>
                     <div className={`${styles['admin-tmp-col']}`}>
@@ -63,12 +62,11 @@ const Template4 = ({ id, handleInputChange, formData, handleMediaInputChange, se
                             inputPlaceholder="Add your title here..."
                             onChange={(event) => handleInputChange(titleFieldId2, event.target.value, id, 'Template4')}
                         />
-                        <DescBlock 
-                            sectionTitle="Section Description"
-                            sectionTitleVal={descValue2}
-                            inputID={descFieldId2}
-                            inputName={descFieldId2}
-                            onChange={(event) => handleInputChange(descFieldId2, event.target.value, id, 'Template4')}
+                        <QuillComponent
+                            value={descValue2}
+                            id={descFieldId2}
+                            name={descFieldId2}
+                            onChange={(event) => handleInputChange(descFieldId2, event, id, 'Template4')}
                         />
                     </div>
                 </div>

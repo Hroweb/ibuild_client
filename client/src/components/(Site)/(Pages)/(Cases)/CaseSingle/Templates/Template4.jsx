@@ -21,7 +21,8 @@ const Template4 = ({data}) => {
                                 <h2>{templateData?.['case-block-2colm-title']}</h2>
                             )}
                             {templateData?.['case-block-2col-text'] && (
-                                splitTextIntoParagraphs(templateData?.['case-block-2col-text'])
+                                <div dangerouslySetInnerHTML={{ __html: templateData?.['case-block-2col-text'] }}></div>
+                                // splitTextIntoParagraphs(templateData?.['case-block-2col-text'])
                             )}
                         </div>
                     </div>
@@ -38,7 +39,8 @@ const Template4 = ({data}) => {
                                 <h2>{templateData?.['case-block-2colm-title2']}</h2>
                             )}
                             {templateData?.['case-block-2col-text2'] && (
-                                splitTextIntoParagraphs(templateData?.['case-block-2col-text2'])
+                                <div dangerouslySetInnerHTML={{__html: templateData?.['case-block-2col-text2']}}></div>
+                                // splitTextIntoParagraphs(templateData?.['case-block-2col-text2'])
                             )}
                         </div>
                     </div>

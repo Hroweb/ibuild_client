@@ -1,7 +1,7 @@
 import styles from "@/components/(Admin)/RightBar/RightBar.module.scss"
 import ImageUploadBlock from "@/components/(Admin)/CaseSingle/ImageUploadBlock"
 import TitleBlock from "@/components/(Admin)/TitleBlock/TitleBlock"
-import DescBlock from "@/components/(Admin)/DescBlock/DescBlock"
+import QuillComponent from "@/components/(Admin)/QuillComponent/QuillComponent";
 
 const Template3 = ({ id, handleInputChange, formData, handleMediaInputChange, selectedMedia, isEdit = false }) => {
     const templateFields = isEdit ? formData : (formData.templateFields[id] && formData.templateFields[id].Template3 ? formData.templateFields[id].Template3 : {});
@@ -43,12 +43,11 @@ const Template3 = ({ id, handleInputChange, formData, handleMediaInputChange, se
                     inputPlaceholder="Add your title here..."
                     onChange={(event) => handleInputChange(titleFieldId, event.target.value, id, 'Template3')}
                 />
-                <DescBlock
-                    sectionTitle="Section Description"
-                    sectionTitleVal={descValue}
-                    inputID={descFieldId}
-                    inputName="case-block-2col-text"
-                    onChange={(event) => handleInputChange(descFieldId, event.target.value, id, 'Template3')}
+                <QuillComponent
+                    value={descValue}
+                    id={descFieldId}
+                    name={`case-block-2col-text`}
+                    onChange={(event) => handleInputChange(descFieldId, event, id, 'Template3')}
                 />
             </div>
         </div>

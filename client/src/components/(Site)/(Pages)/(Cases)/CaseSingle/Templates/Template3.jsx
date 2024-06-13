@@ -29,8 +29,8 @@ const Template3 = ({data}) => {
                     </div>
                 )}
                 {templateData?.['case-block-2col-text'] && (
-                    <div className={styles["case-info-rcol"]}>
-                        {splitTextIntoParagraphs(templateData?.['case-block-2col-text'])}
+                    <div className={styles["case-info-rcol"]} dangerouslySetInnerHTML={{ __html: templateData?.['case-block-2col-text'] }}>
+                        {/*{splitTextIntoParagraphs(templateData?.['case-block-2col-text'])}*/}
                     </div>
                 )}
             </div>

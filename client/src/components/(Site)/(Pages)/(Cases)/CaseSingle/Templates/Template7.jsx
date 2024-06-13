@@ -25,8 +25,8 @@ const Template7 = ({data}) => {
                         </div>
                     )}
                     {templateData?.['case-block-alt-text'] && (
-                        <div className={styles["case-info-rcol"]}>
-                            {templateData?.['case-block-alt-text']}
+                        <div className={styles["case-info-rcol"]} dangerouslySetInnerHTML={{ __html: templateData?.['case-block-alt-text'] }}>
+                            {/*{templateData?.['case-block-alt-text']}*/}
                         </div>
                     )}
                 </div>
