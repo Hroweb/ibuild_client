@@ -7,7 +7,6 @@ import LoadMore from "@/components/(Site)/(Pages)/LoadMore/LoadMore";
 const CasesByYear = ({ cases, perPage }) => {
     const [loadMoreCounts, setLoadMoreCounts] = useState({});
     const [loading, setLoading] = useState(false);
-//console.log(cases);return false;
     const handleLoadMore = (year) => {
         setLoading(true);
         setTimeout(() => {

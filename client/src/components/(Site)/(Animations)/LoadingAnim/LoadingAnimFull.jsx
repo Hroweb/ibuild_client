@@ -1,36 +1,27 @@
 import React, { useEffect, useRef } from 'react';
-import styles from '@/components/(Site)/(Pages)/LoadMore/LoadMore.module.scss';
-import loaderAnim from '@animations/build-loader-anim-full.json';
+import lottie from "lottie-web";
+import loaderAnim from "@animations/build-loader-anim-full.json";
+import styles from "@/components/(Site)/(Pages)/LoadMore/LoadMore.module.scss";
 
 function LoadingAnimFull() {
     const containerRef = useRef(null);
-    const animationInstance = useRef(null);
 
     useEffect(() => {
-        const loadLottie = async () => {
-            const lottie = (await import('lottie-web')).default;
+        if (typeof window !== "undefined" && containerRef.current) {
+            const animation = lottie.loadAnimation({
+                container: containerRef.current,
+                animationData: loaderAnim,
+                renderer: 'svg',
+                loop: true,
+                autoplay: false,
+            });
 
-            if (!animationInstance.current) {
-                animationInstance.current = lottie.loadAnimation({
-                    container: containerRef.current,
-                    animationData: loaderAnim,
-                    renderer: 'svg',
-                    loop: true,
-                    autoplay: false,
-                });
+            animation.play();
 
-                animationInstance.current.play();
-            }
-        };
-
-        loadLottie().then(r => '');
-
-        return () => {
-            if (animationInstance.current) {
-                animationInstance.current.destroy();
-                animationInstance.current = null;
-            }
-        };
+            return () => {
+                animation.destroy();
+            };
+        }
     }, []);
 
     return (

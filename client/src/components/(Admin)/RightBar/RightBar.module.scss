@@ -542,6 +542,7 @@
     border-radius: 12px;
     border: 1px solid $color-grey10;
     padding:20px 20px 33px 20px;
+    margin-bottom: 40px;
     h3{
         color: $color-grey6;
         font-size: 16px;
@@ -712,6 +713,21 @@
             cursor: pointer;
             width:100%;
         }
+    }
+}
+.admin-ft-list{
+    height:190px;
+    overflow: auto;
+    &::-webkit-scrollbar{
+        width:3px;
+    }
+    &::-webkit-scrollbar-thumb{
+        background: $color-dark-blue;
+        border-radius: 0;
+    }
+    &::-webkit-scrollbar-track {
+        width:1px;
+        background: $color-grey6;
     }
 }
 .admin-dp-list{

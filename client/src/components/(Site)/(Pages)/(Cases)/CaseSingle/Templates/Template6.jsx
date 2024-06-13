@@ -6,7 +6,7 @@ const Template6 = ({data}) => {
     const imgPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/portfolio`;
 
     return (
-        <div className={styles["case-block-w"]}>
+        <div className={`${styles["case-block-w"]} ${styles["case-block-w-img"]}`}>
             <div className="fx fx-jb">
                 {templateData?.['case-2col-img-1'] && (
                     <div className={`${styles["case-img"]} ${styles["case-img-hf"]}`}>

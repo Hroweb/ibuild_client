@@ -4,10 +4,9 @@ import Image from "next/image";
 const Template7 = ({data}) => {
     const templateData = (data && data.length !== 0) ? JSON.parse(data) : '';
     const imgPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/portfolio`;
-    console.log(data)
     return (
         <>
-            <div className={styles["case-block-w"]}>
+            <div className={`${styles["case-block-w"]} ${styles["case-block-w-alt"]}`}>
                 {templateData?.['case-block-alt-title'] && (
                     <h2>{templateData?.['case-block-alt-title']}</h2>
                 )}

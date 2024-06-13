@@ -8,7 +8,7 @@ const Template5 = ({data}) => {
     return (
         <>
             {templateData?.['case-block-f-img'] && (
-                <div className="fx fx-wrap">
+                <div className={`${styles["case-block-tmp5"]} fx fx-wrap}`}>
                     <div className={styles["case-img"]}>
                         <Image src={imgPath+templateData?.['case-block-f-img']} width={1500} height={700} alt={templateData?.['case-block-id']}/>
                     </div>
