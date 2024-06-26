@@ -1,12 +1,16 @@
-// General client for all requests
-
 const fetchClient = async (endpoint, { method = 'GET', headers = {}, body = null, cache = 'no-store', revalidate } = {}) => {
     const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const token = typeof window !== 'undefined' ? localStorage.getItem('jwt_token') : null;
     const defaultHeaders = {
         'Accept': 'application/json',
         'Origin': process.env.SITE_URL,
         ...headers,
     };
+
+    // Add Authorization header if requiresAuth is true and token exists
+    if (token) {
+        defaultHeaders['Authorization'] = `Bearer ${token}`;
+    }
 
     // Remove 'Content-Type' header if body is FormData
     if (body instanceof FormData) {

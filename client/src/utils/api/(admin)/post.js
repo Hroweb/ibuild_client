@@ -4,7 +4,7 @@ async function updatePageData(page, newData, token=false) {
     return await fetchClient(`/api/pages/${page}`, {
         method: 'POST',
         headers: {},
-        body: newData,
+        body: newData
     });
 }
 

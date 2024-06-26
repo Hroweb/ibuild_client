@@ -3,8 +3,15 @@ import Link from 'next/link'
 import Image from "next/image"
 import LeftMenu from '@/components/(Admin)/LeftMenu/LeftMenu'
 import { AvatarIcon } from '@/components/svgs/admin'
+import {useAuth} from "@/hooks/UseAuth";
 
 const LeftBar = ({logoSrc, logoWidth, logoHeight}) => {
+    const { logout } = useAuth({});
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+        logout().then(r => '');
+    };
     return (
         <div className={`${styles['admin-lcol']}`}>
             <div className={`${styles['admin-hd']} fx fx-ac`}>
@@ -21,7 +28,7 @@ const LeftBar = ({logoSrc, logoWidth, logoHeight}) => {
                         <div className={`${styles['admin-avatar']} fx fx-jc fx-ac`}>
                             <AvatarIcon />
                         </div>
-                        <span>Admin</span>
+                        <span>Admin | <Link href="#" onClick={handleLogout}>Logout</Link></span>
                     </div>
                 </div>
                 <div className={`${styles['admin-cpr']}`}>
