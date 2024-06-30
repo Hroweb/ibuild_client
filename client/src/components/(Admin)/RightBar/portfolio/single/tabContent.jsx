@@ -13,7 +13,7 @@ import FeaturedPostBlock from "@/components/(Admin)/CaseSingle/FeaturedPostBlock
 import AddNewSection from "@/components/(Admin)/CaseSingle/AddNewSection"
 import CaseBlocks from "@/components/(Admin)/CaseSingle/CaseBlocks";
 import {appendFormData, handleApiError, handleBasicError, showSuccessAlert} from "@/hooks/admin/helpers";
-import {storeEvent} from "@/utils/api/(admin)/post";
+import {deleteEventGallery, storeEvent} from "@/utils/api/(admin)/post";
 //import {deleteGalleryImage, postCaseSingle} from "@/utils/(admin)/cases/api";
 
 
@@ -162,7 +162,7 @@ const TabContent = ({data}) => {
 
     const proceedWithDelete = async (id, type) =>{
         try {
-            const result = await deleteGalleryImage(formData.id, id, type);
+            const result = await deleteEventGallery(type, formData.id, id);
             if (result.ok) {
                 showSuccessAlert(result.message);
             }

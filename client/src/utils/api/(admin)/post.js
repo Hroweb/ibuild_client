@@ -146,6 +146,13 @@ async function storeEvent(data){
     });
 }
 
+async function deleteEventGallery(type, eventID, photoID){
+    return await fetchClient(`/api/event/case_study/${type}/${eventID}/${photoID}`, {
+        method: 'DELETE',
+        headers: {}
+    })
+}
+
 export {
     updatePageData,
     updateTeamMembers,
@@ -165,5 +172,6 @@ export {
     saveCategoryToApi,
     delCategoryFromApi,
     deleteEvent,
-    storeEvent
+    storeEvent,
+    deleteEventGallery
 }
