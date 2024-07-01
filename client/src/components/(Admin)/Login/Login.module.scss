@@ -1,6 +1,14 @@
 @import '@base/colors';
 @import '@base/breakpoints';
 
+div.login-col-fm input:-webkit-autofill,
+div.login-col-fm input:-webkit-autofill:hover,
+div.login-col-fm input:-webkit-autofill:focus {
+    -webkit-text-fill-color: $color-dark-blue !important;
+    -webkit-box-shadow: 0 0 0px 1000px $color-grey9 inset !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+    font-family: "Space Grotesk", sans-serif !important;
+}
 .login-pg{
     position: relative;
 }
