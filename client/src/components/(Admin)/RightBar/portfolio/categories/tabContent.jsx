@@ -3,15 +3,16 @@ import styles from "@/components/(Admin)/RightBar/RightBar.module.scss";
 import InputField from "@/components/(Admin)/InputField/InputField";
 import {DeleteIcon, EditIcon, SaveIcon} from "@/components/svgs/admin";
 import {delCategoryFromApi, saveCategoryToApi} from "@/utils/api/(admin)/post";
-import {showConfirmAlert, showSuccessAlert, slugify} from "@/hooks/admin/helpers";
+import {showConfirmAlert, showSuccessAlert, slugify, sortByTitle} from "@/hooks/admin/helpers";
 
 const TabContent = ({data}) => {
-    const category = data?.pageData?.categories?.data ?? false;
+    let category = data?.pageData?.categories?.data ?? false;
     const title = data?.pageData?.title ?? null;
     const subTitle = data?.pageData?.subTitle;
     const type = data?.pageData?.type;
     const inputRef = useRef(null);
     const [newItemId, setNewItemId] = useState(null);
+    if(type !== 'event_cat') category = sortByTitle(category, true);
 
     const initialFormData = {
         'eventCat':category.map(cat => ({ ...cat, readOnly: 'readonly' }))
