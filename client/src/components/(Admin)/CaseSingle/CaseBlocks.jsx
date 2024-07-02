@@ -2,7 +2,7 @@ import styles from "@/components/(Admin)/RightBar/RightBar.module.scss";
 //import Template1 from '@/components/(Admin)/RightBar/portfolio/templates/Template1';
 import {useEffect, useState} from "react";
 import {UseFormCases} from "@/hooks/admin/useFormCases";
-import {findValueByPrefix} from "@/hooks/admin/helpers";
+import {findValueByPrefix, showSuccessAlert} from "@/hooks/admin/helpers";
 import {
     Template1,
     Template2,
@@ -11,6 +11,8 @@ import {
     Template5,
     Template6, Template7
 } from "@/components/(Admin)/RightBar/portfolio/templates";
+import {deleteTemplate} from "@/utils/api/(admin)/post";
+
 //import {Template3} from "@/components/(Admin)/RightBar/portfolio/templates";
 
 const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
@@ -57,6 +59,18 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
         updateTemplates(formData.templateFields);
     };
 
+    const handleTemplateDelete = async (templateId) => {
+        try {
+            const result = await deleteTemplate(templateId);
+            if(result.ok){
+                showSuccessAlert(result.message);
+            }
+        } catch (error) {
+            console.error('Error deleting category:', error);
+            return;
+        }
+    };
+
     const renderTemplate = (uuid, templateType) => {
         const templateProp = templateData?.templateFields?.[uuid]?.[templateType];
         const templateProps = structuredData?.templateFields?.[uuid]?.[templateType];
@@ -73,6 +87,7 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
                     formData={templateProps}
                     selectedMedia={imageUrl}
                     isEdit={true}
+                    handleTemplateDelete={handleTemplateDelete}
                 />;
                 //break;
             case 'Template2':

@@ -4,7 +4,7 @@ import TitleBlock from "@/components/(Admin)/TitleBlock/TitleBlock"
 import DescBlock from "@/components/(Admin)/DescBlock/DescBlock"
 import QuillComponent from "@/components/(Admin)/QuillComponent/QuillComponent";
 
-const Template1 = ({ id, handleInputChange, formData, handleMediaInputChange, selectedMedia, isEdit = false }) => {
+const Template1 = ({ id, handleInputChange, formData, handleMediaInputChange, selectedMedia, isEdit = false,  handleTemplateDelete }) => {
     const templateFields = isEdit ? formData : (formData.templateFields[id] && formData.templateFields[id].Template1 ? formData.templateFields[id].Template1 : {});
     const titleFieldId = `case-block-title-${id}`;
     const titleValue = templateFields[titleFieldId] || '';
@@ -16,7 +16,7 @@ const Template1 = ({ id, handleInputChange, formData, handleMediaInputChange, se
         <div className={`${styles['admin-tmp-row']} ${styles['admin-tmp1']}`}>
             <h4>Template 1 Fields</h4>
             <div className={`${styles['admin-tmp-wrap']}`}>
-                <ImageUploadBlock 
+                <ImageUploadBlock
                     sectionTitle="Image"
                     inputID={`case-block-img-${id}`}
                     allowedFormats=".jpeg, .jpg, .png, .webp"
@@ -25,7 +25,7 @@ const Template1 = ({ id, handleInputChange, formData, handleMediaInputChange, se
                     template="Template1"
                     sectionID={id}
                 />
-                <TitleBlock 
+                <TitleBlock
                     sectionTitle="Section Title"
                     sectionTitleVal={titleValue}
                     inputID={titleFieldId}
@@ -45,6 +45,7 @@ const Template1 = ({ id, handleInputChange, formData, handleMediaInputChange, se
                     inputName={`case-block-text-${id}`}
                     onChange={(event) => handleInputChange(descFieldId, event.target.value, id, 'Template1')}
                 />*/}
+                <a href="#" onClick={() => handleTemplateDelete(id)}>close</a>
             </div>
         </div>
     )
