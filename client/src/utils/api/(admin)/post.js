@@ -153,6 +153,13 @@ async function deleteEventGallery(type, eventID, photoID){
     })
 }
 
+async function deleteTemplate(templateId){
+    return await fetchClient(`/api/event/${templateId}`, {
+        method: 'DELETE',
+        headers: {}
+    });
+}
+
 export {
     updatePageData,
     updateTeamMembers,
@@ -173,5 +180,6 @@ export {
     delCategoryFromApi,
     deleteEvent,
     storeEvent,
-    deleteEventGallery
+    deleteEventGallery,
+    deleteTemplate
 }
