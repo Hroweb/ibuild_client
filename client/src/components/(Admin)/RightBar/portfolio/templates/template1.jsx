@@ -1,8 +1,7 @@
 import styles from "@/components/(Admin)/RightBar/RightBar.module.scss"
 import ImageUploadBlock from "@/components/(Admin)/CaseSingle/ImageUploadBlock"
 import TitleBlock from "@/components/(Admin)/TitleBlock/TitleBlock"
-import DescBlock from "@/components/(Admin)/DescBlock/DescBlock"
-import QuillComponent from "@/components/(Admin)/QuillComponent/QuillComponent";
+import QuillComponent from "@/components/(Admin)/QuillComponent/QuillComponent"
 
 const Template1 = ({ id, handleInputChange, formData, handleMediaInputChange, selectedMedia, isEdit = false,  handleTemplateDelete }) => {
     const templateFields = isEdit ? formData : (formData.templateFields[id] && formData.templateFields[id].Template1 ? formData.templateFields[id].Template1 : {});
@@ -15,7 +14,8 @@ const Template1 = ({ id, handleInputChange, formData, handleMediaInputChange, se
     return (
         <div className={`${styles['admin-tmp-row']} ${styles['admin-tmp1']}`}>
             <h4>Template 1 Fields</h4>
-            <div className={`${styles['admin-tmp-wrap']}`}>
+            <div className={`${styles['admin-tmp-wrap']} ps-rel`}>
+                <a href="#" className={`${styles['btn-delete']}`}>Delete Section</a>
                 <ImageUploadBlock
                     sectionTitle="Image"
                     inputID={`case-block-img-${id}`}
@@ -38,13 +38,6 @@ const Template1 = ({ id, handleInputChange, formData, handleMediaInputChange, se
                     name={`case-block-text-${id}`}
                     onChange={(event) => handleInputChange(descFieldId, event, id, 'Template1')}
                 />
-                {/*<DescBlock
-                    sectionTitle="Section Description"
-                    sectionTitleVal={descValue}
-                    inputID={descFieldId}
-                    inputName={`case-block-text-${id}`}
-                    onChange={(event) => handleInputChange(descFieldId, event.target.value, id, 'Template1')}
-                />*/}
                 <a href="#" onClick={() => handleTemplateDelete(id)}>close</a>
             </div>
         </div>

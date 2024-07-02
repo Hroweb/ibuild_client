@@ -7,7 +7,8 @@ const Template6 = ({ id, handleMediaInputChange, selectedMedia, isEdit = false }
     return (
         <div className={`${styles['admin-tmp-row']}`}>
             <h4>Template 6 Fields</h4>
-            <div className={`${styles['admin-tmp-wrap']}`}>
+            <div className={`${styles['admin-tmp-wrap']} ps-rel`}>
+                <a href="#" className={`${styles['btn-delete']}`}>Delete Section</a>
                 <div className={`${styles['admin-tmp-2colm']} ${styles['admin-tmp-2colmImg']} fx fx-jb`}>
                     <div className={`${styles['admin-tmp-col']}`}>
                         <ImageUploadBlock 

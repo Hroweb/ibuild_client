@@ -5,7 +5,8 @@ const Template5 = ({ id, handleMediaInputChange, selectedMedia, isEdit = false }
     return (
         <div className={`${styles['admin-tmp-row']}`}>
             <h4>Template 5 Fields</h4>
-            <div className={`${styles['admin-tmp-wrap']}`}>
+            <div className={`${styles['admin-tmp-wrap']} ps-rel`}>
+                <a href="#" className={`${styles['btn-delete']}`}>Delete Section</a>
                 <ImageUploadBlock 
                     sectionTitle="Image"
                     inputID={`case-block-f-img-${id}`}
