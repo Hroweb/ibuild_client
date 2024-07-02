@@ -4,6 +4,8 @@ import { ArrDown } from '@/components/svgs/admin';
 import LoadingAnim from "@/components/(Admin)/LoadingAnim/LoadingAnim";
 import { v4 as uuidv4 } from 'uuid';
 import {UseFormCases} from "@/hooks/admin/useFormCases";
+import {deleteTemplate} from "@/utils/api/(admin)/post";
+import {showSuccessAlert} from "@/hooks/admin/helpers";
 
 const templates = {
     Template1: React.lazy(() => import('@/components/(Admin)/RightBar/portfolio/templates/template1')),
@@ -110,6 +112,23 @@ const AddNewSection = ({ updateTemplates }) => {
         updateTemplates(formData.templateFields);
     };
 
+    const handleTemplateDelete = (templateId) => {
+
+        setSections(prevSections => {
+            return prevSections.filter(section => section.id !== templateId);
+        });
+
+        setFormData(prevFormData => {
+            const updatedTemplateFields = { ...prevFormData.templateFields };
+            delete updatedTemplateFields[templateId];
+
+            return {
+                ...prevFormData,
+                templateFields: updatedTemplateFields
+            };
+        });
+    };
+
     return (
         <>
             <div className={`${styles['addNew-cs-row']}`} onClick={addSection}>
@@ -152,7 +171,8 @@ const AddNewSection = ({ updateTemplates }) => {
                                         handleInputChange: handleInputChangeWrapper,
                                         handleMediaInputChange: handleMediaInputChangeWrapper,
                                         formData: formData,
-                                        selectedMedia: selectedMedia
+                                        selectedMedia: selectedMedia,
+                                        handleTemplateDelete: handleTemplateDelete
                                     })}
                                 </Suspense>
                             </div>
