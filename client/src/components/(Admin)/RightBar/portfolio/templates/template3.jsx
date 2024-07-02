@@ -3,7 +3,7 @@ import ImageUploadBlock from "@/components/(Admin)/CaseSingle/ImageUploadBlock"
 import TitleBlock from "@/components/(Admin)/TitleBlock/TitleBlock"
 import QuillComponent from "@/components/(Admin)/QuillComponent/QuillComponent";
 
-const Template3 = ({ id, handleInputChange, formData, handleMediaInputChange, selectedMedia, isEdit = false }) => {
+const Template3 = ({ id, handleInputChange, formData, handleMediaInputChange, selectedMedia, isEdit = false, handleTemplateDelete }) => {
     const templateFields = isEdit ? formData : (formData.templateFields[id] && formData.templateFields[id].Template3 ? formData.templateFields[id].Template3 : {});
     const titleFieldId = `case-block-2col-title-${id}`;
     const titleValue = templateFields[titleFieldId] || '';
@@ -16,7 +16,7 @@ const Template3 = ({ id, handleInputChange, formData, handleMediaInputChange, se
         <div className={`${styles['admin-tmp-row']}`}>
             <h4>Template 3 Fields</h4>
             <div className={`${styles['admin-tmp-wrap']} ps-rel`}>
-                <a href="#" className={`${styles['btn-delete']}`}>Delete Section</a>
+                <a href="#" onClick={() => handleTemplateDelete(id)} className={`${styles['btn-delete']}`}>Delete Section</a>
                 <div className={`${styles['admin-tmp-2col']} fx fx-jb`}>
                     <ImageUploadBlock 
                         sectionTitle="Image 1"

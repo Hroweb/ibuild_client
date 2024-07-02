@@ -101,6 +101,7 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
                     formData={templateProps}
                     selectedMedia={gifUrl}
                     isEdit={true}
+                    handleTemplateDelete={handleTemplateDelete}
                 />;
                 //break;
             case 'Template3':
@@ -114,6 +115,7 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
                     formData={templateProps}
                     selectedMedia={imagesT3}
                     isEdit={true}
+                    handleTemplateDelete={handleTemplateDelete}
                 />;
                 //break;
             case 'Template4':
@@ -127,6 +129,7 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
                     formData={templateProps}
                     selectedMedia={imagesT4}
                     isEdit={true}
+                    handleTemplateDelete={handleTemplateDelete}
                 />;
             case 'Template5':
                 const findImageT5 = findValueByPrefix(templateProp, 'case-block-f-img');
@@ -137,6 +140,7 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
                     handleMediaInputChange={handleMediaInputChangeWrapper}
                     selectedMedia={imageT5}
                     isEdit={true}
+                    handleTemplateDelete={handleTemplateDelete}
                 />;
             case 'Template6':
                 const findImagesT6 = findValueByPrefix(templateProp, 'case-2col-img');
@@ -147,6 +151,7 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
                     handleMediaInputChange={handleMediaInputChangeWrapper}
                     selectedMedia={imagesT6}
                     isEdit={true}
+                    handleTemplateDelete={handleTemplateDelete}
                 />;
             case 'Template7':
                 const findImageT7 = findValueByPrefix(templateProp, 'case-block-alt-img');
@@ -159,6 +164,7 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
                     formData={templateProps}
                     selectedMedia={imageT7}
                     isEdit={true}
+                    handleTemplateDelete={handleTemplateDelete}
                 />;
             // Add cases for other template types as needed
             default:

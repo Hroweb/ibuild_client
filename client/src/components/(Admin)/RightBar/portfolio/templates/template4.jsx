@@ -3,7 +3,7 @@ import ImageUploadBlock from "@/components/(Admin)/CaseSingle/ImageUploadBlock"
 import TitleBlock from "@/components/(Admin)/TitleBlock/TitleBlock"
 import QuillComponent from "@/components/(Admin)/QuillComponent/QuillComponent";
 
-const Template4 = ({ id, handleInputChange, formData, handleMediaInputChange, selectedMedia, isEdit = false }) => {
+const Template4 = ({ id, handleInputChange, formData, handleMediaInputChange, selectedMedia, isEdit = false, handleTemplateDelete }) => {
     const templateFields = isEdit ? formData : (formData.templateFields[id] && formData.templateFields[id].Template4 ? formData.templateFields[id].Template4 : {});
     const titleFieldId1 = `case-block-2colm-title-${id}`;
     const titleValue1 = templateFields[titleFieldId1] || '';
@@ -20,7 +20,7 @@ const Template4 = ({ id, handleInputChange, formData, handleMediaInputChange, se
         <div className={`${styles['admin-tmp-row']}`}>
             <h4>Template 4 Fields</h4>
             <div className={`${styles['admin-tmp-wrap']} ps-rel`}>
-                <a href="#" className={`${styles['btn-delete']}`}>Delete Section</a>
+                <a href="#" onClick={() => handleTemplateDelete(id)} className={`${styles['btn-delete']}`}>Delete Section</a>
                 <div className={`${styles['admin-tmp-2colm']} fx fx-jb`}>
                     <div className={`${styles['admin-tmp-col']}`}>
                         <ImageUploadBlock 

@@ -1,14 +1,14 @@
 import styles from "@/components/(Admin)/RightBar/RightBar.module.scss"
 import ImageUploadBlock from "@/components/(Admin)/CaseSingle/ImageUploadBlock"
 
-const Template6 = ({ id, handleMediaInputChange, selectedMedia, isEdit = false }) => {
+const Template6 = ({ id, handleMediaInputChange, selectedMedia, isEdit = false, handleTemplateDelete }) => {
     const blImg1 = selectedMedia?.[0] !== undefined ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/portfolio${selectedMedia?.[0]}` : null;
     const blImg2 = selectedMedia?.[1] !== undefined ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/portfolio${selectedMedia?.[1]}` : null;
     return (
         <div className={`${styles['admin-tmp-row']}`}>
             <h4>Template 6 Fields</h4>
             <div className={`${styles['admin-tmp-wrap']} ps-rel`}>
-                <a href="#" className={`${styles['btn-delete']}`}>Delete Section</a>
+                <a href="#" onClick={() => handleTemplateDelete(id)} className={`${styles['btn-delete']}`}>Delete Section</a>
                 <div className={`${styles['admin-tmp-2colm']} ${styles['admin-tmp-2colmImg']} fx fx-jb`}>
                     <div className={`${styles['admin-tmp-col']}`}>
                         <ImageUploadBlock 

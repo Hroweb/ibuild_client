@@ -15,7 +15,7 @@ const Template1 = ({ id, handleInputChange, formData, handleMediaInputChange, se
         <div className={`${styles['admin-tmp-row']} ${styles['admin-tmp1']}`}>
             <h4>Template 1 Fields</h4>
             <div className={`${styles['admin-tmp-wrap']} ps-rel`}>
-                <a href="#" className={`${styles['btn-delete']}`}>Delete Section</a>
+                <a href="#" onClick={() => handleTemplateDelete(id)} className={`${styles['btn-delete']}`}>Delete Section</a>
                 <ImageUploadBlock
                     sectionTitle="Image"
                     inputID={`case-block-img-${id}`}
@@ -38,7 +38,6 @@ const Template1 = ({ id, handleInputChange, formData, handleMediaInputChange, se
                     name={`case-block-text-${id}`}
                     onChange={(event) => handleInputChange(descFieldId, event, id, 'Template1')}
                 />
-                <a href="#" onClick={() => handleTemplateDelete(id)}>close</a>
             </div>
         </div>
     )
