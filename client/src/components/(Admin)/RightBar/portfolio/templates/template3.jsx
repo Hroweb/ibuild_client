@@ -16,7 +16,7 @@ const Template3 = ({ id, handleInputChange, formData, handleMediaInputChange, se
         <div className={`${styles['admin-tmp-row']}`}>
             <h4>Template 3 Fields</h4>
             <div className={`${styles['admin-tmp-wrap']} ps-rel`}>
-                <a href="#" onClick={() => handleTemplateDelete(id)} className={`${styles['btn-delete']}`}>Delete Section</a>
+                <a href="#" onClick={(e) => handleTemplateDelete(e,id)} className={`${styles['btn-delete']}`}>Delete Section</a>
                 <div className={`${styles['admin-tmp-2col']} fx fx-jb`}>
                     <ImageUploadBlock 
                         sectionTitle="Image 1"

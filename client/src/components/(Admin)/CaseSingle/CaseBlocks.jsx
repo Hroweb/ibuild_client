@@ -2,7 +2,7 @@ import styles from "@/components/(Admin)/RightBar/RightBar.module.scss";
 //import Template1 from '@/components/(Admin)/RightBar/portfolio/templates/Template1';
 import {useEffect, useState} from "react";
 import {UseFormCases} from "@/hooks/admin/useFormCases";
-import {findValueByPrefix, showSuccessAlert} from "@/hooks/admin/helpers";
+import {findValueByPrefix, showConfirmAlert, showSuccessAlert} from "@/hooks/admin/helpers";
 import {
     Template1,
     Template2,
@@ -59,7 +59,16 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
         updateTemplates(formData.templateFields);
     };
 
-    const handleTemplateDelete = async (templateId) => {
+    const handleTemplateDelete = (e,templateId) => {
+        e.preventDefault()
+        showConfirmAlert().then((result) => {
+            if (result) {
+                proceedWithDelete(templateId).then(r => '');
+            }
+        });
+    };
+
+    const proceedWithDelete = async (templateId) => {
         try {
             const result = await deleteTemplate(templateId);
             if(result.ok){
@@ -69,7 +78,7 @@ const CaseBlocks = ({ templateData, structuredData, updateTemplates }) => {
             console.error('Error deleting category:', error);
             return;
         }
-    };
+    }
 
     const renderTemplate = (uuid, templateType) => {
         const templateProp = templateData?.templateFields?.[uuid]?.[templateType];

@@ -112,8 +112,8 @@ const AddNewSection = ({ updateTemplates }) => {
         updateTemplates(formData.templateFields);
     };
 
-    const handleTemplateDelete = (templateId) => {
-
+    const handleTemplateDelete = (e,templateId) => {
+        e.preventDefault()
         setSections(prevSections => {
             return prevSections.filter(section => section.id !== templateId);
         });

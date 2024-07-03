@@ -16,7 +16,7 @@ const Template7 = ({ id, handleInputChange, formData, handleMediaInputChange, se
         <div className={`${styles['admin-tmp-row']} ${styles['admin-tmp-alt']}`}>
             <h4>Template 7 Fields</h4>
             <div className={`${styles['admin-tmp-wrap']} ps-rel`}>
-                <a href="#" onClick={() => handleTemplateDelete(id)} className={`${styles['btn-delete']}`}>Delete Section</a>
+                <a href="#" onClick={(e) => handleTemplateDelete(e,id)} className={`${styles['btn-delete']}`}>Delete Section</a>
                 <TitleBlock 
                     sectionTitle="Alternative Option Title"
                     sectionTitleVal={titleValue1}

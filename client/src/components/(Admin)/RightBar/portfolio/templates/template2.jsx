@@ -6,8 +6,8 @@ const Template2 = ({ id, handleMediaInputChange, selectedMedia, isEdit = false, 
         <div className={`${styles['admin-tmp-row']}`}>
             <h4>Template 2 Fields</h4>
             <div className={`${styles['admin-tmp-wrap']} ps-rel`}>
-                <a href="#" onClick={() => handleTemplateDelete(id)} className={`${styles['btn-delete']}`}>Delete Section</a>
-                <ImageUploadBlock 
+                <a href="#" onClick={(e) => handleTemplateDelete(e,id)} className={`${styles['btn-delete']}`}>Delete Section</a>
+                <ImageUploadBlock
                     sectionTitle="Gif Animation file"
                     inputID={`case-block-gif-${id}`}
                     allowedFormats=".gif"
