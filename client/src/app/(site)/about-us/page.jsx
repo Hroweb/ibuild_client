@@ -3,7 +3,6 @@ import Team from '@/components/(Site)/(Pages)/(About)/Team/Team';
 import LetsGrow from '@/components/(Site)/(Pages)/(About)/LetsGrow/LetsGrow';
 import {getPageModuleData} from "@/utils/api/main";
 import Loading from "@/app/loading";
-import {Suspense} from "react";
 import {Clients, ContactBar, HeroBanner, IntroText, ProcessItems, Testimonials} from "@/components/(Site)";
 
 export async function generateStaticParams() {
@@ -37,8 +36,9 @@ const AboutPage = async () => {
         const pageMeta = pageData?.data?.pageMeta;
 //console.log(gallery)
         return (
-            <Suspense fallback={<Loading />}>
+
                 <main>
+                    <Loading />
                     <HeroBanner
                         themeColor="grey"
                         title={pageMeta?.['banner']?.['cp_title']?.['meta_value'] ?? ''}
@@ -72,7 +72,6 @@ const AboutPage = async () => {
                     <ContactBar />
                     <Testimonials list={testimonials} />
                 </main>
-            </Suspense>
         );
     } catch (error) {
         console.error('Error loading page:', error);

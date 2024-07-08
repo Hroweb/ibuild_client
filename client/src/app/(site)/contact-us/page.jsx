@@ -2,7 +2,6 @@ import {HeroBanner} from '@/components/(Site)'
 import ContactForm from '@/components/(Site)/(Pages)/(Contact)/ContactForm/ContactForm'
 import {getPageModuleData} from "@/utils/api/main"
 import Loading from "@/app/loading";
-import {Suspense} from "react";
 
 export const metadata = {
     title: 'Contact Us',
@@ -29,8 +28,8 @@ const ContactPage = async () => {
         const pageMeta = pageData?.data?.pageMeta;
 
         return (
-            <Suspense fallback={<Loading />}>
                 <main>
+                    <Loading />
                     <HeroBanner
                         themeColor="black"
                         title={pageMeta?.['banner']?.['banner_title']?.['meta_value'] ?? ''}
@@ -47,7 +46,6 @@ const ContactPage = async () => {
                     />
                     <ContactForm data={pageMeta?.info} />
                 </main>
-            </Suspense>
         );
     } catch (error) {
         console.error('Error loading page:', error);

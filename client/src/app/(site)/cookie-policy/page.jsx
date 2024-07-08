@@ -1,7 +1,6 @@
 import Content from '@/components/(Site)/(Pages)/(Privacy)/Content/Content'
 import Banner from '@/components/(Site)/(Pages)/(Privacy)/Banner/Banner'
 import Loading from "@/app/loading";
-import {Suspense} from "react";
 import {getPageModuleData} from "@/utils/api/main";
 
 export const metadata = {
@@ -29,8 +28,8 @@ const CookiePage = async () => {
         const pageMeta = pageData?.data?.pageMeta;
 
         return (
-            <Suspense fallback={<Loading />}>
                 <main>
+                    <Loading />
                     <Banner
                         themeColor="black"
                         title={pageMeta?.['info']?.['title']?.['meta_value']}
@@ -40,7 +39,6 @@ const CookiePage = async () => {
                         text={pageMeta?.['info']?.['content']?.['meta_value']}
                     />
                 </main>
-            </Suspense>
         );
     } catch (error) {
         console.error('Error loading page:', error);

@@ -2,7 +2,6 @@ import {ContactBar, Testimonials, HeroBanner} from "@/components/(Site)";
 import CasesGeneral from '@/components/(Site)/(Pages)/(Cases)/CasesGeneral/CasesGeneral'
 import {getPageModuleData} from "@/utils/api/main";
 import Loading from "@/app/loading";
-import {Suspense} from "react";
 
 export const metadata = {
     title: 'Our Projects',
@@ -29,8 +28,8 @@ const Page = async () => {
         const pageMeta = pageData?.data?.pageMeta;
 
         return(
-            <Suspense fallback={<Loading />}>
                 <main>
+                    <Loading />
                     <HeroBanner
                         themeColor="white"
                         title={pageMeta?.['banner']?.['pf_banner_title']?.['meta_value'] ?? ''}
@@ -50,7 +49,6 @@ const Page = async () => {
                     <ContactBar />
                     <Testimonials list={testimonials} />
                 </main>
-            </Suspense>
         )
     } catch (error) {
         console.error('Error loading page:', error);

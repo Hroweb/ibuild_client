@@ -29,8 +29,9 @@ export default async function Home() {
         const pageMeta = pageData?.data?.pageMeta;
 //console.log(projects);return false;
         return (
-            <Suspense fallback={<Loading />}>
+
                 <main>
+                    <Loading />
                     <HpBanner
                         data={pageMeta?.banner}
                         anim={anim}
@@ -50,7 +51,7 @@ export default async function Home() {
                     <ContactBar />
                     <Testimonials list={testimonials} />
                 </main>
-            </Suspense>
+
         );
     } catch (error) {
         console.error('Error loading homepage:', error);
