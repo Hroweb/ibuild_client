@@ -18,7 +18,7 @@ export async function generateMetadata({params, searchParams}, parent){
             type: 'website',
             images: [
                 {
-                    url: `https://www.build.events${blogPost.image}`,
+                    url: `https://www.build.events/${blogPost.image}`,
                     width: 1200,
                     height: 630,
                 }
