@@ -7,8 +7,8 @@ const Template3 = ({data}) => {
     const imgPath = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/portfolio`;
 
     return (
-        <>
-            <div className="fx fx-jb m-top">
+        <div className={`${styles["tmp3-row"]}`}>
+            <div className={`${styles["tmp3-mg"]} fx fx-jb m-top`}>
                 {templateData?.['case-bl-img-1'] && (
                     <div className={`${styles["case-img"]} ${styles["case-img-hf"]}`}>
                         <Image src={imgPath + templateData?.['case-bl-img-1']} alt={`Image 1`} width={980}
@@ -34,7 +34,7 @@ const Template3 = ({data}) => {
                     </div>
                 )}
             </div>
-        </>
+        </div>
     )
 }
 

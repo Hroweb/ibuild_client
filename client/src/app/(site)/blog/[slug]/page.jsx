@@ -4,7 +4,8 @@ import {getPageModuleData} from "@/utils/api/main";
 
 export async function generateMetadata({params, searchParams}, parent){
     const slug = params.slug;
-    const blogPost = await getSinglePost(slug);
+    const req = await getSinglePost(slug);
+    const blogPost = req?.data || [];
 
     return {
         title: blogPost.title,

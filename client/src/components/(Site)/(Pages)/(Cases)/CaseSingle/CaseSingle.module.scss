@@ -208,8 +208,11 @@
         width: auto !important;
     }
 }
-.case-details {
+.case-details, .tmp3-row {
     position: relative;
+}
+.tmp3-row .tmp3-mg:first-child{
+    margin-top:0;
 }
 @media screen and (max-width: $breakpoint-1100) {
     .case-banner {
