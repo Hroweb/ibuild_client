@@ -10,13 +10,13 @@ const Loading = () => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        const animation = lottie.loadAnimation({
+        /*const animation = lottie.loadAnimation({
             container: containerRef.current,
             animationData: loadingAnim,
             renderer: 'svg',
             loop: true,
             autoplay: true,
-        });
+        });*/
 
         let progress = 0;
 
@@ -30,7 +30,7 @@ const Loading = () => {
         }, 50);
 
         return () => {
-            animation.destroy();
+            //animation.destroy();
             clearInterval(interval);
         };
     }, []);
