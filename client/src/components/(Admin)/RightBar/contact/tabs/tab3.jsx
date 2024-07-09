@@ -1,5 +1,6 @@
 import styles from "@/components/(Admin)/RightBar/RightBar.module.scss";
 import TitleBlock from "@/components/(Admin)/TitleBlock/TitleBlock";
+import DescBlock from "@/components/(Admin)/DescBlock/DescBlock";
 
 const Tab3 = ({ formData, handleInputChange, subType }) => (
     <div className={`${styles['admin-fields-wrap']}`}>
@@ -10,7 +11,7 @@ const Tab3 = ({ formData, handleInputChange, subType }) => (
             inputID="ct-email"
             inputPlaceholder="Add your email here..."
         />
-        <TitleBlock
+        <DescBlock
             sectionTitle="Address"
             sectionTitleVal={formData['address']}
             onChange={(event) => handleInputChange('address', event.target.value, subType)}

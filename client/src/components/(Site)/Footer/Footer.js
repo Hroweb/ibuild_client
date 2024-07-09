@@ -3,6 +3,7 @@ import { Logo, LogoText, Facebook, Linkedin, Instagram } from '@/components/svgs
 import SubscribeForm from '@/components/(Site)/SubscribeForm/SubscribeForm'
 import Video from './FooterVideo'
 import Link from "next/link";
+import Social from "@/components/(Site)/MainNav/Social";
 
 const Footer = () => {
     return (
@@ -26,20 +27,7 @@ const Footer = () => {
                                         <LogoText />
                                     </Link>
                                 </div>
-                                <div className="ft-addr">
-                                    <p>42, Triq L-Amaroz, <br/> Mgarr, Malta (Europe)</p>
-                                    <div className="ft-social fx fx-ac">
-                                        <Link href="https://www.linkedin.com/company/ipoint-int/" target="_blank">
-                                            <Linkedin/>
-                                        </Link>
-                                        <Link href="https://web.facebook.com/Ipoint.Int" target="_blank">
-                                            <Facebook/>
-                                        </Link>
-                                        <Link href="https://www.instagram.com/ipoint_int/" target="_blank">
-                                            <Instagram/>
-                                        </Link>
-                                    </div>
-                                </div>
+                                <Social footer={true} />
                             </div>
                             <div className="ft-col">
                                 <div className="ft-col-wrap">

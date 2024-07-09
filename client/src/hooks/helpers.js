@@ -125,10 +125,17 @@ export function getOtherArticles(posts) {
     return posts.filter((article) => article.top_news === false || article.top_news === 0);
 }
 
-export function splitTextIntoParagraphs (text) {
-    return text.split('\n').map((paragraph, index) => (
-        <p key={index}>
-            {paragraph}
-        </p>
-    ));
+export function splitTextIntoParagraphs(text, br = false) {
+    if (br) {
+        return text.split('\n').flatMap((line, index) => (
+            index > 0 ? [<br key={`br-${index}`} />, line] : [line]
+        ));
+    } else {
+        return text.split('\n').map((paragraph, index) => (
+            <p key={index}>
+                {paragraph}
+            </p>
+        ));
+    }
 }
+
