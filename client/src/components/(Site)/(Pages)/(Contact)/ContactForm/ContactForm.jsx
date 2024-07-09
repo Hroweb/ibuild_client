@@ -4,7 +4,7 @@ import styles from './ContactForm.module.scss'
 import {BtnArrUp, AttachIcon, Facebook, Linkedin, Instagram, EmailIcon, MapIcon, AttachCVIcon} from '@/components/svgs';
 import Link from "next/link";
 
-const ContactForm = () => {
+const ContactForm = ({data}) => {
     const [formData, setFormData] = useState({
         type: 'workWithUs',
         interested: [],
@@ -556,23 +556,23 @@ const ContactForm = () => {
                     <div className={`${styles['ct-rcol']}`}>
                         <h3>Get in touch</h3>
                         <div className={`${styles['ct-social']} fx fx-ac`}>
-                            <Link href="https://www.linkedin.com/company/ipoint-int/" target="_blank">
+                            <Link href={`${data['linkedin_link']?.['meta_value'] ?? 'https://www.linkedin.com/company/ipoint-int/'}`} target="_blank">
                                 <Linkedin/>
                             </Link>
-                            <Link href="https://web.facebook.com/Ipoint.Int" target="_blank">
+                            <Link href={`${data['fb_link']?.['meta_value'] ?? 'https://web.facebook.com/Ipoint.Int'}`} target="_blank">
                                 <Facebook/>
                             </Link>
-                            <Link href="https://www.instagram.com/ipoint_int/" target="_blank">
+                            <Link href={`${data['insta_link']?.['meta_value'] ?? 'https://www.instagram.com/ipoint_int/'}`} target="_blank">
                                 <Instagram/>
                             </Link>
                         </div>
                         <div className={`${styles['ct-addr-wrap']}`}>
                             <div className={`${styles['ct-info-row']}`}>
-                                <Link href="mailto:info@ipoint.com.mt" className="fx fx-ac">
+                                <Link href={`mailto:${data['email']['meta_value'] ?? 'info@ipoint.com.mt'}`} className="fx fx-ac">
                                     <div className={`${styles['ct-info-icon']} fx`}>
                                         <EmailIcon />
                                     </div>
-                                    <span>info@ipoint.com.mt</span>
+                                    <span>{`${data['email']['meta_value'] ?? 'info@ipoint.com.mt'}`}</span>
                                 </Link>
                             </div>
                             <div className={`${styles['ct-info-row']}`}>
@@ -580,7 +580,7 @@ const ContactForm = () => {
                                     <div className={`${styles['ct-info-icon']} fx`}>
                                         <MapIcon />
                                     </div>
-                                    <span>42, Triq L-Amaroz, <br/> Mgarr, Malta</span>
+                                    <span>{`${data['address']['meta_value'] ?? '42, Triq L-Amaroz, <br/> Mgarr, Malta'}`}</span>
                                 </Link>
                             </div>
                         </div>

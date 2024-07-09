@@ -11,9 +11,9 @@ const Loading = () => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        console.log('useEffect called');
+        //console.log('useEffect called');
         if (typeof window !== 'undefined') {
-            console.log('Initializing animation');
+            //console.log('Initializing animation');
             const animation = lottie.loadAnimation({
                 container: containerRef.current,
                 animationData: loadingAnim,
@@ -26,7 +26,7 @@ const Loading = () => {
             let interval;
 
             const handlePageLoad = () => {
-                console.log('Page fully loaded');
+                //console.log('Page fully loaded');
                 clearInterval(interval);
                 const completeProgress = () => {
                     if (progress < 100) {
@@ -59,7 +59,7 @@ const Loading = () => {
             }
 
             return () => {
-                console.log('Cleaning up animation');
+                //console.log('Cleaning up animation');
                 animation.destroy();
                 clearInterval(interval);
                 window.removeEventListener('load', handlePageLoad);
@@ -67,7 +67,7 @@ const Loading = () => {
         }
     }, []);
 
-    console.log('Rendering Loading component with progress:', loadingProgress);
+    //console.log('Rendering Loading component with progress:', loadingProgress);
 
     return loadingVisible ? (
         <div className="loading-wrap fx fx-jc fx-ac fx-wrap">
