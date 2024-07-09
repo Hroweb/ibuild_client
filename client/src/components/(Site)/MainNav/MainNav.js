@@ -3,6 +3,7 @@ import './MainNav.scss'
 import NavigationItem from "@/components/(Site)/MainNav/NavigationItem";
 import useHeaderState from '@/hooks/UseHeaderState';
 import { usePathname } from 'next/navigation'
+import Social from "@/components/(Site)/MainNav/Social";
 
 const MainNav = ({ isHeaderVisible, toggleHeaderClass}) => {
     const pathName = usePathname();
@@ -42,21 +43,7 @@ const MainNav = ({ isHeaderVisible, toggleHeaderClass}) => {
                         </div>
                     </div>
                     <div className="main-menu-rcol">
-                        <div className="rcol-wrap fx fx-wrap fx-ae">
-                            <div className="rcol-top">
-                                <h6>Social</h6>
-                                <div className="main-social">
-                                    <Link href="https://www.instagram.com/ipoint_int/" target="_blank">Instagram</Link>
-                                    <Link href="https://www.linkedin.com/company/ipoint-int/" target="_blank">LinkedIn</Link>
-                                    <Link href="https://web.facebook.com/Ipoint.Int" target="_blank">Facebook</Link>
-                                    <Link href="https://www.youtube.com/@antoinevella7449" target="_blank">Youtube</Link>
-                                </div>
-                            </div>
-                            <div className="rcol-btm">
-                                <h5>Get in touch</h5>
-                                <Link href="mailto:info@ipoint.com.mt">info@ipoint.com.mt</Link>
-                            </div>
-                        </div>
+                        <Social />
                     </div>
                 </div>
             </div>

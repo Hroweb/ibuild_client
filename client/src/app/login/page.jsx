@@ -1,6 +1,8 @@
 'use client'
-import Login from "@/components/(Admin)/Login/Login"
 import {useAuth} from "@/hooks/UseAuth";
+import dynamic from 'next/dynamic';
+
+const Login = dynamic(() => import('@/components/(Admin)/Login/Login'), { ssr: false });
 
 export default function LoginPage() {
     const { login, user, loading } = useAuth({
