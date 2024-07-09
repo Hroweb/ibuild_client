@@ -26,15 +26,16 @@ export const metadata = {
 const BlogPage = async () => {
     try {
         const {pageData, posts, categories} = await getPageModuleData('blog');
-        const pageMeta = pageData?.data?.pageMeta;
+        const pageMeta = pageData?.['data']?.['pageMeta'];
+
         return (
                 <main>
                     <Loading />
                     <Banner
-                        title="Fresh Updates"
-                        desc="Stay updated with our latest blog articles on Building exhibition booths, tips, and industry insights."
+                        title={`${pageMeta?.['banner']?.['banner_title']?.['meta_value'] ?? 'Fresh Updates'}`}
+                        desc={`${pageMeta?.['banner']?.['banner_desc']?.['meta_value'] ?? 'Stay updated with our latest blog articles on Building exhibition booths, tips, and industry insights.'}`}
                     />
-                    <Articles posts={posts} cats={categories} />
+                    <Articles posts={posts} cats={categories} meta={pageMeta?.['sections']} />
                 </main>
         )
     } catch (error) {

@@ -7,7 +7,7 @@ import TopNews from "@/components/(Site)/(Pages)/(BlogMain)/TopNews/TopNews";
 import OtherNews from "@/components/(Site)/(Pages)/(BlogMain)/OtherNews/OtherNews";
 import {getOtherArticles} from "@/hooks/helpers";
 
-const Articles = ({posts, cats}) => {
+const Articles = ({posts, cats, meta}) => {
     const [selectedCategory, setSelectedCategory] = useState({ id: '', name: '' });
     const [postsToShow, setPostsToShow] = useState(4);
     const [isLoading, setIsLoading] = useState(false);
@@ -52,11 +52,11 @@ const Articles = ({posts, cats}) => {
             />
             {selectedCategory.name === 'All Posts' && (
                 <>
-                    <RecentNews title="Recent News" posts={BlogArticles} />
-                    <TopNews title="Top News" posts={BlogArticles} />
+                    <RecentNews title={`${meta?.['recent_news_ttile']?.['meta_value'] ?? 'Recent News'}`} posts={BlogArticles} />
+                    <TopNews title={`${meta?.['top_news_ttile']?.['meta_value'] ?? 'Top News'}`} posts={BlogArticles} />
                 </>
             )}
-            <OtherNews title={(selectedCategory.name === 'All Posts') ? 'Other News' : selectedCategory.name} posts={(selectedCategory.name === 'All Posts') ? getOtherArticles(BlogArticles) : filteredPosts} postsToShow={postsToShow} handleLoadMore={handleLoadMore} />
+            <OtherNews title={(selectedCategory.name === 'All Posts') ? meta?.['other_news_ttile']?.['meta_value'] : selectedCategory.name} posts={(selectedCategory.name === 'All Posts') ? getOtherArticles(BlogArticles) : filteredPosts} postsToShow={postsToShow} handleLoadMore={handleLoadMore} />
         </div>
     )
 }
