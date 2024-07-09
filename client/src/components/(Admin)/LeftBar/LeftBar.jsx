@@ -1,3 +1,4 @@
+'use client'
 import styles from './LeftBar.module.scss'
 import Link from 'next/link'
 import Image from "next/image"
@@ -5,7 +6,7 @@ import LeftMenu from '@/components/(Admin)/LeftMenu/LeftMenu'
 import { AvatarIcon } from '@/components/svgs/admin'
 import {useAuth} from "@/hooks/UseAuth";
 
-const LeftBar = ({logoSrc, logoWidth, logoHeight}) => {
+const LeftBar = ({logoSrc, logoWidth, logoHeight, user}) => {
     const { logout } = useAuth({});
 
     const handleLogout = (e) => {
@@ -28,7 +29,7 @@ const LeftBar = ({logoSrc, logoWidth, logoHeight}) => {
                         <div className={`${styles['admin-avatar']} fx fx-jc fx-ac`}>
                             <AvatarIcon />
                         </div>
-                        <span>Admin | <Link href="#" onClick={handleLogout}>Logout</Link></span>
+                        <span>{`${user?.name ?? 'Admin'}`} | <Link href="#" onClick={handleLogout}>Logout</Link></span>
                     </div>
                 </div>
                 <div className={`${styles['admin-cpr']}`}>

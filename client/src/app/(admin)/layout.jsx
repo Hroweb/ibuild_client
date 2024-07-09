@@ -19,6 +19,7 @@ export default function AdminLayout({ children }) {
                             logoSrc="/admin/build-logo.svg"
                             logoWidth="62"
                             logoHeight="82"
+                            user={user}
                         />
                         {children}
                     </div>
