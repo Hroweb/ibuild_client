@@ -43,13 +43,17 @@ export async function POST(request){
     const interestedWithCommas = interested.join(', ');
 
     const transport = nodemailer.createTransport({
-        host: "it1.fcomet.com",
+        service: 'gmail',
+        host: "smtp.gmail.com",
         port: 465,
         secure: true,
         auth: {
             user: process.env.BUILD_EMAIL,
             pass: process.env.BUILD_PASSWORD,
         },
+        /*tls: {
+            rejectUnauthorized: true
+        }*/
     });
 
     if( cv ){
