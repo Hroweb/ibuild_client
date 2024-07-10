@@ -19,16 +19,16 @@ export async function POST(request) {
     }
 
     const transport = nodemailer.createTransport({
-        host: 'it1.fcomet.com',
+        service: 'gmail',
+        host: "smtp.gmail.com",
         port: 465,
         secure: true,
         auth: {
-            user: 'hello@build.events',
-            pass: 'zgE!$4P3Nffc',
+            user: process.env.BUILD_EMAIL,
+            pass: process.env.BUILD_PASSWORD,
         },
-        tls: {
-            rejectUnauthorized: false
-        },
+        logger: true,
+        debug: true,
     });
 
     const emailHTML = generateSubscriberEmailHTML({

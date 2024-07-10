@@ -42,27 +42,19 @@ export async function POST(request){
 
     const interestedWithCommas = interested.join(', ');
 
-    //console.log(process.env.BUILD_EMAIL, process.env.BUILD_PASSWORD);
+    console.log(process.env.BUILD_EMAIL, process.env.BUILD_PASSWORD);
 
     const transport = nodemailer.createTransport({
-        host: 'it1.fcomet.com',
+        service: 'gmail',
+        host: "smtp.gmail.com",
         port: 465,
         secure: true,
         auth: {
-            user: 'hello@build.events',
-            pass: 'zgE!$4P3Nffc',
+            user: process.env.BUILD_EMAIL,
+            pass: process.env.BUILD_PASSWORD,
         },
-        tls: {
-            rejectUnauthorized: false
-        },
-    });
-
-    transport.verify(function(error, success) {
-        if (error) {
-            console.error('Error with SMTP configuration:', error);
-        } else {
-            console.log('SMTP configuration is correct:', success);
-        }
+        logger: true,
+        debug: true,
     });
 
     // Send a test email to verify the configuration
