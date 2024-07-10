@@ -23,7 +23,7 @@ export async function POST(request){
     const interestedWithCommas = interested.join(', ');
 
     const transport = nodemailer.createTransport({
-        host: "smtp.gmail.com",
+        host: "it1.fcomet.com",
         port: 465,
         secure: true,
         auth: {

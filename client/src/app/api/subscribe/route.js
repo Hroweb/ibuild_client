@@ -19,7 +19,7 @@ export async function POST(request) {
     }
 
     const transport = nodemailer.createTransport({
-        host: "smtp.gmail.com",
+        host: "it1.fcomet.com",
         port: 465,
         secure: true,
         auth: {
