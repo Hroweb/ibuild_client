@@ -33,8 +33,6 @@ export async function POST(request){
         tls: {
             rejectUnauthorized: false
         },
-        //logger: true,
-        //debug: true,
     });
 
     if( file ){

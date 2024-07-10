@@ -29,8 +29,6 @@ export async function POST(request) {
         tls: {
             rejectUnauthorized: false
         },
-        //logger: true,
-        //debug: true,
     });
 
     const emailHTML = generateSubscriberEmailHTML({

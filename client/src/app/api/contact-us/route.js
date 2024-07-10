@@ -55,8 +55,6 @@ export async function POST(request){
         tls: {
             rejectUnauthorized: false
         },
-        //logger: true,
-        //debug: true,
     });
 
     transport.verify(function(error, success) {
