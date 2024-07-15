@@ -45,13 +45,13 @@ export async function POST(request){
     console.log(process.env.BUILD_EMAIL, process.env.BUILD_PASSWORD);
 
     const transport = nodemailer.createTransport({
-        service: 'gmail',
-        host: "smtp.gmail.com",
+        //service: 'gmail',
+        host: "it1.fcomet.com",
         port: 465,
         secure: true,
         auth: {
-            user: process.env.BUILD_EMAIL,
-            pass: process.env.BUILD_PASSWORD,
+            user: 'hello@build.events',
+            pass: 'zgE!$4P3Nffc',
         },
         logger: true,
         debug: true,
