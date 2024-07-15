@@ -29,7 +29,7 @@ export async function POST(request) {
         },
         logger: true,
         debug: true,
-    });
+    })
 
     const emailHTML = generateSubscriberEmailHTML({
         email,
