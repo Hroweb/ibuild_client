@@ -139,3 +139,7 @@ export function splitTextIntoParagraphs(text, br = false) {
     }
 }
 
+export function replaceImageExtension(url, newExtension){
+    if (!url) return '';
+    return url.replace(/\.\w+$/, `.${newExtension}`);
+}

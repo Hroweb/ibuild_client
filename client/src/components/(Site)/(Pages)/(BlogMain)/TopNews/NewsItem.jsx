@@ -15,7 +15,7 @@ const NewsItem = ({post}) => {
         handleMouseLeave,
     } = useCursorTracker();
 
-    const postImage = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/blog/${post.image}`;
+    const postImage = `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/blog/${post.id}/${post.image}`;
 
     const backgroundStyle = {
         backgroundImage: `url(${post.image ? postImage : '/images/blog-sample.jpg'})`,

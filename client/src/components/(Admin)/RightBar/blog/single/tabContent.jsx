@@ -27,7 +27,7 @@ const TabContent = ({data}) => {
     }
 
     const { formData, selectedMedia, errorMessage, handleUniqueChange, handleUniqueSubmit, updateFormData } = UseForm(initialFormData, initialMediaData);
-    const banner = selectedMedia.banner.preview || pageData.isNew ? selectedMedia.banner.preview : `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/blog/${pageData.image}`;
+    const banner = selectedMedia.banner.preview || pageData.isNew ? selectedMedia.banner.preview : `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/blog/${pageData.id}/${pageData.image}`;
     const filtersFormData = {
         'all_categories': data?.categories?.data,
         'attached_categories': formData.categories

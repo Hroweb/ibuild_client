@@ -1,6 +1,7 @@
 import BlogSingle from "@/components/(Site)/(Pages)/(BlogMain)/BlogSingle/BlogSingle";
 import {getSinglePost} from "@/utils/api/requests";
 import {getPageModuleData} from "@/utils/api/main";
+import {replaceImageExtension} from "@/hooks/helpers";
 
 export async function generateMetadata({params, searchParams}, parent){
     const slug = params.slug;
@@ -18,7 +19,7 @@ export async function generateMetadata({params, searchParams}, parent){
             type: 'website',
             images: [
                 {
-                    url: `https://www.build.events/blog/${blogPost.image}`,
+                    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/blog/${blogPost.id}/${replaceImageExtension(blogPost.image, 'jpg')}`,
                     width: 1200,
                     height: 630,
                 }

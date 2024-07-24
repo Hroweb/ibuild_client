@@ -49,13 +49,13 @@ const Loading = () => {
                 setLoadingProgress(progress);
             };
 
-            interval = setInterval(incrementProgress, 20);
+            interval = setInterval(incrementProgress, 10);
 
             window.addEventListener('load', handlePageLoad);
 
             // Check if the page is already loaded
             if (document.readyState === 'complete') {
-                setTimeout(handlePageLoad, 500); // Smooth transition if already loaded
+                setTimeout(handlePageLoad, 300); // Smooth transition if already loaded
             }
 
             return () => {
