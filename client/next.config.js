@@ -8,6 +8,7 @@ const nextConfig = {
         return config;
     },
     images: {
+        unoptimized: true,
         remotePatterns: [
           {hostname: "localhost"},
           {hostname: "127.0.0.1"},
