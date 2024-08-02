@@ -1,6 +1,8 @@
 import Script from "next/script";
+import React from "react";
 import { Space_Grotesk, Inter } from "next/font/google";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { ConsentProvider } from "@/context/ConsentContext";
 
 const spaceGrotesk = Space_Grotesk({
 	weight: ['300', '400', '500', '600', '700'],
@@ -34,27 +36,23 @@ export default function RootLayout({ children }) {
 			<meta name="msapplication-TileColor" content="#da532c"/>
 			<meta name="theme-color" content="#ffffff"/>
 			<meta name="robots" content="index, follow" />
-			{/*<link
-				href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
-				rel='stylesheet'
-			/>
-			<link
-				href='https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap'
-				rel='stylesheet'
-			/>*/}
 			<Script src="https://www.googletagmanager.com/gtag/js?id=G-W25S3RRHLL" strategy="afterInteractive" />
-			<Script id="google-analytics" strategy="afterInteractive">
-				{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'G-W25S3RRHLL');
-        `}
-			</Script>
+			<Script id="google-consent" strategy="afterInteractive">
+			{`
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('consent', 'default', {
+					'ad_storage': 'denied',
+					'analytics_storage': 'denied',
+					'wait_for_update': 500
+				});
+			`}
+        </Script>
 		</head>
 		<body className={`${spaceGrotesk.className}`}>
-			{children}
+			<ConsentProvider>
+				{children}
+			</ConsentProvider>
 			<SpeedInsights />
 		</body>
 		</html>

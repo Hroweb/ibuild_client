@@ -13,7 +13,12 @@ export default function SiteLayout({ children }) {
             <Header />
             <Loading />
             {children}
-            <CookieBar text="Click &quot;Accept Cookies&quot; to add a sprinkle of digital sweetness and your browsing experience – no real cookies were harmed in the making!"/>
+            <CookieBar text={
+                "We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. If you click on 'Accept All', you consent to the use of ALL the cookies. " +
+                "<br />" +
+                "Please click on 'Customize' to provide a controlled consent and view details of each cookie and to provide specific consent."
+            }
+            />
             <Footer />
         </QuoteModalProvider>
     )
