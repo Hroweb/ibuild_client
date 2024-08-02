@@ -159,7 +159,7 @@ const CookieBar = ({text}) => {
                     <div className={`${styles['ck-preferences']}`}>
                         <div className={`${styles['ck-preference-wrap']}`}>
                             <div className={`${styles['ck-popup-text']}`}>
-                                <p>We use cookies to help you navigate efficiently and perform certain functions. You will find detailed information about all cookies under each consent category below. The cookies that are categorized as Necessary are stored on your browser as they are essential for enabling the basic functionalities of the site. We also use third-party cookies that help us analyze how you use this website, store your preferences, and provide the content and advertisements that are relevant to you. These cookies will only be stored in your browser with your prior consent. </p>
+                                <p>We use cookies to help you navigate efficiently and perform certain functions. You will find detailed information about all cookies under each consent category below. The cookies that are categorized as &quot;Necessary&quot; are stored on your browser as they are essential for enabling the basic functionalities of the site. We also use third-party cookies that help us analyze how you use this website, store your preferences, and provide the content and advertisements that are relevant to you. These cookies will only be stored in your browser with your prior consent. </p>
                                 <p>You can choose to opt-out of these cookies. But opting out of some of these cookies may have an effect on your browsing experience as per the descriptions to be found within the respective categories below.</p>
                             </div>
                             <div className={`${styles['ck-categories']}`}>
@@ -250,7 +250,7 @@ const CookieBar = ({text}) => {
                                                     <div className={`${styles['ck-row']} fx fx-wrap`}>
                                                         <p>Cookie: _ga</p>
                                                         <p>Duration: 1 year 1 month 4 days</p>
-                                                        <p>Description: Google Analytics sets this cookie to calculate visitor, session and campaign data and track site usage for the site analytics report. The cookie stores information anonymously and assigns a randomly generated number to recognise unique visitors.</p>
+                                                        <p>Description: Google Analytics sets this cookie to calculate visitor, session and campaign data and track site usage for the site&apos;s analytics report. The cookie stores information anonymously and assigns a randomly generated number to recognise unique visitors.</p>
                                                     </div>
                                                     <div className={`${styles['ck-row']} fx fx-wrap`}>
                                                         <p>Cookie: _gcl_au</p>
