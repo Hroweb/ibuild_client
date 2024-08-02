@@ -8,7 +8,6 @@ import { setCookie, getCookie } from "@/utils/cookieUtils"
 
 const CookieBar = ({text}) => {
     const [isVisible, setIsVisible] = useState(false);
-    const [closedByUser, setClosedByUser] = useState(false);
     const [hasMounted, setHasMounted] = useState(false);
     const [className, setClassName] = useState('ck-init');
     const [showInitialView, setShowInitialView] = useState(true);
@@ -56,7 +55,6 @@ const CookieBar = ({text}) => {
 
     useEffect(() => {
         if (typeof window !== 'undefined' && window.gtag) {
-            console.log(ckAds);
             window.gtag('consent', 'update', {
                 'ad_storage': ckAds === '1' ? 'granted' : 'denied',
                 'ad_user_data': ckAds === '1' ? 'granted' : 'denied',

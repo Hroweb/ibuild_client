@@ -48,6 +48,8 @@ export default function RootLayout({ children }) {
 					'analytics_storage': 'denied',
 					'wait_for_update': 500
 				});
+				gtag('set', 'ads_data_redaction', false);
+            	gtag('set', 'url_passthrough', true);
 			`}
         </Script>
 		</head>

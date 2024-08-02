@@ -13,7 +13,7 @@ export function ConsentProvider({ children }) {
         }
     };
 
-    console.log(updateConsent);
+    //console.log(updateConsent);
 
     return (
         <ConsentContext.Provider value={{ updateConsent }}>
