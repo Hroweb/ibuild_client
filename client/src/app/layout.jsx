@@ -45,7 +45,11 @@ export default function RootLayout({ children }) {
 				gtag('config', 'G-W25S3RRHLL');
 				gtag('consent', 'default', {
 					'ad_storage': 'denied',
+					'ad_user_data': 'denied',
+					'ad_personalization': 'denied',
 					'analytics_storage': 'denied',
+					'functionality_storage': 'denied',
+					'personalization_storage': 'denied',
 					'wait_for_update': 500
 				});
 				gtag('set', 'ads_data_redaction', false);
