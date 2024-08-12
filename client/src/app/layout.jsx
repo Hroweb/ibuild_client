@@ -38,24 +38,45 @@ export default function RootLayout({ children }) {
 			<meta name="robots" content="index, follow" />
 			<Script src="https://www.googletagmanager.com/gtag/js?id=G-W25S3RRHLL" strategy="afterInteractive" />
 			<Script id="google-consent" strategy="afterInteractive">
-			{`
-				window.dataLayer = window.dataLayer || [];
-				function gtag(){dataLayer.push(arguments);}
-				gtag('js', new Date());
-				gtag('config', 'G-W25S3RRHLL');
-				gtag('consent', 'default', {
-					'ad_storage': 'denied',
-					'ad_user_data': 'denied',
-					'ad_personalization': 'denied',
-					'analytics_storage': 'denied',
-					'functionality_storage': 'denied',
-					'personalization_storage': 'denied',
-					'wait_for_update': 500
-				});
-				gtag('set', 'ads_data_redaction', false);
-            	gtag('set', 'url_passthrough', true);
-			`}
-        </Script>
+				{`
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+
+					// Set the default consent mode
+					gtag('consent', 'default', {
+						'ad_storage': 'denied',
+						'ad_user_data': 'denied',
+						'ad_personalization': 'denied',
+						'analytics_storage': 'denied',
+						'functionality_storage': 'denied',
+						'personalization_storage': 'denied',
+						'wait_for_update': 500
+					});
+
+					// Custom function to update gtag based on user consent
+					function updateGtagConsent() {
+						const ad_storage = getCookie('gc_ads') === 'true' ? 'granted' : 'denied';
+						const analytics_storage = getCookie('gc_analytics') === 'true' ? 'granted' : 'denied';
+						const functionality_storage = getCookie('gc_functional') === 'true' ? 'granted' : 'denied';
+
+						gtag('consent', 'update', {
+							'ad_storage': ad_storage,
+							'analytics_storage': analytics_storage,
+							'functionality_storage': functionality_storage
+						});
+
+						// Trigger page_view only if analytics consent is granted
+						if (analytics_storage === 'granted') {
+							gtag('config', 'G-W25S3RRHLL', {
+								'page_path': window.location.pathname
+							});
+						}
+					}
+
+					updateGtagConsent();
+				`}
+			</Script>
 		</head>
 		<body className={`${spaceGrotesk.className}`}>
 			<ConsentProvider>

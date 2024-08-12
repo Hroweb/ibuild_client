@@ -25,36 +25,41 @@ const CookieBar = ({text}) => {
 
 
     useEffect(() => {
-        const ckFunctional = getCookie('gc_functional') === 'true' ? 'granted' : 'denied';
-        const ckAnalytics = getCookie('gc_analytics') === 'true' ? 'granted' : 'denied';
-        const ckAds = getCookie('gc_ads') === 'true' ? 'granted' : 'denied';
+        const checkConsentAndSetCookies = () => {
+            const ckFunctional = getCookie('gc_functional') === 'true' ? 'granted' : 'denied';
+            const ckAnalytics = getCookie('gc_analytics') === 'true' ? 'granted' : 'denied';
+            const ckAds = getCookie('gc_ads') === 'true' ? 'granted' : 'denied';
     
-        setCkFunctional(ckFunctional === 'granted' ? '1' : '0');
-        setCkAnalytics(ckAnalytics === 'granted' ? '1' : '0');
-        setCkAds(ckAds === 'granted' ? '1' : '0');
-
-         // Set class and visibility based on cookie presence
-         if (ckFunctional || ckAnalytics || ckAds) {
-            setClassName('ck-exists');
-            setIsVisible(true);
-            setShowInitialView(false);
-        } else {
-            setClassName('ck-init');
-            setIsVisible(false);
-            setShowInitialView(true);
-        }
+            setCkFunctional(ckFunctional === 'granted' ? '1' : '0');
+            setCkAnalytics(ckAnalytics === 'granted' ? '1' : '0');
+            setCkAds(ckAds === 'granted' ? '1' : '0');
     
-        if (typeof window !== 'undefined' && window.gtag) {
-            window.gtag('consent', 'update', {
-                'ad_storage': ckAds,
-                'ad_user_data': ckAds,
-                'ad_personalization': ckAds,
-                'analytics_storage': ckAnalytics,
-                'functionality_storage': ckFunctional,
-                'personalization_storage': ckFunctional
-            });
+            if (ckFunctional !== 'denied' || ckAnalytics !== 'denied' || ckAds !== 'denied') {
+                setClassName('ck-exists');
+                setIsVisible(true);
+                setShowInitialView(false);
+            } else {
+                setClassName('ck-init');
+                setIsVisible(false);
+                setShowInitialView(true);
+            }
+    
+            if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('consent', 'update', {
+                    'ad_storage': ckAds,
+                    'ad_user_data': ckAds,
+                    'ad_personalization': ckAds,
+                    'analytics_storage': ckAnalytics,
+                    'functionality_storage': ckFunctional,
+                    'personalization_storage': ckFunctional
+                });
+            }
+        };
+    
+        if (hasMounted) {
+            checkConsentAndSetCookies();
         }
-    }, []);
+    }, [hasMounted]);
 
 
     const handleAccept = () => {
