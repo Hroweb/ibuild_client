@@ -22,27 +22,19 @@ const CookieBar = ({text}) => {
     const [ckAnalytics, setCkAnalytics] = useState('0');
     const [ckAds, setCkAds] = useState('0');
 
-    useEffect(() => {
-        const cookieValue = getCookie('gc_functional');
-        setCkFunctional(cookieValue === 'true' ? '1' : '0');
-    }, []);
-    useEffect(() => {
-        const cookieValue2 = getCookie('gc_analytics');
-        setCkAnalytics(cookieValue2 === 'true' ? '1' : '0');
-    }, []);
-    useEffect(() => {
-        const cookieValue3 = getCookie('gc_ads');
-        setCkAds(cookieValue3 === 'true' ? '1' : '0');
-    }, []);
+
 
     useEffect(() => {
-        // Check for the presence of cookies
-        const ckFunctional = getCookie('gc_functional');
-        const ckAnalytics = getCookie('gc_analytics');
-        const ckAds = getCookie('gc_ads');
+        const ckFunctional = getCookie('gc_functional') === 'true' ? 'granted' : 'denied';
+        const ckAnalytics = getCookie('gc_analytics') === 'true' ? 'granted' : 'denied';
+        const ckAds = getCookie('gc_ads') === 'true' ? 'granted' : 'denied';
     
-        // Set class and visibility based on cookie presence
-        if (ckFunctional || ckAnalytics || ckAds) {
+        setCkFunctional(ckFunctional === 'granted' ? '1' : '0');
+        setCkAnalytics(ckAnalytics === 'granted' ? '1' : '0');
+        setCkAds(ckAds === 'granted' ? '1' : '0');
+
+         // Set class and visibility based on cookie presence
+         if (ckFunctional || ckAnalytics || ckAds) {
             setClassName('ck-exists');
             setIsVisible(true);
             setShowInitialView(false);
@@ -51,20 +43,19 @@ const CookieBar = ({text}) => {
             setIsVisible(false);
             setShowInitialView(true);
         }
-      }, []);
-
-    useEffect(() => {
+    
         if (typeof window !== 'undefined' && window.gtag) {
             window.gtag('consent', 'update', {
-                'ad_storage': ckAds === '1' ? 'granted' : 'denied',
-                'ad_user_data': ckAds === '1' ? 'granted' : 'denied',
-                'ad_personalization': ckAds === '1' ? 'granted' : 'denied',
-                'analytics_storage': ckAnalytics === '1' ? 'granted' : 'denied',
-                'functionality_storage': ckFunctional === '1' ? 'granted' : 'denied',
-                'personalization_storage': ckFunctional === '1' ? 'granted' : 'denied'
+                'ad_storage': ckAds,
+                'ad_user_data': ckAds,
+                'ad_personalization': ckAds,
+                'analytics_storage': ckAnalytics,
+                'functionality_storage': ckFunctional,
+                'personalization_storage': ckFunctional
             });
         }
-    }, [ckAds, ckAnalytics, ckFunctional]);
+    }, []);
+
 
     const handleAccept = () => {
         updateConsent('granted', 'granted');
@@ -107,7 +98,7 @@ const CookieBar = ({text}) => {
     };
 
     useEffect(() => {
-        setHasMounted(true); // Set the flag to true after the component mounts
+        setHasMounted(true);
     }, []);
     
 
