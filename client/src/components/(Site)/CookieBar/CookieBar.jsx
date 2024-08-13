@@ -34,7 +34,7 @@ const CookieBar = ({text}) => {
             setCkAnalytics(ckAnalytics === 'granted' ? '1' : '0');
             setCkAds(ckAds === 'granted' ? '1' : '0');
     
-            if (ckFunctional !== 'denied' || ckAnalytics !== 'denied' || ckAds !== 'denied') {
+            if (ckFunctional || ckAnalytics || ckAds) {
                 setClassName('ck-exists');
                 setIsVisible(true);
                 setShowInitialView(false);
