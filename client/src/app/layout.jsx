@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
 					'personalization_storage': 'denied',
 					'wait_for_update': 500
 				});
-				gtag('set', 'ads_data_redaction', false);
+				gtag('set', 'ads_data_redaction', true);
             	gtag('set', 'url_passthrough', true);
 			`}
         </Script>
