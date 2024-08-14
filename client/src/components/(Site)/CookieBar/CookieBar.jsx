@@ -22,8 +22,6 @@ const CookieBar = ({text}) => {
     const [ckAnalytics, setCkAnalytics] = useState('0');
     const [ckAds, setCkAds] = useState('0');
 
-
-
     useEffect(() => {
         const checkConsentAndSetCookies = () => {
             const ckFunctional = getCookie('gc_functional') === 'true' ? 'granted' : 'denied';
@@ -51,7 +49,9 @@ const CookieBar = ({text}) => {
                     'ad_personalization': ckAds,
                     'analytics_storage': ckAnalytics,
                     'functionality_storage': ckFunctional,
-                    'personalization_storage': ckFunctional
+                    'personalization_storage': ckFunctional,
+                    'security_storage': 'granted',
+				    'wait_for_update': 500
                 });
             }
         };
@@ -123,18 +123,18 @@ const CookieBar = ({text}) => {
         switch (type) {
             case 'functional':
                 setCkFunctional(newValue);
-                setCookie('gc_functional', newValue === '1', 365);
+                setCookie('gc_functional', newValue === '1' ? 'true' : 'false', 365);
                 consentValues.functionality_storage = newValue === '1' ? 'granted' : 'denied';
                 consentValues.personalization_storage = newValue === '1' ? 'granted' : 'denied';
                 break;
             case 'analytics':
                 setCkAnalytics(newValue);
-                setCookie('gc_analytics', newValue === '1', 365);
+                setCookie('gc_analytics', newValue === '1' ? 'true' : 'false', 365);
                 consentValues.analytics_storage = newValue === '1' ? 'granted' : 'denied';
                 break;
             case 'ads':
                 setCkAds(newValue);
-                setCookie('gc_ads', newValue === '1', 365);
+                setCookie('gc_ads', newValue === '1' ? 'true' : 'false', 365);
                 consentValues.ad_storage = newValue === '1' ? 'granted' : 'denied';
                 consentValues.ad_user_data = newValue === '1' ? 'granted' : 'denied';
                 consentValues.ad_personalization = newValue === '1' ? 'granted' : 'denied';
@@ -201,7 +201,13 @@ const CookieBar = ({text}) => {
                                         <div>
                                             <div className={`fx`}>
                                                 <label className={`${styles['switcher-toggle']} fx fx-ac`} data-type="functional">
-                                                    <input type="checkbox" name="functional-cookie-option" value={ckFunctional} onChange={() => handleCookieToggle('functional')} autoComplete="off"/>
+                                                    <input
+                                                        type="checkbox"
+                                                        name="functional-cookie-option"
+                                                        checked={ckFunctional === '1'}
+                                                        onChange={(e) => handleCookieToggle('functional', e.target.checked ? 'accept' : 'reject')}
+                                                        autoComplete="off"
+                                                    />
                                                     <div className={`${styles['form-switcher']} ${ckFunctional === '1' ? `${styles['switcher-on']}` : `${styles['switcher-off']}`} ${styles['sw-toggle']} fx fx-ac`}>
                                                         <span className={`${styles['form-switch-on']} ${styles['sw-toggle']}`}>On</span>
                                                         <span className={`${styles['form-switch-off']} ${styles['sw-toggle']}`}>Off</span>
@@ -228,8 +234,14 @@ const CookieBar = ({text}) => {
                                         </div>
                                         <div>
                                             <div className={`fx`}>
-                                                <label className={`${styles['switcher-toggle']} fx fx-ac`} data-type="functional">
-                                                    <input type="checkbox" name="functional-cookie-option" value={ckAnalytics} onChange={() => handleCookieToggle('analytics')} autoComplete="off"/>
+                                                <label className={`${styles['switcher-toggle']} fx fx-ac`} data-type="analytics">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="analytics-cookie-option"
+                                                        checked={ckAnalytics === '1'}
+                                                        onChange={(e) => handleCookieToggle('analytics', e.target.checked ? 'accept' : 'reject')}
+                                                        autoComplete="off"
+                                                    />
                                                     <div className={`${styles['form-switcher']} ${ckAnalytics === '1' ? `${styles['switcher-on']}` : `${styles['switcher-off']}`} ${styles['sw-toggle']} fx fx-ac`}>
                                                         <span className={`${styles['form-switch-on']} ${styles['sw-toggle']}`}>On</span>
                                                         <span className={`${styles['form-switch-off']} ${styles['sw-toggle']}`}>Off</span>
@@ -273,8 +285,14 @@ const CookieBar = ({text}) => {
                                         </div>
                                         <div>
                                             <div className={`fx`}>
-                                                <label className={`${styles['switcher-toggle']} fx fx-ac`} data-type="functional">
-                                                    <input type="checkbox" name="functional-cookie-option" value={ckAds} onChange={() => handleCookieToggle('ads')} autoComplete="off"/>
+                                                <label className={`${styles['switcher-toggle']} fx fx-ac`} data-type="ads">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="ads-cookie-option"
+                                                        checked={ckAds === '1'}
+                                                        onChange={(e) => handleCookieToggle('ads', e.target.checked ? 'accept' : 'reject')}
+                                                        autoComplete="off"
+                                                    />
                                                     <div className={`${styles['form-switcher']} ${ckAds === '1' ? `${styles['switcher-on']}` : `${styles['switcher-off']}`} ${styles['sw-toggle']} fx fx-ac`}>
                                                         <span className={`${styles['form-switch-on']} ${styles['sw-toggle']}`}>On</span>
                                                         <span className={`${styles['form-switch-off']} ${styles['sw-toggle']}`}>Off</span>
