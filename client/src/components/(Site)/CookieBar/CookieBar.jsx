@@ -63,7 +63,7 @@ const CookieBar = ({text}) => {
 
 
     const handleAccept = () => {
-        updateConsent('granted', 'granted');
+        //updateConsent('granted', 'granted');
         setCookie('gc_functional', 'true', 365);
         setCookie('gc_analytics', 'true', 365);
         setCookie('gc_ads', 'true', 365);
@@ -79,7 +79,7 @@ const CookieBar = ({text}) => {
     };
 
     const handleReject = () => {
-        updateConsent('denied', 'denied');
+        //updateConsent('denied', 'denied');
         setCookie('gc_functional', 'false', 365);
         setCookie('gc_analytics', 'false', 365);
         setCookie('gc_ads', 'false', 365);
