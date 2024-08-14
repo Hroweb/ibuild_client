@@ -119,22 +119,30 @@ const CookieBar = ({text}) => {
 
     const handleCookieToggle = (type, action) => {
         let newValue = action === 'accept' ? '1' : '0';
+        const consentValues = {};
         switch (type) {
             case 'functional':
                 setCkFunctional(newValue);
                 setCookie('gc_functional', newValue === '1', 365);
+                consentValues.functionality_storage = newValue === '1' ? 'granted' : 'denied';
+                consentValues.personalization_storage = newValue === '1' ? 'granted' : 'denied';
                 break;
             case 'analytics':
                 setCkAnalytics(newValue);
                 setCookie('gc_analytics', newValue === '1', 365);
+                consentValues.analytics_storage = newValue === '1' ? 'granted' : 'denied';
                 break;
             case 'ads':
                 setCkAds(newValue);
                 setCookie('gc_ads', newValue === '1', 365);
+                consentValues.ad_storage = newValue === '1' ? 'granted' : 'denied';
+                consentValues.ad_user_data = newValue === '1' ? 'granted' : 'denied';
+                consentValues.ad_personalization = newValue === '1' ? 'granted' : 'denied';
                 break;
             default:
                 break;
         }
+        updateConsent(consentValues);
     };
 
     return (

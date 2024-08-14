@@ -50,9 +50,10 @@ export default function RootLayout({ children }) {
 					'analytics_storage': 'denied',
 					'functionality_storage': 'denied',
 					'personalization_storage': 'denied',
+					'security_storage': 'granted',
 					'wait_for_update': 500
 				});
-				gtag('set', 'ads_data_redaction', true);
+				gtag('set', 'ads_data_redaction', false);
             	gtag('set', 'url_passthrough', true);
 			`}
         </Script>
