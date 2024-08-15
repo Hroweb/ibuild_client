@@ -43,16 +43,24 @@ export default function RootLayout({ children }) {
 				function gtag(){dataLayer.push(arguments);}
 				gtag('js', new Date());
 				gtag('config', 'G-W25S3RRHLL');
-				gtag('consent', 'default', {
-					'ad_storage': 'denied',
-					'ad_user_data': 'denied',
-					'ad_personalization': 'denied',
-					'analytics_storage': 'denied',
-					'functionality_storage': 'denied',
-					'personalization_storage': 'denied',
-					'security_storage': 'granted',
-					'wait_for_update': 500
-				});
+
+				const adStorageConsent = getCookie('gc_ads') === 'true' ? 'granted' : 'denied';
+				const analyticsConsent = getCookie('gc_analytics') === 'true' ? 'granted' : 'denied';
+				const functionalityConsent = getCookie('gc_functional') === 'true' ? 'granted' : 'denied';
+
+				if (!adStorageConsent && !analyticsConsent && !functionalityConsent) {
+					gtag('consent', 'default', {
+						'ad_storage': 'denied',
+						'ad_user_data': 'denied',
+						'ad_personalization': 'denied',
+						'analytics_storage': 'denied',
+						'functionality_storage': 'denied',
+						'personalization_storage': 'denied',
+						'security_storage': 'granted',
+						'wait_for_update': 500
+					});
+				}
+
 				gtag('set', 'ads_data_redaction', false);
             	gtag('set', 'url_passthrough', true);
 			`}
