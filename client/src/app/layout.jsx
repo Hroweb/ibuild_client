@@ -3,6 +3,7 @@ import React from "react";
 import { Space_Grotesk, Inter } from "next/font/google";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ConsentProvider } from "@/context/ConsentContext";
+import GtagComponent from "@/components/(Site)/GtagComponent/GtagComponent";
 
 const spaceGrotesk = Space_Grotesk({
 	weight: ['300', '400', '500', '600', '700'],
@@ -36,7 +37,7 @@ export default function RootLayout({ children }) {
 			<meta name="msapplication-TileColor" content="#da532c"/>
 			<meta name="theme-color" content="#ffffff"/>
 			<meta name="robots" content="index, follow" />
-			<Script src="https://www.googletagmanager.com/gtag/js?id=G-W25S3RRHLL" strategy="afterInteractive" />
+			{/*<Script src="https://www.googletagmanager.com/gtag/js?id=G-W25S3RRHLL" strategy="afterInteractive" />
 			<Script id="google-consent" strategy="afterInteractive">
 			{`
 				window.dataLayer = window.dataLayer || [];
@@ -64,10 +65,11 @@ export default function RootLayout({ children }) {
 				gtag('set', 'ads_data_redaction', false);
             	gtag('set', 'url_passthrough', true);
 			`}
-        </Script>
+        </Script>*/}
 		</head>
 		<body className={`${spaceGrotesk.className}`}>
 			<ConsentProvider>
+				<GtagComponent />
 				{children}
 			</ConsentProvider>
 			<SpeedInsights />
