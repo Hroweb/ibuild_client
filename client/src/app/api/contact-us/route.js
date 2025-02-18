@@ -42,7 +42,7 @@ export async function POST(request){
 
     const interestedWithCommas = interested.join(', ');
 
-    console.log(process.env.BUILD_EMAIL, process.env.BUILD_PASSWORD);
+    //console.log(process.env.BUILD_EMAIL, process.env.BUILD_PASSWORD);
 
     const transport = nodemailer.createTransport({
         //service: 'gmail',
