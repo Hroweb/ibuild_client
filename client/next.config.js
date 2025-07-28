@@ -13,8 +13,7 @@ const nextConfig = {
           {hostname: "localhost"},
           {hostname: "127.0.0.1"},
           {hostname: "api.eonix.ai"},
-          {hostname: "igamingbosses.com"},
-          {hostname: "www.igamingbosses.com"},
+          {hostname: "apistaging.eonix.ai"},
         ],
     },
 }
